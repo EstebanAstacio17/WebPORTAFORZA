@@ -145,4 +145,36 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // 7. Showcase Interactivo de Capturas de AdminSoftGPF v3
+  const showcaseContainer = document.getElementById('showcasePills');
+  const showcaseImage = document.getElementById('showcaseImage');
+  const showcaseTitle = document.getElementById('showcaseTitle');
+  const showcaseDesc = document.getElementById('showcaseDesc');
+  const showcaseUrl = document.getElementById('showcaseUrl');
+
+  if (showcaseContainer && showcaseImage) {
+    const pills = showcaseContainer.querySelectorAll('.filter-pill-apple');
+    pills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const imgSrc = pill.getAttribute('data-img');
+        const title = pill.getAttribute('data-title');
+        const desc = pill.getAttribute('data-desc');
+        const path = pill.getAttribute('data-path') || 'dashboard';
+
+        showcaseImage.style.opacity = '0.2';
+        setTimeout(() => {
+          if (imgSrc) showcaseImage.src = imgSrc;
+          if (title && showcaseTitle) showcaseTitle.innerText = title;
+          if (desc && showcaseDesc) showcaseDesc.innerText = desc;
+          if (showcaseUrl) showcaseUrl.innerHTML = `<i class="fas fa-lock text-success me-1"></i> adminsoft.portaforza.com/app/${path}`;
+          showcaseImage.style.opacity = '1';
+        }, 120);
+      });
+    });
+  }
 });

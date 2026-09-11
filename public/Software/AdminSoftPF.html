@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>AdminSoftGPF v3 | Software Empresarial de Administración de Condominios y Propiedades - PORTAFORZA</title>
-    <meta name="description" content="AdminSoftGPF v3 de Portaforza: Sistema integral para la administración de condominios, torres residenciales, plazas comerciales, cobranzas, facturación NCF y reportes financieros.">
-    <meta name="keywords" content="AdminSoftGPF, software administracion condominios, gestion propiedades Santo Domingo, facturacion NCF condominios, control de pagos condominios, Portaforza">
+    <meta name="description" content="AdminSoftGPF v3 de Portaforza: Sistema integral para la administración de condominios, torres residenciales, plazas comerciales, cobranzas, facturación y reportes financieros.">
+    <meta name="keywords" content="AdminSoftGPF, software administracion condominios, gestion propiedades Santo Domingo, facturacion condominios, control de pagos condominios, Portaforza">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#ffffff">
 
@@ -28,7 +28,7 @@
         "name": "AdminSoftGPF v3",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web / Cloud / Windows",
-        "description": "Sistema empresarial de administración de condominios, facturación NCF, control de caja y estados de cuenta.",
+        "description": "Sistema empresarial de administración de condominios, facturación, control de caja y estados de cuenta.",
         "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
@@ -110,7 +110,7 @@
                 Control total de tu condominio, <span class="hero-gradient">cobranzas y finanzas.</span>
             </h1>
             <p class="hero-subhead">
-                La plataforma inteligente para administradores de condominios, torres residenciales y plazas comerciales. Automatiza cuotas de mantenimiento, facturas con NCF, arqueo de caja y estados de cuenta en tiempo real.
+                La plataforma inteligente para administradores de condominios, torres residenciales y plazas comerciales. Automatiza cuotas de mantenimiento, facturas, arqueo de caja y estados de cuenta en tiempo real.
             </p>
             <div class="hero-cta-group">
                 <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20una%20demostraci%C3%B3n%20personalizada%20de%20AdminSoftGPF%20v3." target="_blank" class="btn-apple-primary">
@@ -121,19 +121,58 @@
                 </a>
             </div>
 
-            <!-- Showcase de Pantalla Real de AdminSoftGPF -->
-            <div class="mt-4 text-center">
-                <div class="bento-card p-2 mx-auto shadow-lg" style="max-width: 1080px; border-radius: 20px;">
+            <!-- Showcase Interactivo de Pantallas Reales de AdminSoftGPF -->
+            <div class="mt-5 text-center">
+                <!-- Selector de Pestañas Apple para el Showcase -->
+                <div class="filter-pills-apple justify-content-center mb-4" id="showcasePills">
+                    <button type="button" class="filter-pill-apple active" data-img="styleAdminSoftPF/imgs/adminsoft_view_dashboard.png" data-path="dashboard" data-title="Dashboard Financiero & Métricas en Tiempo Real" data-desc="Monitoreo en tiempo real de recaudación mensual, ingresos vs. egresos, morosidad y balance disponible.">
+                        <i class="fas fa-chart-pie me-1"></i> Dashboard
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_facturacion.png" data-path="facturacion" data-title="Módulo de Facturación & Cuentas por Cobrar" data-desc="Generación de cuotas de mantenimiento ordinarias, extraordinarias y estados de cuenta automatizados.">
+                        <i class="fas fa-file-invoice-dollar me-1"></i> Facturación
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_caja.png" data-path="caja" data-title="Caja, Cobranzas & Recibos Digitales" data-desc="Control de ingresos en efectivo, transferencias bancarias, cheques y emisión de recibos digitales.">
+                        <i class="fas fa-cash-register me-1"></i> Caja & Cobros
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_clientes.png" data-path="clientes" data-title="Directorio de Residentes & Unidades" data-desc="Padrón de propietarios, inquilinos, apartamentos, vehículos y estados de cuenta individuales.">
+                        <i class="fas fa-users me-1"></i> Residentes
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_egresos.png" data-path="egresos" data-title="Control de Egresos & Suplidores" data-desc="Registro de compras, autorizaciones de pago a proveedores y servicios comunes (seguridad, energía, limpieza).">
+                        <i class="fas fa-receipt me-1"></i> Egresos
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_reportes.png" data-path="reportes" data-title="Reportes Financieros & Balances" data-desc="Informes de morosidad, balances generales y estados financieros exportables a PDF y Excel.">
+                        <i class="fas fa-chart-bar me-1"></i> Reportes
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_catalogos.png" data-path="catalogos" data-title="Catálogos & Gestión Multi-Condominio" data-desc="Estructuración de manzanas, torres residenciales, locales comerciales y configuración de cuotas.">
+                        <i class="fas fa-sliders-h me-1"></i> Proyectos
+                    </button>
+                    <button type="button" class="filter-pill-apple" data-img="styleAdminSoftPF/imgs/adminsoft_view_usuarios.png" data-path="usuarios" data-title="Seguridad, Usuarios & Roles" data-desc="Gestión de permisos para administradores, cajeros y supervisores con auditoría integral.">
+                        <i class="fas fa-user-shield me-1"></i> Usuarios
+                    </button>
+                </div>
+
+                <div class="bento-card p-2 mx-auto shadow-lg" style="max-width: 1120px; border-radius: 20px;">
                     <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom bg-light rounded-top">
                         <div class="d-flex gap-2">
                             <span class="rounded-circle bg-danger d-inline-block" style="width: 10px; height: 10px;"></span>
                             <span class="rounded-circle bg-warning d-inline-block" style="width: 10px; height: 10px;"></span>
                             <span class="rounded-circle bg-success d-inline-block" style="width: 10px; height: 10px;"></span>
                         </div>
-                        <div class="small text-muted font-monospace"><i class="fas fa-lock text-success me-1"></i> adminsoft.portaforza.com/app</div>
-                        <div class="small text-muted font-monospace">v3.0.0 Pro</div>
+                        <div class="small text-muted font-monospace" id="showcaseUrl"><i class="fas fa-lock text-success me-1"></i> adminsoft.portaforza.com/app/dashboard</div>
+                        <div class="small text-muted font-monospace">AdminSoftGPF v3.0 Pro</div>
                     </div>
-                    <img src="styleAdminSoftPF/imgs/adminsoft_dashboard_live.png" alt="AdminSoftGPF v3 - Interfaz de la Plataforma" class="img-fluid rounded-bottom" style="width: 100%; object-fit: cover;">
+                    <div class="position-relative" style="background: #0f172a; min-height: 420px;">
+                        <img id="showcaseImage" src="styleAdminSoftPF/imgs/adminsoft_view_dashboard.png" alt="AdminSoftGPF v3 - Interfaz de la Plataforma" class="img-fluid rounded-bottom" style="width: 100%; object-fit: contain; transition: opacity 0.2s ease-in-out;">
+                    </div>
+                    <div class="p-3 bg-white border-top text-start d-flex flex-wrap align-items-center justify-content-between gap-3">
+                        <div style="max-width: 760px;">
+                            <h6 class="fw-bold mb-1 text-dark" id="showcaseTitle">Dashboard Financiero & Métricas en Tiempo Real</h6>
+                            <p class="text-muted small mb-0" id="showcaseDesc">Monitoreo en tiempo real de recaudación mensual, ingresos vs. egresos, morosidad y balance disponible.</p>
+                        </div>
+                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20solicitar%20una%20demostraci%C3%B3n%20en%20vivo%20de%20AdminSoftGPF." target="_blank" class="btn-apple-primary btn-sm">
+                            <i class="fab fa-whatsapp"></i> Solicitar Demo
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,17 +204,17 @@
                     </div>
                 </div>
 
-                <!-- Módulo 2: Facturación & NCF -->
+                <!-- Módulo 2: Facturación Recurrente -->
                 <div class="bento-card bento-col-4">
                     <div class="bento-icon">
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <h3>Facturación Recurrente & NCF</h3>
+                    <h3>Facturación Recurrente & Recibos</h3>
                     <p>
-                        Generación automática de cuotas de mantenimiento ordinarias y extraordinarias con Comprobantes Fiscales válidos para DGII.
+                        Generación automática de cuotas de mantenimiento ordinarias y extraordinarias con comprobantes de pago detallados.
                     </p>
                     <div class="bento-badge-list">
-                        <span class="apple-pill-tag">NCF Fiscal</span>
+                        <span class="apple-pill-tag">Comprobantes</span>
                         <span class="apple-pill-tag">Cuotas Extra</span>
                     </div>
                 </div>
@@ -249,7 +288,7 @@
                     <div class="catalog-card-apple p-4">
                         <i class="fas fa-flag text-primary fa-2x mb-3"></i>
                         <h5 class="fw-bold">Adaptado a República Dominicana</h5>
-                        <p class="small text-muted">Moneda en RD$, formato fiscal NCF y soporte local directo por los ingenieros de Portaforza.</p>
+                        <p class="small text-muted">Moneda en RD$, emisión de comprobantes y soporte local directo por los ingenieros de Portaforza.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -263,33 +302,124 @@
         </div>
     </section>
 
+    <!-- SECCIÓN: TOUR VISUAL DE TODAS LAS FUNCIONALIDADES -->
+    <section class="section-apple bg-light" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-head-apple">
+                <span class="tag">Galería de Módulos</span>
+                <h2>Explora la Plataforma en Detalle</h2>
+                <p>Capturas reales de los flujos de trabajo diarios en AdminSoftGPF v3.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Tarjeta 1: Facturación & Recibos -->
+                <div class="col-lg-6">
+                    <div class="bento-card p-4 h-100 shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark"><i class="fas fa-file-invoice text-primary me-2"></i>Facturación & Cuotas</h5>
+                            <span class="apple-pill-tag">Automatizado</span>
+                        </div>
+                        <p class="text-muted small mb-3">Generación masiva de cuotas ordinarias y extraordinarias para cada unidad o inquilino.</p>
+                        <div class="rounded-3 overflow-hidden border shadow-xs bg-dark mb-3">
+                            <img src="styleAdminSoftPF/imgs/adminsoft_view_facturacion.png" alt="Módulo de Facturación" class="img-fluid" style="width: 100%; transition: transform 0.3s ease;">
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border">Cuotas Masivas</span>
+                            <span class="badge bg-light text-dark border">Cuentas por Cobrar</span>
+                            <span class="badge bg-light text-dark border">Morosidad</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Caja & Cobranzas -->
+                <div class="col-lg-6">
+                    <div class="bento-card p-4 h-100 shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark"><i class="fas fa-cash-register text-primary me-2"></i>Caja & Cobranzas</h5>
+                            <span class="apple-pill-tag">Cobro Rápido</span>
+                        </div>
+                        <p class="text-muted small mb-3">Recepción de pagos en efectivo, cheques y transferencias con emisión instantánea de recibo.</p>
+                        <div class="rounded-3 overflow-hidden border shadow-xs bg-dark mb-3">
+                            <img src="styleAdminSoftPF/imgs/adminsoft_view_caja.png" alt="Módulo de Caja y Cobranzas" class="img-fluid" style="width: 100%; transition: transform 0.3s ease;">
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border">Arqueo Diario</span>
+                            <span class="badge bg-light text-dark border">Recibos PDF</span>
+                            <span class="badge bg-light text-dark border">Múltiples Cuentas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Egresos & Suplidores -->
+                <div class="col-lg-6">
+                    <div class="bento-card p-4 h-100 shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark"><i class="fas fa-receipt text-primary me-2"></i>Egresos & Pagos</h5>
+                            <span class="apple-pill-tag">Auditoría Total</span>
+                        </div>
+                        <p class="text-muted small mb-3">Control estricto de autorizaciones de gasto, facturas de servicios y pagos a proveedores.</p>
+                        <div class="rounded-3 overflow-hidden border shadow-xs bg-dark mb-3">
+                            <img src="styleAdminSoftPF/imgs/adminsoft_view_egresos.png" alt="Módulo de Egresos" class="img-fluid" style="width: 100%; transition: transform 0.3s ease;">
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border">Proveedores</span>
+                            <span class="badge bg-light text-dark border">Categorías de Gasto</span>
+                            <span class="badge bg-light text-dark border">Conciliación</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4: Reportes & Balances -->
+                <div class="col-lg-6">
+                    <div class="bento-card p-4 h-100 shadow-sm">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark"><i class="fas fa-chart-line text-primary me-2"></i>Reportes & Balances</h5>
+                            <span class="apple-pill-tag">Exportable</span>
+                        </div>
+                        <p class="text-muted small mb-3">Informes ejecutivos de ingresos, egresos y carteras de deuda exportables en PDF y Excel para juntas de vecinos.</p>
+                        <div class="rounded-3 overflow-hidden border shadow-xs bg-dark mb-3">
+                            <img src="styleAdminSoftPF/imgs/adminsoft_view_reportes.png" alt="Módulo de Reportes" class="img-fluid" style="width: 100%; transition: transform 0.3s ease;">
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border">Balance Rápido</span>
+                            <span class="badge bg-light text-dark border">Exportar a Excel</span>
+                            <span class="badge bg-light text-dark border">PDF de Asambleas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECCIÓN: PLANES Y COTIZACIÓN -->
     <section id="planes" class="configurator-section">
         <div class="container">
             <div class="section-head-apple">
                 <span class="tag">Planes Flexibles</span>
-                <h2>Escoge el Plan Ideal para tu Condominio</h2>
+                <h2>Escoge el Plan Ideal</h2>
                 <p>Sin contratos forzosos. Incluye capacitación inicial para tu personal y soporte continuo.</p>
             </div>
 
             <div class="row g-4 justify-content-center">
-                <!-- Plan Básico -->
+                <!-- Plan Starter -->
                 <div class="col-lg-4 col-md-6">
                     <div class="bento-card p-4 h-100 d-flex flex-column text-center">
-                        <span class="apple-pill-tag mx-auto mb-3">Residenciales Pequeños</span>
+                        <span class="apple-pill-tag mx-auto mb-3">1 Residencial</span>
                         <h4 class="fw-bold">Plan Starter</h4>
-                        <p class="text-muted small">Para condominios de 1 a 20 unidades</p>
+                        <p class="text-muted small">Acceso a todas las funciones para 1 residencial</p>
                         <div class="my-3">
                             <span class="display-6 fw-bold text-dark">$29.90</span>
                             <span class="text-muted small">/ mes</span>
                         </div>
                         <ul class="list-unstyled text-muted small text-start my-3">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Hasta 20 Apartamentos/Locales</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Facturación y Recibos PDF</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Control de Caja & Egresos</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Soporte por WhatsApp</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <strong>Acceso a todos los módulos</strong></li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Exclusivo para <strong>1 Residencial</strong></li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Facturación y recibos digitales</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Control de caja, ingresos y egresos</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Directorio y estados de cuenta</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Soporte técnico continuo</li>
                         </ul>
-                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20contratar%20el%20Plan%20Starter%20de%20AdminSoftGPF." target="_blank" class="btn-apple-secondary mt-auto w-100 justify-content-center">Contratar Starter</a>
+                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20contratar%20el%20Plan%20Starter%20(1%20Residencial)%20de%20AdminSoftGPF." target="_blank" class="btn-apple-secondary mt-auto w-100 justify-content-center">Contratar Starter</a>
                     </div>
                 </div>
 
@@ -298,38 +428,42 @@
                     <div class="bento-card p-4 h-100 d-flex flex-column text-center border-primary shadow-lg" style="border-width: 2px;">
                         <span class="apple-pill-tag bg-primary text-white mx-auto mb-3">Más Popular</span>
                         <h4 class="fw-bold">Plan Profesional</h4>
-                        <p class="text-muted small">Para torres y condominios de 21 a 60 unidades</p>
+                        <p class="text-muted small">Sin límite de residenciales con acceso total</p>
                         <div class="my-3">
                             <span class="display-6 fw-bold text-primary">$49.90</span>
                             <span class="text-muted small">/ mes</span>
                         </div>
                         <ul class="list-unstyled text-muted small text-start my-3">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Hasta 60 Apartamentos/Locales</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Facturación con NCF Fiscal</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Módulo de Reportes Financieros</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Multi-usuario con roles</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Capacitación Virtual Incluida</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <strong>Sin límite de residenciales</strong></li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <strong>Acceso a todos los módulos</strong></li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Gestión Multi-Condominio unificada</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Facturación y cobranzas automatizadas</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Reportes financieros consolidados</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Multi-usuario con roles de gestión</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Capacitación virtual y soporte prioritario</li>
                         </ul>
-                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20contratar%20el%20Plan%20Profesional%20de%20AdminSoftGPF." target="_blank" class="btn-apple-primary mt-auto w-100 justify-content-center">Contratar Profesional</a>
+                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20contratar%20el%20Plan%20Profesional%20(Sin%20limite%20de%20residenciales)%20de%20AdminSoftGPF." target="_blank" class="btn-apple-primary mt-auto w-100 justify-content-center">Contratar Profesional</a>
                     </div>
                 </div>
 
                 <!-- Plan Enterprise -->
                 <div class="col-lg-4 col-md-6">
                     <div class="bento-card p-4 h-100 d-flex flex-column text-center">
-                        <span class="apple-pill-tag mx-auto mb-3">Grandes Complejos</span>
+                        <span class="apple-pill-tag mx-auto mb-3">A Medida</span>
                         <h4 class="fw-bold">Plan Enterprise</h4>
-                        <p class="text-muted small">Más de 60 unidades o Multi-Condominio</p>
+                        <p class="text-muted small">Todo lo anterior + Adaptación a áreas específicas</p>
                         <div class="my-3">
                             <span class="display-6 fw-bold text-dark">A Medida</span>
+                            <span class="text-muted small">/ proyecto</span>
                         </div>
                         <ul class="list-unstyled text-muted small text-start my-3">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Unidades Ilimitadas</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Múltiples Condominios Gestionados</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Base de Datos Dedicada</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Soporte Prioritario 24/7</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <strong>Sin límite de residenciales + Acceso total</strong></li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <strong>Implementación y adaptación a áreas específicas</strong></li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Desarrollo de módulos e integraciones a medida</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Base de datos dedicada y entornos aislados</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Onboarding presencial y soporte dedicado 24/7</li>
                         </ul>
-                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20cotizar%20el%20Plan%20Enterprise%20de%20AdminSoftGPF." target="_blank" class="btn-apple-secondary mt-auto w-100 justify-content-center">Cotizar Enterprise</a>
+                        <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20cotizar%20el%20Plan%20Enterprise%20(Adaptacion%20a%20medida)%20de%20AdminSoftGPF." target="_blank" class="btn-apple-secondary mt-auto w-100 justify-content-center">Cotizar Enterprise</a>
                     </div>
                 </div>
             </div>
@@ -344,7 +478,7 @@
                     <div class="footer-apple-title">AdminSoftGPF v3</div>
                     <ul class="footer-apple-list">
                         <li><a href="#modulos">Dashboard Financiero</a></li>
-                        <li><a href="#modulos">Facturación & NCF</a></li>
+                        <li><a href="#modulos">Facturación & Cobranzas</a></li>
                         <li><a href="#modulos">Control de Caja</a></li>
                         <li><a href="#planes">Planes y Precios</a></li>
                     </ul>
