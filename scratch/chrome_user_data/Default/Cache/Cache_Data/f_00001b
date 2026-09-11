@@ -1,0 +1,478 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/DocumentPreviewModal.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3ea76504"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=3ea76504"; const useState = __vite__cjsImport3_react["useState"]; const useEffect = __vite__cjsImport3_react["useEffect"]; const useRef = __vite__cjsImport3_react["useRef"];
+import {
+  Printer,
+  Download,
+  X,
+  Maximize2,
+  Minimize2,
+  Loader2,
+  AlertCircle,
+  FileText,
+  RotateCw,
+  ExternalLink
+} from "/node_modules/.vite/deps/lucide-react.js?v=3ea76504";
+import { api } from "/src/services/api.ts";
+export const DocumentPreviewModal = ({
+  isOpen,
+  onClose,
+  title,
+  documentType,
+  documentId,
+  fileName,
+  subtitle
+}) => {
+  _s();
+  const [blobUrl, setBlobUrl] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const iframeRef = useRef(null);
+  const defaultFileName = fileName || `${documentType}_${documentId}.pdf`;
+  useEffect(() => {
+    if (!isOpen || !documentId) {
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl);
+        setBlobUrl(null);
+      }
+      return;
+    }
+    loadDocument();
+    return () => {
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl);
+      }
+    };
+  }, [isOpen, documentType, documentId]);
+  const loadDocument = async () => {
+    setIsLoading(true);
+    setErrorMsg(null);
+    try {
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl);
+        setBlobUrl(null);
+      }
+      const blob = await api.fetchPdfBlob(documentType, documentId);
+      const url = URL.createObjectURL(blob);
+      setBlobUrl(url);
+    } catch (err) {
+      console.error("Error al cargar vista previa del PDF:", err);
+      setErrorMsg(err.message || "No se pudo generar la vista previa del documento.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handlePrint = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      try {
+        iframeRef.current.contentWindow.focus();
+        iframeRef.current.contentWindow.print();
+        return;
+      } catch (e) {
+        console.warn("Fallo impresión directa en iframe, abriendo ventana auxiliar...", e);
+      }
+    }
+    if (blobUrl) {
+      const printWindow = window.open(blobUrl, "_blank");
+      if (printWindow) {
+        printWindow.focus();
+        printWindow.print();
+      }
+    }
+  };
+  const handleDownload = () => {
+    if (!blobUrl) return;
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = defaultFileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+  const handleOpenInNewTab = () => {
+    if (blobUrl) {
+      window.open(blobUrl, "_blank");
+    }
+  };
+  if (!isOpen) return null;
+  return /* @__PURE__ */ jsxDEV("div", { className: "fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ jsxDEV(
+    "div",
+    {
+      className: `bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col transition-all duration-300 overflow-hidden ${isFullScreen ? "w-full h-full max-w-none rounded-none" : "w-full max-w-5xl h-[92vh] max-h-[900px]"}`,
+      children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "px-5 py-3.5 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-3 overflow-hidden", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "w-9 h-9 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxDEV(FileText, { className: "w-5 h-5" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 150,
+              columnNumber: 15
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 149,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "truncate", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-2", children: [
+                /* @__PURE__ */ jsxDEV("h3", { className: "font-bold text-sm sm:text-base text-white truncate", children: title }, void 0, false, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                  lineNumber: 154,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { className: "hidden sm:inline-block px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-md bg-blue-600 text-white", children: "Vista Previa" }, void 0, false, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                  lineNumber: 155,
+                  columnNumber: 17
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 153,
+                columnNumber: 15
+              }, this),
+              subtitle && /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-400 truncate", children: subtitle }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 159,
+                columnNumber: 28
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 152,
+              columnNumber: 13
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+            lineNumber: 148,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-1.5 sm:space-x-2 shrink-0", children: [
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                onClick: handlePrint,
+                disabled: isLoading || !blobUrl,
+                className: "px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold rounded-xl text-xs sm:text-sm flex items-center space-x-1.5 transition-all shadow-md shadow-blue-600/30 cursor-pointer",
+                title: "Imprimir documento",
+                children: [
+                  /* @__PURE__ */ jsxDEV(Printer, { className: "w-4 h-4" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 171,
+                    columnNumber: 15
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("span", { children: "Imprimir" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 172,
+                    columnNumber: 15
+                  }, this)
+                ]
+              },
+              void 0,
+              true,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 165,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                onClick: handleDownload,
+                disabled: isLoading || !blobUrl,
+                className: "px-3 sm:px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-bold rounded-xl text-xs sm:text-sm flex items-center space-x-1.5 transition-all shadow-md shadow-emerald-600/30 cursor-pointer",
+                title: "Guardar en PDF",
+                children: [
+                  /* @__PURE__ */ jsxDEV(Download, { className: "w-4 h-4" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 181,
+                    columnNumber: 15
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("span", { className: "hidden sm:inline", children: "Guardar en PDF" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 182,
+                    columnNumber: 15
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("span", { className: "sm:hidden", children: "Guardar" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 183,
+                    columnNumber: 15
+                  }, this)
+                ]
+              },
+              void 0,
+              true,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 175,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                onClick: handleOpenInNewTab,
+                disabled: isLoading || !blobUrl,
+                className: "hidden md:flex p-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-300 hover:text-white rounded-xl text-xs transition-colors cursor-pointer",
+                title: "Abrir en pestaña nueva",
+                children: /* @__PURE__ */ jsxDEV(ExternalLink, { className: "w-4 h-4" }, void 0, false, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                  lineNumber: 192,
+                  columnNumber: 15
+                }, this)
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 186,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                onClick: () => setIsFullScreen(!isFullScreen),
+                className: "hidden sm:flex p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl text-xs transition-colors cursor-pointer",
+                title: isFullScreen ? "Restaurar tamaño" : "Pantalla completa",
+                children: isFullScreen ? /* @__PURE__ */ jsxDEV(Minimize2, { className: "w-4 h-4" }, void 0, false, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                  lineNumber: 200,
+                  columnNumber: 31
+                }, this) : /* @__PURE__ */ jsxDEV(Maximize2, { className: "w-4 h-4" }, void 0, false, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                  lineNumber: 200,
+                  columnNumber: 67
+                }, this)
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 195,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                onClick: onClose,
+                className: "p-2 bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white rounded-xl transition-colors cursor-pointer ml-1",
+                title: "Cerrar vista previa",
+                children: /* @__PURE__ */ jsxDEV(X, { className: "w-5 h-5" }, void 0, false, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                  lineNumber: 208,
+                  columnNumber: 15
+                }, this)
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 203,
+                columnNumber: 13
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+            lineNumber: 164,
+            columnNumber: 11
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+          lineNumber: 147,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex-1 relative bg-slate-100 dark:bg-slate-950 overflow-hidden", children: [
+          isLoading && /* @__PURE__ */ jsxDEV("div", { className: "absolute inset-0 flex flex-col items-center justify-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm z-10 space-y-3", children: [
+            /* @__PURE__ */ jsxDEV(Loader2, { className: "w-10 h-10 animate-spin text-blue-600" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 217,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-sm font-bold text-slate-700 dark:text-slate-200", children: "Generando vista previa del documento..." }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 218,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-400", children: "Procesando diseño oficial con motor de alta resolución" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 219,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+            lineNumber: 216,
+            columnNumber: 11
+          }, this),
+          errorMsg ? /* @__PURE__ */ jsxDEV("div", { className: "h-full flex flex-col items-center justify-center p-6 text-center space-y-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "w-16 h-16 rounded-full bg-rose-100 dark:bg-rose-950/40 text-rose-600 flex items-center justify-center", children: /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-8 h-8" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 226,
+              columnNumber: 17
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 225,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "max-w-md", children: [
+              /* @__PURE__ */ jsxDEV("h4", { className: "text-base font-bold text-slate-900 dark:text-white", children: "No se pudo cargar la vista previa" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 229,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-slate-500 dark:text-slate-400 mt-1", children: errorMsg }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 230,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 228,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                onClick: loadDocument,
+                className: "px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm flex items-center space-x-2 cursor-pointer shadow-md shadow-blue-600/20",
+                children: [
+                  /* @__PURE__ */ jsxDEV(RotateCw, { className: "w-4 h-4" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 236,
+                    columnNumber: 17
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("span", { children: "Reintentar" }, void 0, false, {
+                    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                    lineNumber: 237,
+                    columnNumber: 17
+                  }, this)
+                ]
+              },
+              void 0,
+              true,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+                lineNumber: 232,
+                columnNumber: 15
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+            lineNumber: 224,
+            columnNumber: 11
+          }, this) : blobUrl ? /* @__PURE__ */ jsxDEV(
+            "iframe",
+            {
+              ref: iframeRef,
+              src: `${blobUrl}#toolbar=0&navpanes=0`,
+              title,
+              className: "w-full h-full border-0 bg-slate-200 dark:bg-slate-900"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 241,
+              columnNumber: 11
+            },
+            this
+          ) : null
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+          lineNumber: 214,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "px-5 py-2.5 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ jsxDEV("span", { className: "w-2 h-2 rounded-full bg-emerald-500" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 253,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Documento generado listo para impresión o descarga." }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 254,
+              columnNumber: 13
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+            lineNumber: 252,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: onClose,
+              className: "px-4 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-700 dark:text-slate-300 font-bold rounded-lg transition-colors cursor-pointer",
+              children: "Cerrar"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+              lineNumber: 256,
+              columnNumber: 11
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+          lineNumber: 251,
+          columnNumber: 9
+        }, this)
+      ]
+    },
+    void 0,
+    true,
+    {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+      lineNumber: 139,
+      columnNumber: 7
+    },
+    this
+  ) }, void 0, false, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx",
+    lineNumber: 138,
+    columnNumber: 5
+  }, this);
+};
+_s(DocumentPreviewModal, "HXtrKNNsuyVAKqEj3+L9Ef4pvKI=");
+_c = DocumentPreviewModal;
+var _c;
+$RefreshReg$(_c, "DocumentPreviewModal");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DocumentPreviewModal.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QTtBQUFBLGlCQUdBO0FBQUEsVUFDQTtBQUFBLFlBQUM7QUFBQTtBQUFBLGNBQ0MsU0FBU1A7QUFBQUEsY0FDVCxXQUFVO0FBQUEsY0FBd0o7QUFBQTtBQUFBLFlBRnBLO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxVQUtBO0FBQUEsYUFWRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBV0E7QUFBQTtBQUFBO0FBQUEsSUEzSEY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLEVBNEhBLEtBN0hGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0E4SEE7QUFFSjtBQUFFTSxHQTdOV1Isc0JBQXlEO0FBQUEsS0FBekRBO0FBQXlELElBQUFtRDtBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJ1c2VTdGF0ZSIsInVzZUVmZmVjdCIsInVzZVJlZiIsIlByaW50ZXIiLCJEb3dubG9hZCIsIlgiLCJNYXhpbWl6ZTIiLCJNaW5pbWl6ZTIiLCJMb2FkZXIyIiwiQWxlcnRDaXJjbGUiLCJGaWxlVGV4dCIsIlJvdGF0ZUN3IiwiRXh0ZXJuYWxMaW5rIiwiYXBpIiwiRG9jdW1lbnRQcmV2aWV3TW9kYWwiLCJpc09wZW4iLCJvbkNsb3NlIiwidGl0bGUiLCJkb2N1bWVudFR5cGUiLCJkb2N1bWVudElkIiwiZmlsZU5hbWUiLCJzdWJ0aXRsZSIsIl9zIiwiYmxvYlVybCIsInNldEJsb2JVcmwiLCJpc0xvYWRpbmciLCJzZXRJc0xvYWRpbmciLCJlcnJvck1zZyIsInNldEVycm9yTXNnIiwiaXNGdWxsU2NyZWVuIiwic2V0SXNGdWxsU2NyZWVuIiwiaWZyYW1lUmVmIiwiZGVmYXVsdEZpbGVOYW1lIiwiVVJMIiwicmV2b2tlT2JqZWN0VVJMIiwibG9hZERvY3VtZW50IiwiYmxvYiIsImZldGNoUGRmQmxvYiIsInVybCIsImNyZWF0ZU9iamVjdFVSTCIsImVyciIsImNvbnNvbGUiLCJlcnJvciIsIm1lc3NhZ2UiLCJoYW5kbGVQcmludCIsImN1cnJlbnQiLCJjb250ZW50V2luZG93IiwiZm9jdXMiLCJwcmludCIsImUiLCJ3YXJuIiwicHJpbnRXaW5kb3ciLCJ3aW5kb3ciLCJvcGVuIiwiaGFuZGxlRG93bmxvYWQiLCJhIiwiZG9jdW1lbnQiLCJjcmVhdGVFbGVtZW50IiwiaHJlZiIsImRvd25sb2FkIiwiYm9keSIsImFwcGVuZENoaWxkIiwiY2xpY2siLCJyZW1vdmVDaGlsZCIsImhhbmRsZU9wZW5Jbk5ld1RhYiIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIkRvY3VtZW50UHJldmlld01vZGFsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUsIHVzZUVmZmVjdCwgdXNlUmVmIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQge1xyXG4gIFByaW50ZXIsXHJcbiAgRG93bmxvYWQsXHJcbiAgWCxcclxuICBNYXhpbWl6ZTIsXHJcbiAgTWluaW1pemUyLFxyXG4gIExvYWRlcjIsXHJcbiAgQWxlcnRDaXJjbGUsXHJcbiAgRmlsZVRleHQsXHJcbiAgUm90YXRlQ3csXHJcbiAgRXh0ZXJuYWxMaW5rXHJcbn0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuaW1wb3J0IHsgYXBpIH0gZnJvbSAnLi4vc2VydmljZXMvYXBpJztcclxuXHJcbmV4cG9ydCBpbnRlcmZhY2UgRG9jdW1lbnRQcmV2aWV3TW9kYWxQcm9wcyB7XHJcbiAgaXNPcGVuOiBib29sZWFuO1xyXG4gIG9uQ2xvc2U6ICgpID0+IHZvaWQ7XHJcbiAgdGl0bGU6IHN0cmluZztcclxuICBkb2N1bWVudFR5cGU6ICdyZWNpYm8nIHwgJ2ZhY3R1cmEnIHwgJ2VzdGFkby1jdWVudGEnIHwgJ2VncmVzbyc7XHJcbiAgZG9jdW1lbnRJZDogbnVtYmVyO1xyXG4gIGZpbGVOYW1lPzogc3RyaW5nO1xyXG4gIHN1YnRpdGxlPzogc3RyaW5nO1xyXG59XHJcblxyXG5leHBvcnQgY29uc3QgRG9jdW1lbnRQcmV2aWV3TW9kYWw6IFJlYWN0LkZDPERvY3VtZW50UHJldmlld01vZGFsUHJvcHM+ID0gKHtcclxuICBpc09wZW4sXHJcbiAgb25DbG9zZSxcclxuICB0aXRsZSxcclxuICBkb2N1bWVudFR5cGUsXHJcbiAgZG9jdW1lbnRJZCxcclxuICBmaWxlTmFtZSxcclxuICBzdWJ0aXRsZSxcclxufSkgPT4ge1xyXG4gIGNvbnN0IFtibG9iVXJsLCBzZXRCbG9iVXJsXSA9IHVzZVN0YXRlPHN0cmluZyB8IG51bGw+KG51bGwpO1xyXG4gIGNvbnN0IFtpc0xvYWRpbmcsIHNldElzTG9hZGluZ10gPSB1c2VTdGF0ZTxib29sZWFuPihmYWxzZSk7XHJcbiAgY29uc3QgW2Vycm9yTXNnLCBzZXRFcnJvck1zZ10gPSB1c2VTdGF0ZTxzdHJpbmcgfCBudWxsPihudWxsKTtcclxuICBjb25zdCBbaXNGdWxsU2NyZWVuLCBzZXRJc0Z1bGxTY3JlZW5dID0gdXNlU3RhdGU8Ym9vbGVhbj4oZmFsc2UpO1xyXG4gIGNvbnN0IGlmcmFtZVJlZiA9IHVzZVJlZjxIVE1MSUZyYW1lRWxlbWVudCB8IG51bGw+KG51bGwpO1xyXG5cclxuICBjb25zdCBkZWZhdWx0RmlsZU5hbWUgPSBmaWxlTmFtZSB8fCBgJHtkb2N1bWVudFR5cGV9XyR7ZG9jdW1lbnRJZH0ucGRmYDtcclxuXHJcbiAgdXNlRWZmZWN0KCgpID0+IHtcclxuICAgIGlmICghaXNPcGVuIHx8ICFkb2N1bWVudElkKSB7XHJcbiAgICAgIGlmIChibG9iVXJsKSB7XHJcbiAgICAgICAgVVJMLnJldm9rZU9iamVjdFVSTChibG9iVXJsKTtcclxuICAgICAgICBzZXRCbG9iVXJsKG51bGwpO1xyXG4gICAgICB9XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuXHJcbiAgICBsb2FkRG9jdW1lbnQoKTtcclxuXHJcbiAgICByZXR1cm4gKCkgPT4ge1xyXG4gICAgICBpZiAoYmxvYlVybCkge1xyXG4gICAgICAgIFVSTC5yZXZva2VPYmplY3RVUkwoYmxvYlVybCk7XHJcbiAgICAgIH1cclxuICAgIH07XHJcbiAgfSwgW2lzT3BlbiwgZG9jdW1lbnRUeXBlLCBkb2N1bWVudElkXSk7XHJcblxyXG4gIGNvbnN0IGxvYWREb2N1bWVudCA9IGFzeW5jICgpID0+IHtcclxuICAgIHNldElzTG9hZGluZyh0cnVlKTtcclxuICAgIHNldEVycm9yTXNnKG51bGwpO1xyXG4gICAgdHJ5IHtcclxuICAgICAgaWYgKGJsb2JVcmwpIHtcclxuICAgICAgICBVUkwucmV2b2tlT2JqZWN0VVJMKGJsb2JVcmwpO1xyXG4gICAgICAgIHNldEJsb2JVcmwobnVsbCk7XHJcbiAgICAgIH1cclxuICAgICAgY29uc3QgYmxvYiA9IGF3YWl0IGFwaS5mZXRjaFBkZkJsb2IoZG9jdW1lbnRUeXBlLCBkb2N1bWVudElkKTtcclxuICAgICAgY29uc3QgdXJsID0gVVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKTtcclxuICAgICAgc2V0QmxvYlVybCh1cmwpO1xyXG4gICAgfSBjYXRjaCAoZXJyOiBhbnkpIHtcclxuICAgICAgY29uc29sZS5lcnJvcignRXJyb3IgYWwgY2FyZ2FyIHZpc3RhIHByZXZpYSBkZWwgUERGOicsIGVycik7XHJcbiAgICAgIHNldEVycm9yTXNnKGVyci5tZXNzYWdlIHx8ICdObyBzZSBwdWRvIGdlbmVyYXIgbGEgdmlzdGEgcHJldmlhIGRlbCBkb2N1bWVudG8uJyk7XHJcbiAgICB9IGZpbmFsbHkge1xyXG4gICAgICBzZXRJc0xvYWRpbmcoZmFsc2UpO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIGNvbnN0IGhhbmRsZVByaW50ID0gKCkgPT4ge1xyXG4gICAgaWYgKGlmcmFtZVJlZi5jdXJyZW50ICYmIGlmcmFtZVJlZi5jdXJyZW50LmNvbnRlbnRXaW5kb3cpIHtcclxuICAgICAgdHJ5IHtcclxuICAgICAgICBpZnJhbWVSZWYuY3VycmVudC5jb250ZW50V2luZG93LmZvY3VzKCk7XHJcbiAgICAgICAgaWZyYW1lUmVmLmN1cnJlbnQuY29udGVudFdpbmRvdy5wcmludCgpO1xyXG4gICAgICAgIHJldHVybjtcclxuICAgICAgfSBjYXRjaCAoZSkge1xyXG4gICAgICAgIGNvbnNvbGUud2FybignRmFsbG8gaW1wcmVzacOzbiBkaXJlY3RhIGVuIGlmcmFtZSwgYWJyaWVuZG8gdmVudGFuYSBhdXhpbGlhci4uLicsIGUpO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgaWYgKGJsb2JVcmwpIHtcclxuICAgICAgY29uc3QgcHJpbnRXaW5kb3cgPSB3aW5kb3cub3BlbihibG9iVXJsLCAnX2JsYW5rJyk7XHJcbiAgICAgIGlmIChwcmludFdpbmRvdykge1xyXG4gICAgICAgIHByaW50V2luZG93LmZvY3VzKCk7XHJcbiAgICAgICAgcHJpbnRXaW5kb3cucHJpbnQoKTtcclxuICAgICAgfVxyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIGNvbnN0IGhhbmRsZURvd25sb2FkID0gKCkgPT4ge1xyXG4gICAgaWYgKCFibG9iVXJsKSByZXR1cm47XHJcbiAgICBjb25zdCBhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnYScpO1xyXG4gICAgYS5ocmVmID0gYmxvYlVybDtcclxuICAgIGEuZG93bmxvYWQgPSBkZWZhdWx0RmlsZU5hbWU7XHJcbiAgICBkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpO1xyXG4gICAgYS5jbGljaygpO1xyXG4gICAgZG9jdW1lbnQuYm9keS5yZW1vdmVDaGlsZChhKTtcclxuICB9O1xyXG5cclxuICBjb25zdCBoYW5kbGVPcGVuSW5OZXdUYWIgPSAoKSA9PiB7XHJcbiAgICBpZiAoYmxvYlVybCkge1xyXG4gICAgICB3aW5kb3cub3BlbihibG9iVXJsLCAnX2JsYW5rJyk7XHJcbiAgICB9XHJcbiAgfTtcclxuXHJcbiAgaWYgKCFpc09wZW4pIHJldHVybiBudWxsO1xyXG5cclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJmaXhlZCBpbnNldC0wIHotNTAgYmctc2xhdGUtOTAwLzgwIGJhY2tkcm9wLWJsdXItc20gZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgcC0yIHNtOnAtNCBtZDpwLTYgYW5pbWF0ZS1pbiBmYWRlLWluIGR1cmF0aW9uLTIwMFwiPlxyXG4gICAgICA8ZGl2XHJcbiAgICAgICAgY2xhc3NOYW1lPXtgYmctd2hpdGUgZGFyazpiZy1zbGF0ZS05MDAgcm91bmRlZC0yeGwgc2hhZG93LTJ4bCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS04MDAgZmxleCBmbGV4LWNvbCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0zMDAgb3ZlcmZsb3ctaGlkZGVuICR7XHJcbiAgICAgICAgICBpc0Z1bGxTY3JlZW5cclxuICAgICAgICAgICAgPyAndy1mdWxsIGgtZnVsbCBtYXgtdy1ub25lIHJvdW5kZWQtbm9uZSdcclxuICAgICAgICAgICAgOiAndy1mdWxsIG1heC13LTV4bCBoLVs5MnZoXSBtYXgtaC1bOTAwcHhdJ1xyXG4gICAgICAgIH1gfVxyXG4gICAgICA+XHJcbiAgICAgICAgey8qIE1vZGFsIEhlYWRlciAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInB4LTUgcHktMy41IGJnLXNsYXRlLTkwMCB0ZXh0LXdoaXRlIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBib3JkZXItYiBib3JkZXItc2xhdGUtODAwIHNocmluay0wXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIHNwYWNlLXgtMyBvdmVyZmxvdy1oaWRkZW5cIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3LTkgaC05IHJvdW5kZWQteGwgYmctYmx1ZS02MDAvMjAgdGV4dC1ibHVlLTQwMCBib3JkZXIgYm9yZGVyLWJsdWUtNTAwLzMwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHNocmluay0wXCI+XHJcbiAgICAgICAgICAgICAgPEZpbGVUZXh0IGNsYXNzTmFtZT1cInctNSBoLTVcIiAvPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0cnVuY2F0ZVwiPlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yXCI+XHJcbiAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtc20gc206dGV4dC1iYXNlIHRleHQtd2hpdGUgdHJ1bmNhdGVcIj57dGl0bGV9PC9oMz5cclxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImhpZGRlbiBzbTppbmxpbmUtYmxvY2sgcHgtMiBweS0wLjUgdGV4dC1bMTBweF0gZm9udC1leHRyYWJvbGQgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVyIHJvdW5kZWQtbWQgYmctYmx1ZS02MDAgdGV4dC13aGl0ZVwiPlxyXG4gICAgICAgICAgICAgICAgICBWaXN0YSBQcmV2aWFcclxuICAgICAgICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICB7c3VidGl0bGUgJiYgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LXNsYXRlLTQwMCB0cnVuY2F0ZVwiPntzdWJ0aXRsZX08L3A+fVxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIHsvKiBBY3Rpb24gVG9vbGJhciAqL31cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0xLjUgc206c3BhY2UteC0yIHNocmluay0wXCI+XHJcbiAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICBvbkNsaWNrPXtoYW5kbGVQcmludH1cclxuICAgICAgICAgICAgICBkaXNhYmxlZD17aXNMb2FkaW5nIHx8ICFibG9iVXJsfVxyXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTMgc206cHgtNCBweS0yIGJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNTAwIGRpc2FibGVkOm9wYWNpdHktNTAgdGV4dC13aGl0ZSBmb250LWJvbGQgcm91bmRlZC14bCB0ZXh0LXhzIHNtOnRleHQtc20gZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0xLjUgdHJhbnNpdGlvbi1hbGwgc2hhZG93LW1kIHNoYWRvdy1ibHVlLTYwMC8zMCBjdXJzb3ItcG9pbnRlclwiXHJcbiAgICAgICAgICAgICAgdGl0bGU9XCJJbXByaW1pciBkb2N1bWVudG9cIlxyXG4gICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgPFByaW50ZXIgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+XHJcbiAgICAgICAgICAgICAgPHNwYW4+SW1wcmltaXI8L3NwYW4+XHJcbiAgICAgICAgICAgIDwvYnV0dG9uPlxyXG5cclxuICAgICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICAgIG9uQ2xpY2s9e2hhbmRsZURvd25sb2FkfVxyXG4gICAgICAgICAgICAgIGRpc2FibGVkPXtpc0xvYWRpbmcgfHwgIWJsb2JVcmx9XHJcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwicHgtMyBzbTpweC00IHB5LTIgYmctZW1lcmFsZC02MDAgaG92ZXI6YmctZW1lcmFsZC01MDAgZGlzYWJsZWQ6b3BhY2l0eS01MCB0ZXh0LXdoaXRlIGZvbnQtYm9sZCByb3VuZGVkLXhsIHRleHQteHMgc206dGV4dC1zbSBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTEuNSB0cmFuc2l0aW9uLWFsbCBzaGFkb3ctbWQgc2hhZG93LWVtZXJhbGQtNjAwLzMwIGN1cnNvci1wb2ludGVyXCJcclxuICAgICAgICAgICAgICB0aXRsZT1cIkd1YXJkYXIgZW4gUERGXCJcclxuICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgIDxEb3dubG9hZCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cclxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJoaWRkZW4gc206aW5saW5lXCI+R3VhcmRhciBlbiBQREY8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwic206aGlkZGVuXCI+R3VhcmRhcjwvc3Bhbj5cclxuICAgICAgICAgICAgPC9idXR0b24+XHJcblxyXG4gICAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgICAgb25DbGljaz17aGFuZGxlT3BlbkluTmV3VGFifVxyXG4gICAgICAgICAgICAgIGRpc2FibGVkPXtpc0xvYWRpbmcgfHwgIWJsb2JVcmx9XHJcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiaGlkZGVuIG1kOmZsZXggcC0yIGJnLXNsYXRlLTgwMCBob3ZlcjpiZy1zbGF0ZS03MDAgZGlzYWJsZWQ6b3BhY2l0eS01MCB0ZXh0LXNsYXRlLTMwMCBob3Zlcjp0ZXh0LXdoaXRlIHJvdW5kZWQteGwgdGV4dC14cyB0cmFuc2l0aW9uLWNvbG9ycyBjdXJzb3ItcG9pbnRlclwiXHJcbiAgICAgICAgICAgICAgdGl0bGU9XCJBYnJpciBlbiBwZXN0YcOxYSBudWV2YVwiXHJcbiAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICA8RXh0ZXJuYWxMaW5rIGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPlxyXG4gICAgICAgICAgICA8L2J1dHRvbj5cclxuXHJcbiAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRJc0Z1bGxTY3JlZW4oIWlzRnVsbFNjcmVlbil9XHJcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiaGlkZGVuIHNtOmZsZXggcC0yIGJnLXNsYXRlLTgwMCBob3ZlcjpiZy1zbGF0ZS03MDAgdGV4dC1zbGF0ZS0zMDAgaG92ZXI6dGV4dC13aGl0ZSByb3VuZGVkLXhsIHRleHQteHMgdHJhbnNpdGlvbi1jb2xvcnMgY3Vyc29yLXBvaW50ZXJcIlxyXG4gICAgICAgICAgICAgIHRpdGxlPXtpc0Z1bGxTY3JlZW4gPyAnUmVzdGF1cmFyIHRhbWHDsW8nIDogJ1BhbnRhbGxhIGNvbXBsZXRhJ31cclxuICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgIHtpc0Z1bGxTY3JlZW4gPyA8TWluaW1pemUyIGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPiA6IDxNYXhpbWl6ZTIgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+fVxyXG4gICAgICAgICAgICA8L2J1dHRvbj5cclxuXHJcbiAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICBvbkNsaWNrPXtvbkNsb3NlfVxyXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInAtMiBiZy1zbGF0ZS04MDAgaG92ZXI6Ymctcm9zZS02MDAgdGV4dC1zbGF0ZS0zMDAgaG92ZXI6dGV4dC13aGl0ZSByb3VuZGVkLXhsIHRyYW5zaXRpb24tY29sb3JzIGN1cnNvci1wb2ludGVyIG1sLTFcIlxyXG4gICAgICAgICAgICAgIHRpdGxlPVwiQ2VycmFyIHZpc3RhIHByZXZpYVwiXHJcbiAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICA8WCBjbGFzc05hbWU9XCJ3LTUgaC01XCIgLz5cclxuICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIE1vZGFsIEJvZHk6IFBERiBDb250YWluZXIgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTEgcmVsYXRpdmUgYmctc2xhdGUtMTAwIGRhcms6Ymctc2xhdGUtOTUwIG92ZXJmbG93LWhpZGRlblwiPlxyXG4gICAgICAgICAge2lzTG9hZGluZyAmJiAoXHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYWJzb2x1dGUgaW5zZXQtMCBmbGV4IGZsZXgtY29sIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBiZy13aGl0ZS84MCBkYXJrOmJnLXNsYXRlLTkwMC84MCBiYWNrZHJvcC1ibHVyLXNtIHotMTAgc3BhY2UteS0zXCI+XHJcbiAgICAgICAgICAgICAgPExvYWRlcjIgY2xhc3NOYW1lPVwidy0xMCBoLTEwIGFuaW1hdGUtc3BpbiB0ZXh0LWJsdWUtNjAwXCIgLz5cclxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIGZvbnQtYm9sZCB0ZXh0LXNsYXRlLTcwMCBkYXJrOnRleHQtc2xhdGUtMjAwXCI+R2VuZXJhbmRvIHZpc3RhIHByZXZpYSBkZWwgZG9jdW1lbnRvLi4uPC9wPlxyXG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1zbGF0ZS00MDBcIj5Qcm9jZXNhbmRvIGRpc2XDsW8gb2ZpY2lhbCBjb24gbW90b3IgZGUgYWx0YSByZXNvbHVjacOzbjwvcD5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICApfVxyXG5cclxuICAgICAgICAgIHtlcnJvck1zZyA/IChcclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJoLWZ1bGwgZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgcC02IHRleHQtY2VudGVyIHNwYWNlLXktNFwiPlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy0xNiBoLTE2IHJvdW5kZWQtZnVsbCBiZy1yb3NlLTEwMCBkYXJrOmJnLXJvc2UtOTUwLzQwIHRleHQtcm9zZS02MDAgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXJcIj5cclxuICAgICAgICAgICAgICAgIDxBbGVydENpcmNsZSBjbGFzc05hbWU9XCJ3LTggaC04XCIgLz5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1heC13LW1kXCI+XHJcbiAgICAgICAgICAgICAgICA8aDQgY2xhc3NOYW1lPVwidGV4dC1iYXNlIGZvbnQtYm9sZCB0ZXh0LXNsYXRlLTkwMCBkYXJrOnRleHQtd2hpdGVcIj5ObyBzZSBwdWRvIGNhcmdhciBsYSB2aXN0YSBwcmV2aWE8L2g0PlxyXG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LXNsYXRlLTUwMCBkYXJrOnRleHQtc2xhdGUtNDAwIG10LTFcIj57ZXJyb3JNc2d9PC9wPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICAgIG9uQ2xpY2s9e2xvYWREb2N1bWVudH1cclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTQgcHktMi41IGJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNTAwIHRleHQtd2hpdGUgZm9udC1ib2xkIHJvdW5kZWQteGwgdGV4dC1zbSBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgY3Vyc29yLXBvaW50ZXIgc2hhZG93LW1kIHNoYWRvdy1ibHVlLTYwMC8yMFwiXHJcbiAgICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgICAgPFJvdGF0ZUN3IGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPlxyXG4gICAgICAgICAgICAgICAgPHNwYW4+UmVpbnRlbnRhcjwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICApIDogYmxvYlVybCA/IChcclxuICAgICAgICAgICAgPGlmcmFtZVxyXG4gICAgICAgICAgICAgIHJlZj17aWZyYW1lUmVmfVxyXG4gICAgICAgICAgICAgIHNyYz17YCR7YmxvYlVybH0jdG9vbGJhcj0wJm5hdnBhbmVzPTBgfVxyXG4gICAgICAgICAgICAgIHRpdGxlPXt0aXRsZX1cclxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LWZ1bGwgaC1mdWxsIGJvcmRlci0wIGJnLXNsYXRlLTIwMCBkYXJrOmJnLXNsYXRlLTkwMFwiXHJcbiAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICApIDogbnVsbH1cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIEZvb3RlciBCYXIgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJweC01IHB5LTIuNSBiZy1zbGF0ZS01MCBkYXJrOmJnLXNsYXRlLTkwMCBib3JkZXItdCBib3JkZXItc2xhdGUtMjAwIGRhcms6Ym9yZGVyLXNsYXRlLTgwMCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gdGV4dC14cyB0ZXh0LXNsYXRlLTUwMCBzaHJpbmstMFwiPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTJcIj5cclxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidy0yIGgtMiByb3VuZGVkLWZ1bGwgYmctZW1lcmFsZC01MDBcIj48L3NwYW4+XHJcbiAgICAgICAgICAgIDxzcGFuPkRvY3VtZW50byBnZW5lcmFkbyBsaXN0byBwYXJhIGltcHJlc2nDs24gbyBkZXNjYXJnYS48L3NwYW4+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgb25DbGljaz17b25DbG9zZX1cclxuICAgICAgICAgICAgY2xhc3NOYW1lPVwicHgtNCBweS0xLjUgYmctc2xhdGUtMjAwIGRhcms6Ymctc2xhdGUtODAwIGhvdmVyOmJnLXNsYXRlLTMwMCB0ZXh0LXNsYXRlLTcwMCBkYXJrOnRleHQtc2xhdGUtMzAwIGZvbnQtYm9sZCByb3VuZGVkLWxnIHRyYW5zaXRpb24tY29sb3JzIGN1cnNvci1wb2ludGVyXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgQ2VycmFyXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL0VTVEVCL09uZURyaXZlL0RvY3VtZW50cy9QT1JUQUZPUlpBL1dlYiBBcHAvQWRtaW5Tb2Z0UEYuV2ViL0FkbWluU29mdFBGLldlYlVJL3NyYy9jb21wb25lbnRzL0RvY3VtZW50UHJldmlld01vZGFsLnRzeCJ9

@@ -1,0 +1,707 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/UserProfileModal.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3ea76504"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=3ea76504"; const useState = __vite__cjsImport3_react["useState"];
+import { User, Shield, KeyRound, CheckCircle2, AlertCircle, Loader2, X, Mail, Phone } from "/node_modules/.vite/deps/lucide-react.js?v=3ea76504";
+import { api } from "/src/services/api.ts";
+export const UserProfileModal = ({
+  isOpen,
+  onClose,
+  usuario,
+  onProfileUpdated,
+  onLogout
+}) => {
+  _s();
+  const [activeTab, setActiveTab] = useState("info");
+  const [nombre, setNombre] = useState(usuario?.nombreUsuario || "");
+  const [apellido, setApellido] = useState(usuario?.apellidoUsuario || "");
+  const [correo, setCorreo] = useState(usuario?.correo || "");
+  const [celular, setCelular] = useState(usuario?.celular || "");
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
+  const [profileMsg, setProfileMsg] = useState(null);
+  const [passActual, setPassActual] = useState("");
+  const [passNueva, setPassNueva] = useState("");
+  const [passConfirm, setPassConfirm] = useState("");
+  const [isSavingPass, setIsSavingPass] = useState(false);
+  const [passMsg, setPassMsg] = useState(null);
+  if (!isOpen || !usuario) return null;
+  const initials = ((usuario.nombreUsuario && !usuario.nombreUsuario.includes("object") ? usuario.nombreUsuario.charAt(0) : "") + (usuario.apellidoUsuario && !usuario.apellidoUsuario.includes("object") ? usuario.apellidoUsuario.charAt(0) : "")).toUpperCase() || usuario.usuario.substring(0, 2).toUpperCase() || "US";
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    if (!nombre.trim()) {
+      setProfileMsg({ type: "error", text: "El nombre es obligatorio." });
+      return;
+    }
+    try {
+      setIsSavingProfile(true);
+      setProfileMsg(null);
+      await api.updateProfile({
+        nombreUsuario: nombre.trim(),
+        apellidoUsuario: apellido.trim(),
+        correo: correo.trim(),
+        celular: celular.trim()
+      });
+      const updated = await api.getMe();
+      onProfileUpdated(updated);
+      setProfileMsg({ type: "success", text: "¡Perfil actualizado exitosamente!" });
+    } catch (err) {
+      setProfileMsg({ type: "error", text: err.message || "Error al actualizar perfil." });
+    } finally {
+      setIsSavingProfile(false);
+    }
+  };
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    if (!passActual) {
+      setPassMsg({ type: "error", text: "Debe ingresar su contraseña actual." });
+      return;
+    }
+    if (passNueva.length < 6) {
+      setPassMsg({ type: "error", text: "La nueva contraseña debe tener al menos 6 caracteres." });
+      return;
+    }
+    if (passNueva !== passConfirm) {
+      setPassMsg({ type: "error", text: "Las nuevas contraseñas no coinciden." });
+      return;
+    }
+    try {
+      setIsSavingPass(true);
+      setPassMsg(null);
+      await api.changePassword(passActual, passNueva);
+      setPassMsg({ type: "success", text: "¡Contraseña actualizada correctamente!" });
+      setPassActual("");
+      setPassNueva("");
+      setPassConfirm("");
+    } catch (err) {
+      setPassMsg({ type: "error", text: err.message || "Error al cambiar contraseña." });
+    } finally {
+      setIsSavingPass(false);
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200", children: /* @__PURE__ */ jsxDEV("div", { className: "bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 max-w-lg w-full overflow-hidden shadow-2xl flex flex-col", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white relative", children: [
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          onClick: onClose,
+          className: "absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors",
+          children: /* @__PURE__ */ jsxDEV(X, { className: "w-5 h-5" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 130,
+            columnNumber: 13
+          }, this)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 126,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-4", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "w-16 h-16 rounded-2xl bg-white text-indigo-700 font-black text-2xl flex items-center justify-center shadow-lg border-2 border-white/40", children: initials }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 134,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h2", { className: "text-xl font-black leading-tight", children: [
+            usuario.nombreUsuario,
+            " ",
+            usuario.apellidoUsuario
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 138,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-2 mt-1", children: [
+            /* @__PURE__ */ jsxDEV("span", { className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/30", children: [
+              /* @__PURE__ */ jsxDEV(Shield, { className: "w-3 h-3 mr-1" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 143,
+                columnNumber: 19
+              }, this),
+              usuario.permiso
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 142,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-400/20 text-emerald-100 border border-emerald-300/30", children: [
+              "● ",
+              usuario.estadoUsuario
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 146,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 141,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 137,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+        lineNumber: 133,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+      lineNumber: 125,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "flex border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 px-6", children: [
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          onClick: () => setActiveTab("info"),
+          className: `py-3.5 px-4 font-bold text-sm border-b-2 transition-all flex items-center space-x-2 cursor-pointer ${activeTab === "info" ? "border-indigo-600 text-indigo-600 dark:text-indigo-400" : "border-transparent text-slate-500 hover:text-slate-700"}`,
+          children: [
+            /* @__PURE__ */ jsxDEV(User, { className: "w-4 h-4" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 164,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Datos Personales" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 165,
+              columnNumber: 13
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 156,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          onClick: () => setActiveTab("seguridad"),
+          className: `py-3.5 px-4 font-bold text-sm border-b-2 transition-all flex items-center space-x-2 cursor-pointer ${activeTab === "seguridad" ? "border-indigo-600 text-indigo-600 dark:text-indigo-400" : "border-transparent text-slate-500 hover:text-slate-700"}`,
+          children: [
+            /* @__PURE__ */ jsxDEV(KeyRound, { className: "w-4 h-4" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 175,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Seguridad y Contraseña" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 176,
+              columnNumber: 13
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 167,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+      lineNumber: 155,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-6 overflow-y-auto max-h-[60vh] space-y-4", children: [
+      activeTab === "info" && /* @__PURE__ */ jsxDEV("form", { onSubmit: handleUpdateProfile, className: "space-y-4", children: [
+        profileMsg && /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            className: `p-3 rounded-xl text-xs font-bold flex items-center space-x-2 ${profileMsg.type === "success" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-rose-50 text-rose-700 border border-rose-200"}`,
+            children: [
+              profileMsg.type === "success" ? /* @__PURE__ */ jsxDEV(CheckCircle2, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 192,
+                columnNumber: 52
+              }, this) : /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 192,
+                columnNumber: 91
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: profileMsg.text }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 193,
+                columnNumber: 19
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 185,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-400 mb-1", children: "Nombre de Usuario (Login)" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 198,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "px-3.5 py-2.5 bg-slate-100 dark:bg-slate-800 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxDEV("span", { children: usuario.usuario }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 200,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] uppercase font-bold text-slate-400", children: "Identificador No Modificable" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 201,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 199,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 197,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1", children: "Nombre" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 207,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                required: true,
+                value: nombre,
+                onChange: (e) => setNombre(e.target.value),
+                className: "w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 208,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 206,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1", children: "Apellido" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 217,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                value: apellido,
+                onChange: (e) => setApellido(e.target.value),
+                className: "w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 218,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 216,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 205,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1 flex items-center space-x-1", children: [
+              /* @__PURE__ */ jsxDEV(Mail, { className: "w-3 h-3 text-slate-400" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 230,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "Correo" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 231,
+                columnNumber: 21
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 229,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "email",
+                value: correo,
+                onChange: (e) => setCorreo(e.target.value),
+                placeholder: "ejemplo@correo.com",
+                className: "w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 233,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 228,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1 flex items-center space-x-1", children: [
+              /* @__PURE__ */ jsxDEV(Phone, { className: "w-3 h-3 text-slate-400" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 243,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "Teléfono" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 244,
+                columnNumber: 21
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 242,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                value: celular,
+                onChange: (e) => setCelular(e.target.value),
+                placeholder: "(809) 000-0000",
+                className: "w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 246,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 241,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 227,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "pt-2", children: /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "submit",
+            disabled: isSavingProfile,
+            className: "w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-sm shadow-md shadow-indigo-600/30 flex items-center justify-center space-x-2 transition-all cursor-pointer",
+            children: isSavingProfile ? /* @__PURE__ */ jsxDEV(Fragment, { children: [
+              /* @__PURE__ */ jsxDEV(Loader2, { className: "w-4 h-4 animate-spin" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 264,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "Guardando..." }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 265,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 263,
+              columnNumber: 17
+            }, this) : /* @__PURE__ */ jsxDEV("span", { children: "Guardar Datos Personales" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 268,
+              columnNumber: 17
+            }, this)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 257,
+            columnNumber: 17
+          },
+          this
+        ) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 256,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+        lineNumber: 183,
+        columnNumber: 11
+      }, this),
+      activeTab === "seguridad" && /* @__PURE__ */ jsxDEV("form", { onSubmit: handleChangePassword, className: "space-y-4", children: [
+        passMsg && /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            className: `p-3 rounded-xl text-xs font-bold flex items-center space-x-2 ${passMsg.type === "success" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-rose-50 text-rose-700 border border-rose-200"}`,
+            children: [
+              passMsg.type === "success" ? /* @__PURE__ */ jsxDEV(CheckCircle2, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 285,
+                columnNumber: 49
+              }, this) : /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 285,
+                columnNumber: 88
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: passMsg.text }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 286,
+                columnNumber: 19
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 278,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1", children: "Contraseña Actual" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 291,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "password",
+              required: true,
+              value: passActual,
+              onChange: (e) => setPassActual(e.target.value),
+              placeholder: "Ingrese contraseña actual",
+              className: "w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 292,
+              columnNumber: 17
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 290,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1", children: "Nueva Contraseña" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 303,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "password",
+              required: true,
+              value: passNueva,
+              onChange: (e) => setPassNueva(e.target.value),
+              placeholder: "Mínimo 6 caracteres",
+              className: "w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 304,
+              columnNumber: 17
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 302,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1", children: "Confirmar Nueva Contraseña" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 315,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "password",
+              required: true,
+              value: passConfirm,
+              onChange: (e) => setPassConfirm(e.target.value),
+              placeholder: "Repita la nueva contraseña",
+              className: "w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 316,
+              columnNumber: 17
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 314,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "pt-2", children: /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "submit",
+            disabled: isSavingPass,
+            className: "w-full py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-sm shadow-md shadow-amber-600/30 flex items-center justify-center space-x-2 transition-all cursor-pointer",
+            children: isSavingPass ? /* @__PURE__ */ jsxDEV(Fragment, { children: [
+              /* @__PURE__ */ jsxDEV(Loader2, { className: "w-4 h-4 animate-spin" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 334,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "Actualizando Contraseña..." }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+                lineNumber: 335,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 333,
+              columnNumber: 17
+            }, this) : /* @__PURE__ */ jsxDEV("span", { children: "Actualizar Contraseña de Acceso" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+              lineNumber: 338,
+              columnNumber: 17
+            }, this)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+            lineNumber: 327,
+            columnNumber: 17
+          },
+          this
+        ) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+          lineNumber: 326,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+        lineNumber: 276,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+      lineNumber: 181,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-slate-50 dark:bg-slate-850 border-t border-slate-200 dark:border-slate-800 flex justify-end items-center text-xs", children: /* @__PURE__ */ jsxDEV(
+      "button",
+      {
+        onClick: onClose,
+        className: "px-5 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-700 dark:text-slate-200 font-bold rounded-xl transition-colors cursor-pointer",
+        children: "Cerrar"
+      },
+      void 0,
+      false,
+      {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+        lineNumber: 348,
+        columnNumber: 11
+      },
+      this
+    ) }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+      lineNumber: 347,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+    lineNumber: 123,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx",
+    lineNumber: 122,
+    columnNumber: 5
+  }, this);
+};
+_s(UserProfileModal, "t1OJsukWZCdC/E+zb7KGGEAfiWo=");
+_c = UserProfileModal;
+var _c;
+$RefreshReg$(_c, "UserProfileModal");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/UserProfileModal.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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b3VuZCIsIkNoZWNrQ2lyY2xlMiIsIkFsZXJ0Q2lyY2xlIiwiTG9hZGVyMiIsIlgiLCJNYWlsIiwiUGhvbmUiLCJhcGkiLCJVc2VyUHJvZmlsZU1vZGFsIiwiaXNPcGVuIiwib25DbG9zZSIsInVzdWFyaW8iLCJvblByb2ZpbGVVcGRhdGVkIiwib25Mb2dvdXQiLCJfcyIsImFjdGl2ZVRhYiIsInNldEFjdGl2ZVRhYiIsIm5vbWJyZSIsInNldE5vbWJyZSIsIm5vbWJyZVVzdWFyaW8iLCJhcGVsbGlkbyIsInNldEFwZWxsaWRvIiwiYXBlbGxpZG9Vc3VhcmlvIiwiY29ycmVvIiwic2V0Q29ycmVvIiwiY2VsdWxhciIsInNldENlbHVsYXIiLCJpc1NhdmluZ1Byb2ZpbGUiLCJzZXRJc1NhdmluZ1Byb2ZpbGUiLCJwcm9maWxlTXNnIiwic2V0UHJvZmlsZU1zZyIsInBhc3NBY3R1YWwiLCJzZXRQYXNzQWN0dWFsIiwicGFzc051ZXZhIiwic2V0UGFzc051ZXZhIiwicGFzc0NvbmZpcm0iLCJzZXRQYXNzQ29uZmlybSIsImlzU2F2aW5nUGFzcyIsInNldElzU2F2aW5nUGFzcyIsInBhc3NNc2ciLCJzZXRQYXNzTXNnIiwiaW5pdGlhbHMiLCJpbmNsdWRlcyIsImNoYXJBdCIsInRvVXBwZXJDYXNlIiwic3Vic3RyaW5nIiwiaGFuZGxlVXBkYXRlUHJvZmlsZSIsImUiLCJwcmV2ZW50RGVmYXVsdCIsInRyaW0iLCJ0eXBlIiwidGV4dCIsInVwZGF0ZVByb2ZpbGUiLCJ1cGRhdGVkIiwiZ2V0TWUiLCJlcnIiLCJtZXNzYWdlIiwiaGFuZGxlQ2hhbmdlUGFzc3dvcmQiLCJsZW5ndGgiLCJjaGFuZ2VQYXNzd29yZCIsInBlcm1pc28iLCJlc3RhZG9Vc3VhcmlvIiwidGFyZ2V0IiwidmFsdWUiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJVc2VyUHJvZmlsZU1vZGFsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCB7IFVzZXIsIFNoaWVsZCwgS2V5Um91bmQsIENoZWNrQ2lyY2xlMiwgQWxlcnRDaXJjbGUsIExvYWRlcjIsIFgsIE1haWwsIFBob25lLCBGaWxlVGV4dCB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcbmltcG9ydCB7IGFwaSB9IGZyb20gJy4uL3NlcnZpY2VzL2FwaSc7XHJcbmltcG9ydCB7IFVzdWFyaW8gfSBmcm9tICcuLi90eXBlcyc7XHJcblxyXG5pbnRlcmZhY2UgVXNlclByb2ZpbGVNb2RhbFByb3BzIHtcclxuICBpc09wZW46IGJvb2xlYW47XHJcbiAgb25DbG9zZTogKCkgPT4gdm9pZDtcclxuICB1c3VhcmlvOiBVc3VhcmlvIHwgbnVsbDtcclxuICBvblByb2ZpbGVVcGRhdGVkOiAodXBkYXRlZFVzZXI6IFVzdWFyaW8pID0+IHZvaWQ7XHJcbiAgb25Mb2dvdXQ/OiAoKSA9PiB2b2lkO1xyXG59XHJcblxyXG5leHBvcnQgY29uc3QgVXNlclByb2ZpbGVNb2RhbDogUmVhY3QuRkM8VXNlclByb2ZpbGVNb2RhbFByb3BzPiA9ICh7XHJcbiAgaXNPcGVuLFxyXG4gIG9uQ2xvc2UsXHJcbiAgdXN1YXJpbyxcclxuICBvblByb2ZpbGVVcGRhdGVkLFxyXG4gIG9uTG9nb3V0LFxyXG59KSA9PiB7XHJcbiAgY29uc3QgW2FjdGl2ZVRhYiwgc2V0QWN0aXZlVGFiXSA9IHVzZVN0YXRlPCdpbmZvJyB8ICdzZWd1cmlkYWQnPignaW5mbycpO1xyXG5cclxuICAvLyBFZGl0IFByb2ZpbGUgRm9ybVxyXG4gIGNvbnN0IFtub21icmUsIHNldE5vbWJyZV0gPSB1c2VTdGF0ZSh1c3VhcmlvPy5ub21icmVVc3VhcmlvIHx8ICcnKTtcclxuICBjb25zdCBbYXBlbGxpZG8sIHNldEFwZWxsaWRvXSA9IHVzZVN0YXRlKHVzdWFyaW8/LmFwZWxsaWRvVXN1YXJpbyB8fCAnJyk7XHJcbiAgY29uc3QgW2NvcnJlbywgc2V0Q29ycmVvXSA9IHVzZVN0YXRlKHVzdWFyaW8/LmNvcnJlbyB8fCAnJyk7XHJcbiAgY29uc3QgW2NlbHVsYXIsIHNldENlbHVsYXJdID0gdXNlU3RhdGUodXN1YXJpbz8uY2VsdWxhciB8fCAnJyk7XHJcbiAgY29uc3QgW2lzU2F2aW5nUHJvZmlsZSwgc2V0SXNTYXZpbmdQcm9maWxlXSA9IHVzZVN0YXRlKGZhbHNlKTtcclxuICBjb25zdCBbcHJvZmlsZU1zZywgc2V0UHJvZmlsZU1zZ10gPSB1c2VTdGF0ZTx7IHR5cGU6ICdzdWNjZXNzJyB8ICdlcnJvcic7IHRleHQ6IHN0cmluZyB9IHwgbnVsbD4obnVsbCk7XHJcblxyXG4gIC8vIENoYW5nZSBQYXNzd29yZCBGb3JtXHJcbiAgY29uc3QgW3Bhc3NBY3R1YWwsIHNldFBhc3NBY3R1YWxdID0gdXNlU3RhdGUoJycpO1xyXG4gIGNvbnN0IFtwYXNzTnVldmEsIHNldFBhc3NOdWV2YV0gPSB1c2VTdGF0ZSgnJyk7XHJcbiAgY29uc3QgW3Bhc3NDb25maXJtLCBzZXRQYXNzQ29uZmlybV0gPSB1c2VTdGF0ZSgnJyk7XHJcbiAgY29uc3QgW2lzU2F2aW5nUGFzcywgc2V0SXNTYXZpbmdQYXNzXSA9IHVzZVN0YXRlKGZhbHNlKTtcclxuICBjb25zdCBbcGFzc01zZywgc2V0UGFzc01zZ10gPSB1c2VTdGF0ZTx7IHR5cGU6ICdzdWNjZXNzJyB8ICdlcnJvcic7IHRleHQ6IHN0cmluZyB9IHwgbnVsbD4obnVsbCk7XHJcblxyXG4gIGlmICghaXNPcGVuIHx8ICF1c3VhcmlvKSByZXR1cm4gbnVsbDtcclxuXHJcbiAgY29uc3QgaW5pdGlhbHMgPSAoXHJcbiAgICAoKHVzdWFyaW8ubm9tYnJlVXN1YXJpbyAmJiAhdXN1YXJpby5ub21icmVVc3VhcmlvLmluY2x1ZGVzKCdvYmplY3QnKSkgPyB1c3VhcmlvLm5vbWJyZVVzdWFyaW8uY2hhckF0KDApIDogJycpICtcclxuICAgICgodXN1YXJpby5hcGVsbGlkb1VzdWFyaW8gJiYgIXVzdWFyaW8uYXBlbGxpZG9Vc3VhcmlvLmluY2x1ZGVzKCdvYmplY3QnKSkgPyB1c3VhcmlvLmFwZWxsaWRvVXN1YXJpby5jaGFyQXQoMCkgOiAnJylcclxuICApLnRvVXBwZXJDYXNlKCkgfHwgdXN1YXJpby51c3VhcmlvLnN1YnN0cmluZygwLCAyKS50b1VwcGVyQ2FzZSgpIHx8ICdVUyc7XHJcblxyXG4gIGNvbnN0IGhhbmRsZVVwZGF0ZVByb2ZpbGUgPSBhc3luYyAoZTogUmVhY3QuRm9ybUV2ZW50KSA9PiB7XHJcbiAgICBlLnByZXZlbnREZWZhdWx0KCk7XHJcbiAgICBpZiAoIW5vbWJyZS50cmltKCkpIHtcclxuICAgICAgc2V0UHJvZmlsZU1zZyh7IHR5cGU6ICdlcnJvcicsIHRleHQ6ICdFbCBub21icmUgZXMgb2JsaWdhdG9yaW8uJyB9KTtcclxuICAgICAgcmV0dXJuO1xyXG4gICAgfVxyXG5cclxuICAgIHRyeSB7XHJcbiAgICAgIHNldElzU2F2aW5nUHJvZmlsZSh0cnVlKTtcclxuICAgICAgc2V0UHJvZmlsZU1zZyhudWxsKTtcclxuICAgICAgYXdhaXQgYXBpLnVwZGF0ZVByb2ZpbGUoe1xyXG4gICAgICAgIG5vbWJyZVVzdWFyaW86IG5vbWJyZS50cmltKCksXHJcbiAgICAgICAgYXBlbGxpZG9Vc3VhcmlvOiBhcGVsbGlkby50cmltKCksXHJcbiAgICAgICAgY29ycmVvOiBjb3JyZW8udHJpbSgpLFxyXG4gICAgICAgIGNlbHVsYXI6IGNlbHVsYXIudHJpbSgpLFxyXG4gICAgICB9KTtcclxuXHJcbiAgICAgIGNvbnN0IHVwZGF0ZWQgPSBhd2FpdCBhcGkuZ2V0TWUoKTtcclxuICAgICAgb25Qcm9maWxlVXBkYXRlZCh1cGRhdGVkKTtcclxuICAgICAgc2V0UHJvZmlsZU1zZyh7IHR5cGU6ICdzdWNjZXNzJywgdGV4dDogJ8KhUGVyZmlsIGFjdHVhbGl6YWRvIGV4aXRvc2FtZW50ZSEnIH0pO1xyXG4gICAgfSBjYXRjaCAoZXJyOiBhbnkpIHtcclxuICAgICAgc2V0UHJvZmlsZU1zZyh7IHR5cGU6ICdlcnJvcicsIHRleHQ6IGVyci5tZXNzYWdlIHx8ICdFcnJvciBhbCBhY3R1YWxpemFyIHBlcmZpbC4nIH0pO1xyXG4gICAgfSBmaW5hbGx5IHtcclxuICAgICAgc2V0SXNTYXZpbmdQcm9maWxlKGZhbHNlKTtcclxuICAgIH1cclxuICB9O1xyXG5cclxuICBjb25zdCBoYW5kbGVDaGFuZ2VQYXNzd29yZCA9IGFzeW5jIChlOiBSZWFjdC5Gb3JtRXZlbnQpID0+IHtcclxuICAgIGUucHJldmVudERlZmF1bHQoKTtcclxuICAgIGlmICghcGFzc0FjdHVhbCkge1xyXG4gICAgICBzZXRQYXNzTXNnKHsgdHlwZTogJ2Vycm9yJywgdGV4dDogJ0RlYmUgaW5ncmVzYXIgc3UgY29udHJhc2XDsWEgYWN0dWFsLicgfSk7XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuICAgIGlmIChwYXNzTnVldmEubGVuZ3RoIDwgNikge1xyXG4gICAgICBzZXRQYXNzTXNnKHsgdHlwZTogJ2Vycm9yJywgdGV4dDogJ0xhIG51ZXZhIGNvbnRyYXNlw7FhIGRlYmUgdGVuZXIgYWwgbWVub3MgNiBjYXJhY3RlcmVzLicgfSk7XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuICAgIGlmIChwYXNzTnVldmEgIT09IHBhc3NDb25maXJtKSB7XHJcbiAgICAgIHNldFBhc3NNc2coeyB0eXBlOiAnZXJyb3InLCB0ZXh0OiAnTGFzIG51ZXZhcyBjb250cmFzZcOxYXMgbm8gY29pbmNpZGVuLicgfSk7XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuXHJcbiAgICB0cnkge1xyXG4gICAgICBzZXRJc1NhdmluZ1Bhc3ModHJ1ZSk7XHJcbiAgICAgIHNldFBhc3NNc2cobnVsbCk7XHJcbiAgICAgIGF3YWl0IGFwaS5jaGFuZ2VQYXNzd29yZChwYXNzQWN0dWFsLCBwYXNzTnVldmEpO1xyXG4gICAgICBzZXRQYXNzTXNnKHsgdHlwZTogJ3N1Y2Nlc3MnLCB0ZXh0OiAnwqFDb250cmFzZcOxYSBhY3R1YWxpemFkYSBjb3JyZWN0YW1lbnRlIScgfSk7XHJcbiAgICAgIHNldFBhc3NBY3R1YWwoJycpO1xyXG4gICAgICBzZXRQYXNzTnVldmEoJycpO1xyXG4gICAgICBzZXRQYXNzQ29uZmlybSgnJyk7XHJcbiAgICB9IGNhdGNoIChlcnI6IGFueSkge1xyXG4gICAgICBzZXRQYXNzTXNnKHsgdHlwZTogJ2Vycm9yJywgdGV4dDogZXJyLm1lc3NhZ2UgfHwgJ0Vycm9yIGFsIGNhbWJpYXIgY29udHJhc2XDsWEuJyB9KTtcclxuICAgIH0gZmluYWxseSB7XHJcbiAgICAgIHNldElzU2F2aW5nUGFzcyhmYWxzZSk7XHJcbiAgICB9XHJcbiAgfTtcclxuXHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiZml4ZWQgaW5zZXQtMCB6LTUwIGJnLXNsYXRlLTkwMC82MCBiYWNrZHJvcC1ibHVyLXNtIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHAtNCBhbmltYXRlLWluIGZhZGUtaW4gZHVyYXRpb24tMjAwXCI+XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgZGFyazpiZy1zbGF0ZS05MDAgcm91bmRlZC0zeGwgYm9yZGVyIGJvcmRlci1zbGF0ZS0yMDAgZGFyazpib3JkZXItc2xhdGUtODAwIG1heC13LWxnIHctZnVsbCBvdmVyZmxvdy1oaWRkZW4gc2hhZG93LTJ4bCBmbGV4IGZsZXgtY29sXCI+XHJcbiAgICAgICAgey8qIEJhbm5lciBUb3AgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ncmFkaWVudC10by1yIGZyb20tYmx1ZS02MDAgdG8taW5kaWdvLTYwMCBwLTYgdGV4dC13aGl0ZSByZWxhdGl2ZVwiPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICBvbkNsaWNrPXtvbkNsb3NlfVxyXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJhYnNvbHV0ZSB0b3AtNCByaWdodC00IHAtMiByb3VuZGVkLWZ1bGwgYmctd2hpdGUvMTAgaG92ZXI6Ymctd2hpdGUvMjAgdGV4dC13aGl0ZSB0cmFuc2l0aW9uLWNvbG9yc1wiXHJcbiAgICAgICAgICA+XHJcbiAgICAgICAgICAgIDxYIGNsYXNzTmFtZT1cInctNSBoLTVcIiAvPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcblxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTRcIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3LTE2IGgtMTYgcm91bmRlZC0yeGwgYmctd2hpdGUgdGV4dC1pbmRpZ28tNzAwIGZvbnQtYmxhY2sgdGV4dC0yeGwgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgc2hhZG93LWxnIGJvcmRlci0yIGJvcmRlci13aGl0ZS80MFwiPlxyXG4gICAgICAgICAgICAgIHtpbml0aWFsc31cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgPGgyIGNsYXNzTmFtZT1cInRleHQteGwgZm9udC1ibGFjayBsZWFkaW5nLXRpZ2h0XCI+XHJcbiAgICAgICAgICAgICAgICB7dXN1YXJpby5ub21icmVVc3VhcmlvfSB7dXN1YXJpby5hcGVsbGlkb1VzdWFyaW99XHJcbiAgICAgICAgICAgICAgPC9oMj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIHNwYWNlLXgtMiBtdC0xXCI+XHJcbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJpbmxpbmUtZmxleCBpdGVtcy1jZW50ZXIgcHgtMi41IHB5LTAuNSByb3VuZGVkLWZ1bGwgdGV4dC14cyBmb250LWJvbGQgYmctd2hpdGUvMjAgYmFja2Ryb3AtYmx1ci1tZCB0ZXh0LXdoaXRlIGJvcmRlciBib3JkZXItd2hpdGUvMzBcIj5cclxuICAgICAgICAgICAgICAgICAgPFNoaWVsZCBjbGFzc05hbWU9XCJ3LTMgaC0zIG1yLTFcIiAvPlxyXG4gICAgICAgICAgICAgICAgICB7dXN1YXJpby5wZXJtaXNvfVxyXG4gICAgICAgICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiaW5saW5lLWZsZXggaXRlbXMtY2VudGVyIHB4LTIgcHktMC41IHJvdW5kZWQtZnVsbCB0ZXh0LXhzIGZvbnQtYm9sZCBiZy1lbWVyYWxkLTQwMC8yMCB0ZXh0LWVtZXJhbGQtMTAwIGJvcmRlciBib3JkZXItZW1lcmFsZC0zMDAvMzBcIj5cclxuICAgICAgICAgICAgICAgICAg4pePIHt1c3VhcmlvLmVzdGFkb1VzdWFyaW99XHJcbiAgICAgICAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIHsvKiBUYWIgTmF2aWdhdGlvbiAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggYm9yZGVyLWIgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS04MDAgYmctc2xhdGUtNTAgZGFyazpiZy1zbGF0ZS04NTAgcHgtNlwiPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVUYWIoJ2luZm8nKX1cclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgcHktMy41IHB4LTQgZm9udC1ib2xkIHRleHQtc20gYm9yZGVyLWItMiB0cmFuc2l0aW9uLWFsbCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgY3Vyc29yLXBvaW50ZXIgJHtcclxuICAgICAgICAgICAgICBhY3RpdmVUYWIgPT09ICdpbmZvJ1xyXG4gICAgICAgICAgICAgICAgPyAnYm9yZGVyLWluZGlnby02MDAgdGV4dC1pbmRpZ28tNjAwIGRhcms6dGV4dC1pbmRpZ28tNDAwJ1xyXG4gICAgICAgICAgICAgICAgOiAnYm9yZGVyLXRyYW5zcGFyZW50IHRleHQtc2xhdGUtNTAwIGhvdmVyOnRleHQtc2xhdGUtNzAwJ1xyXG4gICAgICAgICAgICB9YH1cclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgPFVzZXIgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+XHJcbiAgICAgICAgICAgIDxzcGFuPkRhdG9zIFBlcnNvbmFsZXM8L3NwYW4+XHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlVGFiKCdzZWd1cmlkYWQnKX1cclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgcHktMy41IHB4LTQgZm9udC1ib2xkIHRleHQtc20gYm9yZGVyLWItMiB0cmFuc2l0aW9uLWFsbCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgY3Vyc29yLXBvaW50ZXIgJHtcclxuICAgICAgICAgICAgICBhY3RpdmVUYWIgPT09ICdzZWd1cmlkYWQnXHJcbiAgICAgICAgICAgICAgICA/ICdib3JkZXItaW5kaWdvLTYwMCB0ZXh0LWluZGlnby02MDAgZGFyazp0ZXh0LWluZGlnby00MDAnXHJcbiAgICAgICAgICAgICAgICA6ICdib3JkZXItdHJhbnNwYXJlbnQgdGV4dC1zbGF0ZS01MDAgaG92ZXI6dGV4dC1zbGF0ZS03MDAnXHJcbiAgICAgICAgICAgIH1gfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICA8S2V5Um91bmQgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+XHJcbiAgICAgICAgICAgIDxzcGFuPlNlZ3VyaWRhZCB5IENvbnRyYXNlw7FhPC9zcGFuPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIHsvKiBNb2RhbCBCb2R5ICovfVxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC02IG92ZXJmbG93LXktYXV0byBtYXgtaC1bNjB2aF0gc3BhY2UteS00XCI+XHJcbiAgICAgICAgICB7YWN0aXZlVGFiID09PSAnaW5mbycgJiYgKFxyXG4gICAgICAgICAgICA8Zm9ybSBvblN1Ym1pdD17aGFuZGxlVXBkYXRlUHJvZmlsZX0gY2xhc3NOYW1lPVwic3BhY2UteS00XCI+XHJcbiAgICAgICAgICAgICAge3Byb2ZpbGVNc2cgJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdlxyXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BwLTMgcm91bmRlZC14bCB0ZXh0LXhzIGZvbnQtYm9sZCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgJHtcclxuICAgICAgICAgICAgICAgICAgICBwcm9maWxlTXNnLnR5cGUgPT09ICdzdWNjZXNzJ1xyXG4gICAgICAgICAgICAgICAgICAgICAgPyAnYmctZW1lcmFsZC01MCB0ZXh0LWVtZXJhbGQtNzAwIGJvcmRlciBib3JkZXItZW1lcmFsZC0yMDAnXHJcbiAgICAgICAgICAgICAgICAgICAgICA6ICdiZy1yb3NlLTUwIHRleHQtcm9zZS03MDAgYm9yZGVyIGJvcmRlci1yb3NlLTIwMCdcclxuICAgICAgICAgICAgICAgICAgfWB9XHJcbiAgICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICAgIHtwcm9maWxlTXNnLnR5cGUgPT09ICdzdWNjZXNzJyA/IDxDaGVja0NpcmNsZTIgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+IDogPEFsZXJ0Q2lyY2xlIGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPn1cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e3Byb2ZpbGVNc2cudGV4dH08L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICApfVxyXG5cclxuICAgICAgICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImJsb2NrIHRleHQteHMgZm9udC1ib2xkIHVwcGVyY2FzZSB0ZXh0LXNsYXRlLTQwMCBtYi0xXCI+Tm9tYnJlIGRlIFVzdWFyaW8gKExvZ2luKTwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInB4LTMuNSBweS0yLjUgYmctc2xhdGUtMTAwIGRhcms6Ymctc2xhdGUtODAwIHJvdW5kZWQteGwgdGV4dC1zbSBmb250LWJvbGQgdGV4dC1zbGF0ZS02MDAgZGFyazp0ZXh0LXNsYXRlLTMwMCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS03MDAgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxzcGFuPnt1c3VhcmlvLnVzdWFyaW99PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSB1cHBlcmNhc2UgZm9udC1ib2xkIHRleHQtc2xhdGUtNDAwXCI+SWRlbnRpZmljYWRvciBObyBNb2RpZmljYWJsZTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTIgZ2FwLTNcIj5cclxuICAgICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXhzIGZvbnQtYm9sZCB1cHBlcmNhc2UgdGV4dC1zbGF0ZS01MDAgZGFyazp0ZXh0LXNsYXRlLTQwMCBtYi0xXCI+Tm9tYnJlPC9sYWJlbD5cclxuICAgICAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgICAgICAgIHJlcXVpcmVkXHJcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e25vbWJyZX1cclxuICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldE5vbWJyZShlLnRhcmdldC52YWx1ZSl9XHJcbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIHB4LTMuNSBweS0yIGJnLXNsYXRlLTUwIGRhcms6Ymctc2xhdGUtODAwIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIGRhcms6Ym9yZGVyLXNsYXRlLTcwMCByb3VuZGVkLXhsIHRleHQtc20gZm9udC1zZW1pYm9sZFwiXHJcbiAgICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXhzIGZvbnQtYm9sZCB1cHBlcmNhc2UgdGV4dC1zbGF0ZS01MDAgZGFyazp0ZXh0LXNsYXRlLTQwMCBtYi0xXCI+QXBlbGxpZG88L2xhYmVsPlxyXG4gICAgICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e2FwZWxsaWRvfVxyXG4gICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0QXBlbGxpZG8oZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zLjUgcHktMiBiZy1zbGF0ZS01MCBkYXJrOmJnLXNsYXRlLTgwMCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS03MDAgcm91bmRlZC14bCB0ZXh0LXNtIGZvbnQtc2VtaWJvbGRcIlxyXG4gICAgICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMiBnYXAtM1wiPlxyXG4gICAgICAgICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImJsb2NrIHRleHQteHMgZm9udC1ib2xkIHVwcGVyY2FzZSB0ZXh0LXNsYXRlLTUwMCBkYXJrOnRleHQtc2xhdGUtNDAwIG1iLTEgZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0xXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgPE1haWwgY2xhc3NOYW1lPVwidy0zIGgtMyB0ZXh0LXNsYXRlLTQwMFwiIC8+XHJcbiAgICAgICAgICAgICAgICAgICAgPHNwYW4+Q29ycmVvPC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICA8L2xhYmVsPlxyXG4gICAgICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgICAgICB0eXBlPVwiZW1haWxcIlxyXG4gICAgICAgICAgICAgICAgICAgIHZhbHVlPXtjb3JyZW99XHJcbiAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRDb3JyZW8oZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiZWplbXBsb0Bjb3JyZW8uY29tXCJcclxuICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LWZ1bGwgcHgtMy41IHB5LTIgYmctc2xhdGUtNTAgZGFyazpiZy1zbGF0ZS04MDAgYm9yZGVyIGJvcmRlci1zbGF0ZS0yMDAgZGFyazpib3JkZXItc2xhdGUtNzAwIHJvdW5kZWQteGwgdGV4dC1zbVwiXHJcbiAgICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXhzIGZvbnQtYm9sZCB1cHBlcmNhc2UgdGV4dC1zbGF0ZS01MDAgZGFyazp0ZXh0LXNsYXRlLTQwMCBtYi0xIGZsZXggaXRlbXMtY2VudGVyIHNwYWNlLXgtMVwiPlxyXG4gICAgICAgICAgICAgICAgICAgIDxQaG9uZSBjbGFzc05hbWU9XCJ3LTMgaC0zIHRleHQtc2xhdGUtNDAwXCIgLz5cclxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj5UZWzDqWZvbm88L3NwYW4+XHJcbiAgICAgICAgICAgICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICAgICAgICB2YWx1ZT17Y2VsdWxhcn1cclxuICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldENlbHVsYXIoZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiKDgwOSkgMDAwLTAwMDBcIlxyXG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zLjUgcHktMiBiZy1zbGF0ZS01MCBkYXJrOmJnLXNsYXRlLTgwMCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS03MDAgcm91bmRlZC14bCB0ZXh0LXNtXCJcclxuICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInB0LTJcIj5cclxuICAgICAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICAgICAgdHlwZT1cInN1Ym1pdFwiXHJcbiAgICAgICAgICAgICAgICAgIGRpc2FibGVkPXtpc1NhdmluZ1Byb2ZpbGV9XHJcbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweS0zIGJnLWluZGlnby02MDAgaG92ZXI6YmctaW5kaWdvLTUwMCB0ZXh0LXdoaXRlIGZvbnQtYm9sZCByb3VuZGVkLXhsIHRleHQtc20gc2hhZG93LW1kIHNoYWRvdy1pbmRpZ28tNjAwLzMwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHNwYWNlLXgtMiB0cmFuc2l0aW9uLWFsbCBjdXJzb3ItcG9pbnRlclwiXHJcbiAgICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICAgIHtpc1NhdmluZ1Byb2ZpbGUgPyAoXHJcbiAgICAgICAgICAgICAgICAgICAgPD5cclxuICAgICAgICAgICAgICAgICAgICAgIDxMb2FkZXIyIGNsYXNzTmFtZT1cInctNCBoLTQgYW5pbWF0ZS1zcGluXCIgLz5cclxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuPkd1YXJkYW5kby4uLjwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgICA8Lz5cclxuICAgICAgICAgICAgICAgICAgKSA6IChcclxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj5HdWFyZGFyIERhdG9zIFBlcnNvbmFsZXM8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICAgICl9XHJcbiAgICAgICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPC9mb3JtPlxyXG4gICAgICAgICAgKX1cclxuXHJcbiAgICAgICAgICB7YWN0aXZlVGFiID09PSAnc2VndXJpZGFkJyAmJiAoXHJcbiAgICAgICAgICAgIDxmb3JtIG9uU3VibWl0PXtoYW5kbGVDaGFuZ2VQYXNzd29yZH0gY2xhc3NOYW1lPVwic3BhY2UteS00XCI+XHJcbiAgICAgICAgICAgICAge3Bhc3NNc2cgJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdlxyXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BwLTMgcm91bmRlZC14bCB0ZXh0LXhzIGZvbnQtYm9sZCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgJHtcclxuICAgICAgICAgICAgICAgICAgICBwYXNzTXNnLnR5cGUgPT09ICdzdWNjZXNzJ1xyXG4gICAgICAgICAgICAgICAgICAgICAgPyAnYmctZW1lcmFsZC01MCB0ZXh0LWVtZXJhbGQtNzAwIGJvcmRlciBib3JkZXItZW1lcmFsZC0yMDAnXHJcbiAgICAgICAgICAgICAgICAgICAgICA6ICdiZy1yb3NlLTUwIHRleHQtcm9zZS03MDAgYm9yZGVyIGJvcmRlci1yb3NlLTIwMCdcclxuICAgICAgICAgICAgICAgICAgfWB9XHJcbiAgICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICAgIHtwYXNzTXNnLnR5cGUgPT09ICdzdWNjZXNzJyA/IDxDaGVja0NpcmNsZTIgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+IDogPEFsZXJ0Q2lyY2xlIGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPn1cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e3Bhc3NNc2cudGV4dH08L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICApfVxyXG5cclxuICAgICAgICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImJsb2NrIHRleHQteHMgZm9udC1ib2xkIHVwcGVyY2FzZSB0ZXh0LXNsYXRlLTUwMCBkYXJrOnRleHQtc2xhdGUtNDAwIG1iLTFcIj5Db250cmFzZcOxYSBBY3R1YWw8L2xhYmVsPlxyXG4gICAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICAgIHR5cGU9XCJwYXNzd29yZFwiXHJcbiAgICAgICAgICAgICAgICAgIHJlcXVpcmVkXHJcbiAgICAgICAgICAgICAgICAgIHZhbHVlPXtwYXNzQWN0dWFsfVxyXG4gICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFBhc3NBY3R1YWwoZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkluZ3Jlc2UgY29udHJhc2XDsWEgYWN0dWFsXCJcclxuICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIHB4LTMuNSBweS0yLjUgYmctc2xhdGUtNTAgZGFyazpiZy1zbGF0ZS04MDAgYm9yZGVyIGJvcmRlci1zbGF0ZS0yMDAgZGFyazpib3JkZXItc2xhdGUtNzAwIHJvdW5kZWQteGwgdGV4dC1zbSBmb250LXNlbWlib2xkXCJcclxuICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiYmxvY2sgdGV4dC14cyBmb250LWJvbGQgdXBwZXJjYXNlIHRleHQtc2xhdGUtNTAwIGRhcms6dGV4dC1zbGF0ZS00MDAgbWItMVwiPk51ZXZhIENvbnRyYXNlw7FhPC9sYWJlbD5cclxuICAgICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgICB0eXBlPVwicGFzc3dvcmRcIlxyXG4gICAgICAgICAgICAgICAgICByZXF1aXJlZFxyXG4gICAgICAgICAgICAgICAgICB2YWx1ZT17cGFzc051ZXZhfVxyXG4gICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFBhc3NOdWV2YShlLnRhcmdldC52YWx1ZSl9XHJcbiAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiTcOtbmltbyA2IGNhcmFjdGVyZXNcIlxyXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LWZ1bGwgcHgtMy41IHB5LTIuNSBiZy1zbGF0ZS01MCBkYXJrOmJnLXNsYXRlLTgwMCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS03MDAgcm91bmRlZC14bCB0ZXh0LXNtIGZvbnQtc2VtaWJvbGRcIlxyXG4gICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXhzIGZvbnQtYm9sZCB1cHBlcmNhc2UgdGV4dC1zbGF0ZS01MDAgZGFyazp0ZXh0LXNsYXRlLTQwMCBtYi0xXCI+Q29uZmlybWFyIE51ZXZhIENvbnRyYXNlw7FhPC9sYWJlbD5cclxuICAgICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgICB0eXBlPVwicGFzc3dvcmRcIlxyXG4gICAgICAgICAgICAgICAgICByZXF1aXJlZFxyXG4gICAgICAgICAgICAgICAgICB2YWx1ZT17cGFzc0NvbmZpcm19XHJcbiAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0UGFzc0NvbmZpcm0oZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIlJlcGl0YSBsYSBudWV2YSBjb250cmFzZcOxYVwiXHJcbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zLjUgcHktMi41IGJnLXNsYXRlLTUwIGRhcms6Ymctc2xhdGUtODAwIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIGRhcms6Ym9yZGVyLXNsYXRlLTcwMCByb3VuZGVkLXhsIHRleHQtc20gZm9udC1zZW1pYm9sZFwiXHJcbiAgICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInB0LTJcIj5cclxuICAgICAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICAgICAgdHlwZT1cInN1Ym1pdFwiXHJcbiAgICAgICAgICAgICAgICAgIGRpc2FibGVkPXtpc1NhdmluZ1Bhc3N9XHJcbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweS0zIGJnLWFtYmVyLTYwMCBob3ZlcjpiZy1hbWJlci01MDAgdGV4dC13aGl0ZSBmb250LWJvbGQgcm91bmRlZC14bCB0ZXh0LXNtIHNoYWRvdy1tZCBzaGFkb3ctYW1iZXItNjAwLzMwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHNwYWNlLXgtMiB0cmFuc2l0aW9uLWFsbCBjdXJzb3ItcG9pbnRlclwiXHJcbiAgICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICAgIHtpc1NhdmluZ1Bhc3MgPyAoXHJcbiAgICAgICAgICAgICAgICAgICAgPD5cclxuICAgICAgICAgICAgICAgICAgICAgIDxMb2FkZXIyIGNsYXNzTmFtZT1cInctNCBoLTQgYW5pbWF0ZS1zcGluXCIgLz5cclxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuPkFjdHVhbGl6YW5kbyBDb250cmFzZcOxYS4uLjwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgICA8Lz5cclxuICAgICAgICAgICAgICAgICAgKSA6IChcclxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj5BY3R1YWxpemFyIENvbnRyYXNlw7FhIGRlIEFjY2Vzbzwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8L2Zvcm0+XHJcbiAgICAgICAgICApfVxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogRm9vdGVyIGFjdGlvbnMgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTQgYmctc2xhdGUtNTAgZGFyazpiZy1zbGF0ZS04NTAgYm9yZGVyLXQgYm9yZGVyLXNsYXRlLTIwMCBkYXJrOmJvcmRlci1zbGF0ZS04MDAgZmxleCBqdXN0aWZ5LWVuZCBpdGVtcy1jZW50ZXIgdGV4dC14c1wiPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICBvbkNsaWNrPXtvbkNsb3NlfVxyXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJweC01IHB5LTIgYmctc2xhdGUtMjAwIGRhcms6Ymctc2xhdGUtNzAwIGhvdmVyOmJnLXNsYXRlLTMwMCB0ZXh0LXNsYXRlLTcwMCBkYXJrOnRleHQtc2xhdGUtMjAwIGZvbnQtYm9sZCByb3VuZGVkLXhsIHRyYW5zaXRpb24tY29sb3JzIGN1cnNvci1wb2ludGVyXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgQ2VycmFyXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL0VTVEVCL09uZURyaXZlL0RvY3VtZW50cy9QT1JUQUZPUlpBL1dlYiBBcHAvQWRtaW5Tb2Z0UEYuV2ViL0FkbWluU29mdFBGLldlYlVJL3NyYy9jb21wb25lbnRzL1VzZXJQcm9maWxlTW9kYWwudHN4In0=

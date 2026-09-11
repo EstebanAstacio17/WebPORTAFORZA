@@ -1,0 +1,701 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/views/DashboardView.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3ea76504"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import {
+  DollarSign,
+  TrendingUp,
+  Users,
+  CheckCircle2,
+  AlertTriangle,
+  CreditCard,
+  PlusCircle,
+  Building2,
+  Loader2,
+  AlertCircle,
+  RefreshCw
+} from "/node_modules/.vite/deps/lucide-react.js?v=3ea76504";
+import { useDashboardSummary } from "/src/hooks/queries/useDashboardSummary.ts";
+export const DashboardView = ({ proyectoActivo, onNavigate }) => {
+  _s();
+  const { data: summary, isLoading, isError, error, isFetching, refetch } = useDashboardSummary(
+    proyectoActivo?.iD_Proyecto,
+    proyectoActivo?.nombreProyecto
+  );
+  const formatCurrency = (val) => {
+    return `RD$ ${(val || 0).toLocaleString("es-DO", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  };
+  if (isLoading) {
+    return /* @__PURE__ */ jsxDEV("div", { className: "h-96 flex flex-col items-center justify-center text-slate-400", children: [
+      /* @__PURE__ */ jsxDEV(Loader2, { className: "w-8 h-8 animate-spin text-indigo-600 mb-2" }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 54,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "text-sm font-medium", children: "Sincronizando métricas financieras del condominio..." }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 55,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+      lineNumber: 53,
+      columnNumber: 7
+    }, this);
+  }
+  if (isError) {
+    return /* @__PURE__ */ jsxDEV("div", { className: "p-6 bg-rose-50 border border-rose-200 rounded-2xl text-rose-700 flex items-center space-x-3", children: [
+      /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-6 h-6 shrink-0" }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 63,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h4", { className: "font-bold", children: "Error de comunicación" }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 65,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm", children: error?.message || "No se pudieron obtener las métricas del condominio." }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 66,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 64,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+      lineNumber: 62,
+      columnNumber: 7
+    }, this);
+  }
+  const totalUnidades = Number(summary?.totalUnidadesActivas || 0);
+  const unidadesAlDia = Number(summary?.unidadesAlDia || 0);
+  const unidadesConDeuda = Number(summary?.unidadesConDeuda || 0);
+  const alDiaPct = totalUnidades > 0 ? Math.round(unidadesAlDia / totalUnidades * 100) : 0;
+  const conDeudaPct = totalUnidades > 0 ? Math.round(unidadesConDeuda / totalUnidades * 100) : 0;
+  return /* @__PURE__ */ jsxDEV("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-[#1E3A8A] rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border border-[#172554]", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "inline-flex items-center space-x-2 px-3 py-1 bg-[#172554] border border-blue-800 rounded-full text-xs font-bold text-blue-200 mb-2", children: [
+          /* @__PURE__ */ jsxDEV(Building2, { className: "w-3.5 h-3.5 text-blue-300" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 84,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: "Condominio Seleccionado" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 85,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 83,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("h2", { className: "text-2xl font-black text-white tracking-tight", children: proyectoActivo?.nombreProyecto || "Todos los Proyectos" }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 87,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-blue-200/80 text-xs mt-1 font-medium", children: [
+          "RNC: ",
+          proyectoActivo?.rncProyecto || "N/A",
+          " • Dirección: ",
+          proyectoActivo?.direccionProyecto || "N/A"
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 88,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 82,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-3", children: [
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => refetch(),
+            disabled: isFetching,
+            className: "px-3.5 py-2.5 bg-blue-900/60 hover:bg-blue-800 text-white rounded-xl shadow-sm text-xs font-bold transition-all flex items-center space-x-1.5 border border-blue-700/60 cursor-pointer disabled:opacity-50",
+            title: "Sincronizar métricas con el servidor",
+            children: [
+              /* @__PURE__ */ jsxDEV(RefreshCw, { className: `w-3.5 h-3.5 ${isFetching ? "animate-spin" : ""}` }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 98,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: isFetching ? "Sincronizando..." : "Actualizar" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 99,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 92,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate("caja"),
+            className: "px-4 py-2.5 bg-[#2563EB] hover:bg-blue-600 text-white font-black rounded-xl shadow-lg shadow-blue-900/40 text-xs transition-all flex items-center space-x-2 cursor-pointer ring-1 ring-blue-400/40",
+            children: [
+              /* @__PURE__ */ jsxDEV(CreditCard, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 105,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "Cobrar Cuota" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 106,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 101,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate("facturacion"),
+            className: "px-4 py-2.5 bg-white text-[#1E3A8A] hover:bg-slate-100 font-black rounded-xl shadow-md text-xs transition-all flex items-center space-x-2 cursor-pointer",
+            children: [
+              /* @__PURE__ */ jsxDEV(PlusCircle, { className: "w-4 h-4 text-[#1E3A8A]" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 112,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "Nueva Factura" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 113,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 108,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 91,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+      lineNumber: 81,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:shadow-md transition-shadow", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between text-slate-500 mb-3", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[11px] font-extrabold uppercase tracking-wider text-slate-400", children: "Recaudación (Mes)" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 123,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100", children: /* @__PURE__ */ jsxDEV(TrendingUp, { className: "w-5 h-5" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 125,
+            columnNumber: 15
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 124,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 122,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-2xl font-black text-slate-900 leading-none mb-1 font-mono", children: formatCurrency(summary?.totalRecaudadoMes) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 128,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-emerald-600 font-bold flex items-center", children: [
+          /* @__PURE__ */ jsxDEV(CheckCircle2, { className: "w-3.5 h-3.5 mr-1" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 132,
+            columnNumber: 13
+          }, this),
+          "Ingresos cobrados"
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 131,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 121,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:shadow-md transition-shadow", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between text-slate-500 mb-3", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[11px] font-extrabold uppercase tracking-wider text-slate-400", children: "Cartera Pendiente" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 140,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center border border-rose-100", children: /* @__PURE__ */ jsxDEV(AlertTriangle, { className: "w-5 h-5" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 142,
+            columnNumber: 15
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 141,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 139,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-2xl font-black text-rose-600 leading-none mb-1 font-mono", children: formatCurrency(summary?.totalDeudaCartera) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 145,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-rose-600 font-bold flex items-center", children: [
+          /* @__PURE__ */ jsxDEV(AlertTriangle, { className: "w-3.5 h-3.5 mr-1" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 149,
+            columnNumber: 13
+          }, this),
+          "Total por cobrar"
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 148,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 138,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:shadow-md transition-shadow", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between text-slate-500 mb-3", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[11px] font-extrabold uppercase tracking-wider text-slate-400", children: "Egresos / Gastos" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 157,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100", children: /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-5 h-5" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 159,
+            columnNumber: 15
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 158,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 156,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-2xl font-black text-slate-900 leading-none mb-1 font-mono", children: formatCurrency(summary?.totalEgresosMes) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 162,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-500 font-semibold", children: "Autorizaciones aprobadas" }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 165,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 155,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:shadow-md transition-shadow", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between text-slate-500 mb-3", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[11px] font-extrabold uppercase tracking-wider text-slate-400", children: "Total Unidades" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 171,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "w-9 h-9 rounded-xl bg-blue-50 text-[#1E3A8A] flex items-center justify-center border border-blue-100", children: /* @__PURE__ */ jsxDEV(Users, { className: "w-5 h-5" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 173,
+            columnNumber: 15
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 172,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 170,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-2xl font-black text-slate-900 leading-none mb-1 font-mono", children: totalUnidades }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 176,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-500 font-semibold", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-emerald-600 font-black", children: [
+            unidadesAlDia,
+            " Al Día"
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 180,
+            columnNumber: 13
+          }, this),
+          " •",
+          " ",
+          /* @__PURE__ */ jsxDEV("span", { className: "text-rose-600 font-black", children: [
+            unidadesConDeuda,
+            " Con Mora"
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 181,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 179,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 169,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+      lineNumber: 119,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-6", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col justify-between", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h3", { className: "text-base font-extrabold text-slate-900 mb-0.5", children: "Estado de la Cartera" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 191,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-500 mb-6", children: "Distribución de condóminos al día vs morosos" }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 192,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "space-y-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between text-xs font-bold mb-1.5", children: [
+                /* @__PURE__ */ jsxDEV("span", { className: "text-emerald-600", children: [
+                  "Al Día (",
+                  unidadesAlDia,
+                  " unidades)"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                  lineNumber: 197,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { className: "font-mono", children: [
+                  alDiaPct,
+                  "%"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                  lineNumber: 198,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 196,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "w-full bg-slate-100 h-3 rounded-full overflow-hidden", children: /* @__PURE__ */ jsxDEV("div", { className: "bg-emerald-500 h-full rounded-full transition-all duration-1000", style: { width: `${alDiaPct}%` } }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 201,
+                columnNumber: 19
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 200,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 195,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between text-xs font-bold mb-1.5", children: [
+                /* @__PURE__ */ jsxDEV("span", { className: "text-rose-600", children: [
+                  "Con Deuda (",
+                  unidadesConDeuda,
+                  " unidades)"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                  lineNumber: 207,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { className: "font-mono", children: [
+                  conDeudaPct,
+                  "%"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                  lineNumber: 208,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 206,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "w-full bg-slate-100 h-3 rounded-full overflow-hidden", children: /* @__PURE__ */ jsxDEV("div", { className: "bg-rose-500 h-full rounded-full transition-all duration-1000", style: { width: `${conDeudaPct}%` } }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 211,
+                columnNumber: 19
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 210,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 205,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 194,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 190,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "mt-8 pt-4 border-t border-slate-100 flex justify-between", children: /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate("clientes"),
+            className: "text-xs font-black text-[#1E3A8A] hover:text-[#2563EB] flex items-center space-x-1 cursor-pointer transition-colors",
+            children: [
+              /* @__PURE__ */ jsxDEV("span", { children: "Ver todas las unidades" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 222,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "→" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 223,
+                columnNumber: 15
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 218,
+            columnNumber: 13
+          },
+          this
+        ) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 217,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 189,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "lg:col-span-2 bg-white border border-slate-200 rounded-2xl p-6 shadow-xs", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center mb-6", children: [
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("h3", { className: "text-base font-extrabold text-slate-900 mb-0.5", children: "Balance Rápido por Vía de Pago" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 232,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-500", children: "Últimos 30 días de recaudación y desembolsos" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 233,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 231,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: () => onNavigate("reportes"),
+              className: "text-xs font-black text-[#1E3A8A] hover:text-[#2563EB] cursor-pointer transition-colors",
+              children: "Ver reporte completo →"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 235,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 230,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "overflow-x-auto", children: /* @__PURE__ */ jsxDEV("table", { className: "w-full text-left text-xs", children: [
+          /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { className: "border-b border-slate-200 text-[11px] uppercase text-slate-400 font-extrabold", children: [
+            /* @__PURE__ */ jsxDEV("th", { className: "pb-3", children: "Vía de Pago" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 247,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { className: "pb-3 text-right", children: "Recaudado" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 248,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { className: "pb-3 text-right", children: "Egresos" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 249,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { className: "pb-3 text-right", children: "Balance Neto" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 250,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 246,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 245,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("tbody", { className: "divide-y divide-slate-100 font-medium", children: summary?.balancePorFormaPago && summary.balancePorFormaPago.length > 0 ? summary.balancePorFormaPago.map(
+            (item, idx) => /* @__PURE__ */ jsxDEV("tr", { className: "hover:bg-slate-50 transition-colors", children: [
+              /* @__PURE__ */ jsxDEV("td", { className: "py-3 font-bold text-slate-800", children: item.formaDePago || "General" }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 257,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("td", { className: "py-3 text-right text-emerald-600 font-bold font-mono", children: formatCurrency(item.totalRecibos) }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 258,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("td", { className: "py-3 text-right text-rose-600 font-bold font-mono", children: formatCurrency(item.totalAutorizaciones) }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 259,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("td", { className: `py-3 text-right font-black font-mono ${item.balance >= 0 ? "text-slate-900" : "text-rose-600"}`, children: formatCurrency(item.balance) }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+                lineNumber: 260,
+                columnNumber: 23
+              }, this)
+            ] }, idx, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+              lineNumber: 256,
+              columnNumber: 17
+            }, this)
+          ) : /* @__PURE__ */ jsxDEV("tr", { children: /* @__PURE__ */ jsxDEV("td", { colSpan: 4, className: "py-8 text-center text-slate-400 italic", children: "No se registran movimientos en el período seleccionado." }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 267,
+            columnNumber: 21
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 266,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+            lineNumber: 253,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 244,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+          lineNumber: 243,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+        lineNumber: 229,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+      lineNumber: 187,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx",
+    lineNumber: 79,
+    columnNumber: 5
+  }, this);
+};
+_s(DashboardView, "Y5NgjOPzNMfff0IQvUuljPIkr4Y=", false, function() {
+  return [useDashboardSummary];
+});
+_c = DashboardView;
+var _c;
+$RefreshReg$(_c, "DashboardView");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/views/DashboardView.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBO0FBQUE7QUFBQSxpQkFtQkE7QUFBQSxhQTVCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBNkJBLEtBOUJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUErQkE7QUFBQSxXQTdDRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBOENBO0FBQUEsU0F4RkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQXlGQTtBQUFBLE9Bck1GO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FzTUE7QUFFSjtBQUFFbkMsR0E5T1dILGVBQTJDO0FBQUEsVUFDb0JELG1CQUFtQjtBQUFBO0FBQUEsS0FEbEZDO0FBQTJDLElBQUEyQztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJEb2xsYXJTaWduIiwiVHJlbmRpbmdVcCIsIlVzZXJzIiwiQ2hlY2tDaXJjbGUyIiwiQWxlcnRUcmlhbmdsZSIsIkNyZWRpdENhcmQiLCJQbHVzQ2lyY2xlIiwiQnVpbGRpbmcyIiwiTG9hZGVyMiIsIkFsZXJ0Q2lyY2xlIiwiUmVmcmVzaEN3IiwidXNlRGFzaGJvYXJkU3VtbWFyeSIsIkRhc2hib2FyZFZpZXciLCJwcm95ZWN0b0FjdGl2byIsIm9uTmF2aWdhdGUiLCJfcyIsImRhdGEiLCJzdW1tYXJ5IiwiaXNMb2FkaW5nIiwiaXNFcnJvciIsImVycm9yIiwiaXNGZXRjaGluZyIsInJlZmV0Y2giLCJpRF9Qcm95ZWN0byIsIm5vbWJyZVByb3llY3RvIiwiZm9ybWF0Q3VycmVuY3kiLCJ2YWwiLCJ0b0xvY2FsZVN0cmluZyIsIm1pbmltdW1GcmFjdGlvbkRpZ2l0cyIsIm1heGltdW1GcmFjdGlvbkRpZ2l0cyIsIm1lc3NhZ2UiLCJ0b3RhbFVuaWRhZGVzIiwiTnVtYmVyIiwidG90YWxVbmlkYWRlc0FjdGl2YXMiLCJ1bmlkYWRlc0FsRGlhIiwidW5pZGFkZXNDb25EZXVkYSIsImFsRGlhUGN0IiwiTWF0aCIsInJvdW5kIiwiY29uRGV1ZGFQY3QiLCJybmNQcm95ZWN0byIsImRpcmVjY2lvblByb3llY3RvIiwidG90YWxSZWNhdWRhZG9NZXMiLCJ0b3RhbERldWRhQ2FydGVyYSIsInRvdGFsRWdyZXNvc01lcyIsIndpZHRoIiwiYmFsYW5jZVBvckZvcm1hUGFnbyIsImxlbmd0aCIsIm1hcCIsIml0ZW0iLCJpZHgiLCJmb3JtYURlUGFnbyIsInRvdGFsUmVjaWJvcyIsInRvdGFsQXV0b3JpemFjaW9uZXMiLCJiYWxhbmNlIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiRGFzaGJvYXJkVmlldy50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtcclxuICBEb2xsYXJTaWduLFxyXG4gIFRyZW5kaW5nVXAsXHJcbiAgVXNlcnMsXHJcbiAgQ2hlY2tDaXJjbGUyLFxyXG4gIEFsZXJ0VHJpYW5nbGUsXHJcbiAgQ3JlZGl0Q2FyZCxcclxuICBQbHVzQ2lyY2xlLFxyXG4gIEJ1aWxkaW5nMixcclxuICBMb2FkZXIyLFxyXG4gIEFsZXJ0Q2lyY2xlLFxyXG4gIFJlZnJlc2hDdyxcclxufSBmcm9tICdsdWNpZGUtcmVhY3QnO1xyXG5pbXBvcnQgeyBQcm95ZWN0byB9IGZyb20gJy4uL3R5cGVzJztcclxuaW1wb3J0IHsgdXNlRGFzaGJvYXJkU3VtbWFyeSB9IGZyb20gJy4uL2hvb2tzL3F1ZXJpZXMvdXNlRGFzaGJvYXJkU3VtbWFyeSc7XHJcblxyXG5pbnRlcmZhY2UgRGFzaGJvYXJkVmlld1Byb3BzIHtcclxuICBwcm95ZWN0b0FjdGl2bzogUHJveWVjdG8gfCBudWxsO1xyXG4gIG9uTmF2aWdhdGU6ICh0YWI6IGFueSkgPT4gdm9pZDtcclxufVxyXG5cclxuZXhwb3J0IGNvbnN0IERhc2hib2FyZFZpZXc6IFJlYWN0LkZDPERhc2hib2FyZFZpZXdQcm9wcz4gPSAoeyBwcm95ZWN0b0FjdGl2bywgb25OYXZpZ2F0ZSB9KSA9PiB7XHJcbiAgY29uc3QgeyBkYXRhOiBzdW1tYXJ5LCBpc0xvYWRpbmcsIGlzRXJyb3IsIGVycm9yLCBpc0ZldGNoaW5nLCByZWZldGNoIH0gPSB1c2VEYXNoYm9hcmRTdW1tYXJ5KFxyXG4gICAgcHJveWVjdG9BY3Rpdm8/LmlEX1Byb3llY3RvLFxyXG4gICAgcHJveWVjdG9BY3Rpdm8/Lm5vbWJyZVByb3llY3RvXHJcbiAgKTtcclxuXHJcbiAgY29uc3QgZm9ybWF0Q3VycmVuY3kgPSAodmFsPzogbnVtYmVyKSA9PiB7XHJcbiAgICByZXR1cm4gYFJEJCAkeyh2YWwgfHwgMCkudG9Mb2NhbGVTdHJpbmcoJ2VzLURPJywgeyBtaW5pbXVtRnJhY3Rpb25EaWdpdHM6IDIsIG1heGltdW1GcmFjdGlvbkRpZ2l0czogMiB9KX1gO1xyXG4gIH07XHJcblxyXG4gIGlmIChpc0xvYWRpbmcpIHtcclxuICAgIHJldHVybiAoXHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaC05NiBmbGV4IGZsZXgtY29sIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciB0ZXh0LXNsYXRlLTQwMFwiPlxyXG4gICAgICAgIDxMb2FkZXIyIGNsYXNzTmFtZT1cInctOCBoLTggYW5pbWF0ZS1zcGluIHRleHQtaW5kaWdvLTYwMCBtYi0yXCIgLz5cclxuICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIGZvbnQtbWVkaXVtXCI+U2luY3Jvbml6YW5kbyBtw6l0cmljYXMgZmluYW5jaWVyYXMgZGVsIGNvbmRvbWluaW8uLi48L3A+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgKTtcclxuICB9XHJcblxyXG4gIGlmIChpc0Vycm9yKSB7XHJcbiAgICByZXR1cm4gKFxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtNiBiZy1yb3NlLTUwIGJvcmRlciBib3JkZXItcm9zZS0yMDAgcm91bmRlZC0yeGwgdGV4dC1yb3NlLTcwMCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTNcIj5cclxuICAgICAgICA8QWxlcnRDaXJjbGUgY2xhc3NOYW1lPVwidy02IGgtNiBzaHJpbmstMFwiIC8+XHJcbiAgICAgICAgPGRpdj5cclxuICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJmb250LWJvbGRcIj5FcnJvciBkZSBjb211bmljYWNpw7NuPC9oND5cclxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc21cIj57ZXJyb3I/Lm1lc3NhZ2UgfHwgJ05vIHNlIHB1ZGllcm9uIG9idGVuZXIgbGFzIG3DqXRyaWNhcyBkZWwgY29uZG9taW5pby4nfTwvcD5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICApO1xyXG4gIH1cclxuXHJcbiAgY29uc3QgdG90YWxVbmlkYWRlcyA9IE51bWJlcihzdW1tYXJ5Py50b3RhbFVuaWRhZGVzQWN0aXZhcyB8fCAwKTtcclxuICBjb25zdCB1bmlkYWRlc0FsRGlhID0gTnVtYmVyKHN1bW1hcnk/LnVuaWRhZGVzQWxEaWEgfHwgMCk7XHJcbiAgY29uc3QgdW5pZGFkZXNDb25EZXVkYSA9IE51bWJlcihzdW1tYXJ5Py51bmlkYWRlc0NvbkRldWRhIHx8IDApO1xyXG4gIGNvbnN0IGFsRGlhUGN0ID0gdG90YWxVbmlkYWRlcyA+IDAgPyBNYXRoLnJvdW5kKCh1bmlkYWRlc0FsRGlhIC8gdG90YWxVbmlkYWRlcykgKiAxMDApIDogMDtcclxuICBjb25zdCBjb25EZXVkYVBjdCA9IHRvdGFsVW5pZGFkZXMgPiAwID8gTWF0aC5yb3VuZCgodW5pZGFkZXNDb25EZXVkYSAvIHRvdGFsVW5pZGFkZXMpICogMTAwKSA6IDA7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNlwiPlxyXG4gICAgICB7LyogV2VsY29tZSBCYW5uZXIgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctWyMxRTNBOEFdIHJvdW5kZWQtMnhsIHAtNiB0ZXh0LXdoaXRlIHNoYWRvdy14bCBmbGV4IGZsZXgtY29sIG1kOmZsZXgtcm93IGp1c3RpZnktYmV0d2VlbiBpdGVtcy1zdGFydCBtZDppdGVtcy1jZW50ZXIgZ2FwLTQgYm9yZGVyIGJvcmRlci1bIzE3MjU1NF1cIj5cclxuICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJpbmxpbmUtZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yIHB4LTMgcHktMSBiZy1bIzE3MjU1NF0gYm9yZGVyIGJvcmRlci1ibHVlLTgwMCByb3VuZGVkLWZ1bGwgdGV4dC14cyBmb250LWJvbGQgdGV4dC1ibHVlLTIwMCBtYi0yXCI+XHJcbiAgICAgICAgICAgIDxCdWlsZGluZzIgY2xhc3NOYW1lPVwidy0zLjUgaC0zLjUgdGV4dC1ibHVlLTMwMFwiIC8+XHJcbiAgICAgICAgICAgIDxzcGFuPkNvbmRvbWluaW8gU2VsZWNjaW9uYWRvPC9zcGFuPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8aDIgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ibGFjayB0ZXh0LXdoaXRlIHRyYWNraW5nLXRpZ2h0XCI+e3Byb3llY3RvQWN0aXZvPy5ub21icmVQcm95ZWN0byB8fCAnVG9kb3MgbG9zIFByb3llY3Rvcyd9PC9oMj5cclxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtYmx1ZS0yMDAvODAgdGV4dC14cyBtdC0xIGZvbnQtbWVkaXVtXCI+Uk5DOiB7cHJveWVjdG9BY3Rpdm8/LnJuY1Byb3llY3RvIHx8ICdOL0EnfSAmYnVsbDsgRGlyZWNjacOzbjoge3Byb3llY3RvQWN0aXZvPy5kaXJlY2Npb25Qcm95ZWN0byB8fCAnTi9BJ308L3A+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0zXCI+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHJlZmV0Y2goKX1cclxuICAgICAgICAgICAgZGlzYWJsZWQ9e2lzRmV0Y2hpbmd9XHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTMuNSBweS0yLjUgYmctYmx1ZS05MDAvNjAgaG92ZXI6YmctYmx1ZS04MDAgdGV4dC13aGl0ZSByb3VuZGVkLXhsIHNoYWRvdy1zbSB0ZXh0LXhzIGZvbnQtYm9sZCB0cmFuc2l0aW9uLWFsbCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTEuNSBib3JkZXIgYm9yZGVyLWJsdWUtNzAwLzYwIGN1cnNvci1wb2ludGVyIGRpc2FibGVkOm9wYWNpdHktNTBcIlxyXG4gICAgICAgICAgICB0aXRsZT1cIlNpbmNyb25pemFyIG3DqXRyaWNhcyBjb24gZWwgc2Vydmlkb3JcIlxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICA8UmVmcmVzaEN3IGNsYXNzTmFtZT17YHctMy41IGgtMy41ICR7aXNGZXRjaGluZyA/ICdhbmltYXRlLXNwaW4nIDogJyd9YH0gLz5cclxuICAgICAgICAgICAgPHNwYW4+e2lzRmV0Y2hpbmcgPyAnU2luY3Jvbml6YW5kby4uLicgOiAnQWN0dWFsaXphcid9PC9zcGFuPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uTmF2aWdhdGUoJ2NhamEnKX1cclxuICAgICAgICAgICAgY2xhc3NOYW1lPVwicHgtNCBweS0yLjUgYmctWyMyNTYzRUJdIGhvdmVyOmJnLWJsdWUtNjAwIHRleHQtd2hpdGUgZm9udC1ibGFjayByb3VuZGVkLXhsIHNoYWRvdy1sZyBzaGFkb3ctYmx1ZS05MDAvNDAgdGV4dC14cyB0cmFuc2l0aW9uLWFsbCBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgY3Vyc29yLXBvaW50ZXIgcmluZy0xIHJpbmctYmx1ZS00MDAvNDBcIlxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICA8Q3JlZGl0Q2FyZCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cclxuICAgICAgICAgICAgPHNwYW4+Q29icmFyIEN1b3RhPC9zcGFuPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uTmF2aWdhdGUoJ2ZhY3R1cmFjaW9uJyl9XHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTQgcHktMi41IGJnLXdoaXRlIHRleHQtWyMxRTNBOEFdIGhvdmVyOmJnLXNsYXRlLTEwMCBmb250LWJsYWNrIHJvdW5kZWQteGwgc2hhZG93LW1kIHRleHQteHMgdHJhbnNpdGlvbi1hbGwgZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yIGN1cnNvci1wb2ludGVyXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgPFBsdXNDaXJjbGUgY2xhc3NOYW1lPVwidy00IGgtNCB0ZXh0LVsjMUUzQThBXVwiIC8+XHJcbiAgICAgICAgICAgIDxzcGFuPk51ZXZhIEZhY3R1cmE8L3NwYW4+XHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogS1BJIENhcmRzIEdyaWQgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMSBzbTpncmlkLWNvbHMtMiBsZzpncmlkLWNvbHMtNCBnYXAtNFwiPlxyXG4gICAgICAgIHsvKiBSZWNhdWRhZG8gRXN0ZSBNZXMgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBwLTUgcm91bmRlZC0yeGwgc2hhZG93LXhzIGhvdmVyOnNoYWRvdy1tZCB0cmFuc2l0aW9uLXNoYWRvd1wiPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gdGV4dC1zbGF0ZS01MDAgbWItM1wiPlxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LVsxMXB4XSBmb250LWV4dHJhYm9sZCB1cHBlcmNhc2UgdHJhY2tpbmctd2lkZXIgdGV4dC1zbGF0ZS00MDBcIj5SZWNhdWRhY2nDs24gKE1lcyk8L3NwYW4+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy05IGgtOSByb3VuZGVkLXhsIGJnLWVtZXJhbGQtNTAgdGV4dC1lbWVyYWxkLTYwMCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBib3JkZXIgYm9yZGVyLWVtZXJhbGQtMTAwXCI+XHJcbiAgICAgICAgICAgICAgPFRyZW5kaW5nVXAgY2xhc3NOYW1lPVwidy01IGgtNVwiIC8+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJsYWNrIHRleHQtc2xhdGUtOTAwIGxlYWRpbmctbm9uZSBtYi0xIGZvbnQtbW9ub1wiPlxyXG4gICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3koc3VtbWFyeT8udG90YWxSZWNhdWRhZG9NZXMpfVxyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWVtZXJhbGQtNjAwIGZvbnQtYm9sZCBmbGV4IGl0ZW1zLWNlbnRlclwiPlxyXG4gICAgICAgICAgICA8Q2hlY2tDaXJjbGUyIGNsYXNzTmFtZT1cInctMy41IGgtMy41IG1yLTFcIiAvPlxyXG4gICAgICAgICAgICBJbmdyZXNvcyBjb2JyYWRvc1xyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogRGV1ZGEgVG90YWwgZW4gQ2FydGVyYSAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIHAtNSByb3VuZGVkLTJ4bCBzaGFkb3cteHMgaG92ZXI6c2hhZG93LW1kIHRyYW5zaXRpb24tc2hhZG93XCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiB0ZXh0LXNsYXRlLTUwMCBtYi0zXCI+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzExcHhdIGZvbnQtZXh0cmFib2xkIHVwcGVyY2FzZSB0cmFja2luZy13aWRlciB0ZXh0LXNsYXRlLTQwMFwiPkNhcnRlcmEgUGVuZGllbnRlPC9zcGFuPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInctOSBoLTkgcm91bmRlZC14bCBiZy1yb3NlLTUwIHRleHQtcm9zZS02MDAgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgYm9yZGVyIGJvcmRlci1yb3NlLTEwMFwiPlxyXG4gICAgICAgICAgICAgIDxBbGVydFRyaWFuZ2xlIGNsYXNzTmFtZT1cInctNSBoLTVcIiAvPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ibGFjayB0ZXh0LXJvc2UtNjAwIGxlYWRpbmctbm9uZSBtYi0xIGZvbnQtbW9ub1wiPlxyXG4gICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3koc3VtbWFyeT8udG90YWxEZXVkYUNhcnRlcmEpfVxyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LXJvc2UtNjAwIGZvbnQtYm9sZCBmbGV4IGl0ZW1zLWNlbnRlclwiPlxyXG4gICAgICAgICAgICA8QWxlcnRUcmlhbmdsZSBjbGFzc05hbWU9XCJ3LTMuNSBoLTMuNSBtci0xXCIgLz5cclxuICAgICAgICAgICAgVG90YWwgcG9yIGNvYnJhclxyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogVG90YWwgRWdyZXNvcyAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIHAtNSByb3VuZGVkLTJ4bCBzaGFkb3cteHMgaG92ZXI6c2hhZG93LW1kIHRyYW5zaXRpb24tc2hhZG93XCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiB0ZXh0LXNsYXRlLTUwMCBtYi0zXCI+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzExcHhdIGZvbnQtZXh0cmFib2xkIHVwcGVyY2FzZSB0cmFja2luZy13aWRlciB0ZXh0LXNsYXRlLTQwMFwiPkVncmVzb3MgLyBHYXN0b3M8L3NwYW4+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy05IGgtOSByb3VuZGVkLXhsIGJnLWFtYmVyLTUwIHRleHQtYW1iZXItNjAwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIGJvcmRlciBib3JkZXItYW1iZXItMTAwXCI+XHJcbiAgICAgICAgICAgICAgPERvbGxhclNpZ24gY2xhc3NOYW1lPVwidy01IGgtNVwiIC8+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJsYWNrIHRleHQtc2xhdGUtOTAwIGxlYWRpbmctbm9uZSBtYi0xIGZvbnQtbW9ub1wiPlxyXG4gICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3koc3VtbWFyeT8udG90YWxFZ3Jlc29zTWVzKX1cclxuICAgICAgICAgIDwvcD5cclxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1zbGF0ZS01MDAgZm9udC1zZW1pYm9sZFwiPkF1dG9yaXphY2lvbmVzIGFwcm9iYWRhczwvcD5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIFRvdGFsIFVuaWRhZGVzICovfVxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1zbGF0ZS0yMDAgcC01IHJvdW5kZWQtMnhsIHNoYWRvdy14cyBob3ZlcjpzaGFkb3ctbWQgdHJhbnNpdGlvbi1zaGFkb3dcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIHRleHQtc2xhdGUtNTAwIG1iLTNcIj5cclxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1bMTFweF0gZm9udC1leHRyYWJvbGQgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVyIHRleHQtc2xhdGUtNDAwXCI+VG90YWwgVW5pZGFkZXM8L3NwYW4+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy05IGgtOSByb3VuZGVkLXhsIGJnLWJsdWUtNTAgdGV4dC1bIzFFM0E4QV0gZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgYm9yZGVyIGJvcmRlci1ibHVlLTEwMFwiPlxyXG4gICAgICAgICAgICAgIDxVc2VycyBjbGFzc05hbWU9XCJ3LTUgaC01XCIgLz5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtMnhsIGZvbnQtYmxhY2sgdGV4dC1zbGF0ZS05MDAgbGVhZGluZy1ub25lIG1iLTEgZm9udC1tb25vXCI+XHJcbiAgICAgICAgICAgIHt0b3RhbFVuaWRhZGVzfVxyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LXNsYXRlLTUwMCBmb250LXNlbWlib2xkXCI+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZW1lcmFsZC02MDAgZm9udC1ibGFja1wiPnt1bmlkYWRlc0FsRGlhfSBBbCBEw61hPC9zcGFuPiAmYnVsbDt7JyAnfVxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LXJvc2UtNjAwIGZvbnQtYmxhY2tcIj57dW5pZGFkZXNDb25EZXVkYX0gQ29uIE1vcmE8L3NwYW4+XHJcbiAgICAgICAgICA8L3A+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgey8qIEJyZWFrZG93biBTZWN0aW9uICovfVxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTEgbGc6Z3JpZC1jb2xzLTMgZ2FwLTZcIj5cclxuICAgICAgICB7LyogQ29tcGxpYW5jZSBQcm9ncmVzcyBCYXIgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCByb3VuZGVkLTJ4bCBwLTYgc2hhZG93LXhzIGZsZXggZmxleC1jb2wganVzdGlmeS1iZXR3ZWVuXCI+XHJcbiAgICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC1iYXNlIGZvbnQtZXh0cmFib2xkIHRleHQtc2xhdGUtOTAwIG1iLTAuNVwiPkVzdGFkbyBkZSBsYSBDYXJ0ZXJhPC9oMz5cclxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LXNsYXRlLTUwMCBtYi02XCI+RGlzdHJpYnVjacOzbiBkZSBjb25kw7NtaW5vcyBhbCBkw61hIHZzIG1vcm9zb3M8L3A+XHJcblxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNFwiPlxyXG4gICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuIHRleHQteHMgZm9udC1ib2xkIG1iLTEuNVwiPlxyXG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWVtZXJhbGQtNjAwXCI+QWwgRMOtYSAoe3VuaWRhZGVzQWxEaWF9IHVuaWRhZGVzKTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1tb25vXCI+e2FsRGlhUGN0fSU8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy1mdWxsIGJnLXNsYXRlLTEwMCBoLTMgcm91bmRlZC1mdWxsIG92ZXJmbG93LWhpZGRlblwiPlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLWVtZXJhbGQtNTAwIGgtZnVsbCByb3VuZGVkLWZ1bGwgdHJhbnNpdGlvbi1hbGwgZHVyYXRpb24tMTAwMFwiIHN0eWxlPXt7IHdpZHRoOiBgJHthbERpYVBjdH0lYCB9fSAvPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuIHRleHQteHMgZm9udC1ib2xkIG1iLTEuNVwiPlxyXG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LXJvc2UtNjAwXCI+Q29uIERldWRhICh7dW5pZGFkZXNDb25EZXVkYX0gdW5pZGFkZXMpPC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LW1vbm9cIj57Y29uRGV1ZGFQY3R9JTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3LWZ1bGwgYmctc2xhdGUtMTAwIGgtMyByb3VuZGVkLWZ1bGwgb3ZlcmZsb3ctaGlkZGVuXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctcm9zZS01MDAgaC1mdWxsIHJvdW5kZWQtZnVsbCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0xMDAwXCIgc3R5bGU9e3sgd2lkdGg6IGAke2NvbkRldWRhUGN0fSVgIH19IC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm10LTggcHQtNCBib3JkZXItdCBib3JkZXItc2xhdGUtMTAwIGZsZXgganVzdGlmeS1iZXR3ZWVuXCI+XHJcbiAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCdjbGllbnRlcycpfVxyXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInRleHQteHMgZm9udC1ibGFjayB0ZXh0LVsjMUUzQThBXSBob3Zlcjp0ZXh0LVsjMjU2M0VCXSBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTEgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbi1jb2xvcnNcIlxyXG4gICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgPHNwYW4+VmVyIHRvZGFzIGxhcyB1bmlkYWRlczwvc3Bhbj5cclxuICAgICAgICAgICAgICA8c3Bhbj4mcmFycjs8L3NwYW4+XHJcbiAgICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIHsvKiBCYWxhbmNlIHBvciBWw61hIGRlIFBhZ28gKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJsZzpjb2wtc3Bhbi0yIGJnLXdoaXRlIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIHJvdW5kZWQtMnhsIHAtNiBzaGFkb3cteHNcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIG1iLTZcIj5cclxuICAgICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC1iYXNlIGZvbnQtZXh0cmFib2xkIHRleHQtc2xhdGUtOTAwIG1iLTAuNVwiPkJhbGFuY2UgUsOhcGlkbyBwb3IgVsOtYSBkZSBQYWdvPC9oMz5cclxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtc2xhdGUtNTAwXCI+w5psdGltb3MgMzAgZMOtYXMgZGUgcmVjYXVkYWNpw7NuIHkgZGVzZW1ib2xzb3M8L3A+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgncmVwb3J0ZXMnKX1cclxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ0ZXh0LXhzIGZvbnQtYmxhY2sgdGV4dC1bIzFFM0E4QV0gaG92ZXI6dGV4dC1bIzI1NjNFQl0gY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbi1jb2xvcnNcIlxyXG4gICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgVmVyIHJlcG9ydGUgY29tcGxldG8gJnJhcnI7XHJcbiAgICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJvdmVyZmxvdy14LWF1dG9cIj5cclxuICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInctZnVsbCB0ZXh0LWxlZnQgdGV4dC14c1wiPlxyXG4gICAgICAgICAgICAgIDx0aGVhZD5cclxuICAgICAgICAgICAgICAgIDx0ciBjbGFzc05hbWU9XCJib3JkZXItYiBib3JkZXItc2xhdGUtMjAwIHRleHQtWzExcHhdIHVwcGVyY2FzZSB0ZXh0LXNsYXRlLTQwMCBmb250LWV4dHJhYm9sZFwiPlxyXG4gICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwicGItM1wiPlbDrWEgZGUgUGFnbzwvdGg+XHJcbiAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJwYi0zIHRleHQtcmlnaHRcIj5SZWNhdWRhZG88L3RoPlxyXG4gICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwicGItMyB0ZXh0LXJpZ2h0XCI+RWdyZXNvczwvdGg+XHJcbiAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJwYi0zIHRleHQtcmlnaHRcIj5CYWxhbmNlIE5ldG88L3RoPlxyXG4gICAgICAgICAgICAgICAgPC90cj5cclxuICAgICAgICAgICAgICA8L3RoZWFkPlxyXG4gICAgICAgICAgICAgIDx0Ym9keSBjbGFzc05hbWU9XCJkaXZpZGUteSBkaXZpZGUtc2xhdGUtMTAwIGZvbnQtbWVkaXVtXCI+XHJcbiAgICAgICAgICAgICAgICB7c3VtbWFyeT8uYmFsYW5jZVBvckZvcm1hUGFnbyAmJiBzdW1tYXJ5LmJhbGFuY2VQb3JGb3JtYVBhZ28ubGVuZ3RoID4gMCA/IChcclxuICAgICAgICAgICAgICAgICAgc3VtbWFyeS5iYWxhbmNlUG9yRm9ybWFQYWdvLm1hcCgoaXRlbSwgaWR4KSA9PiAoXHJcbiAgICAgICAgICAgICAgICAgICAgPHRyIGtleT17aWR4fSBjbGFzc05hbWU9XCJob3ZlcjpiZy1zbGF0ZS01MCB0cmFuc2l0aW9uLWNvbG9yc1wiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cInB5LTMgZm9udC1ib2xkIHRleHQtc2xhdGUtODAwXCI+e2l0ZW0uZm9ybWFEZVBhZ28gfHwgJ0dlbmVyYWwnfTwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwicHktMyB0ZXh0LXJpZ2h0IHRleHQtZW1lcmFsZC02MDAgZm9udC1ib2xkIGZvbnQtbW9ub1wiPntmb3JtYXRDdXJyZW5jeShpdGVtLnRvdGFsUmVjaWJvcyl9PC90ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJweS0zIHRleHQtcmlnaHQgdGV4dC1yb3NlLTYwMCBmb250LWJvbGQgZm9udC1tb25vXCI+e2Zvcm1hdEN1cnJlbmN5KGl0ZW0udG90YWxBdXRvcml6YWNpb25lcyl9PC90ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9e2BweS0zIHRleHQtcmlnaHQgZm9udC1ibGFjayBmb250LW1vbm8gJHtpdGVtLmJhbGFuY2UgPj0gMCA/ICd0ZXh0LXNsYXRlLTkwMCcgOiAndGV4dC1yb3NlLTYwMCd9YH0+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtmb3JtYXRDdXJyZW5jeShpdGVtLmJhbGFuY2UpfVxyXG4gICAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICAgICApKVxyXG4gICAgICAgICAgICAgICAgKSA6IChcclxuICAgICAgICAgICAgICAgICAgPHRyPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZCBjb2xTcGFuPXs0fSBjbGFzc05hbWU9XCJweS04IHRleHQtY2VudGVyIHRleHQtc2xhdGUtNDAwIGl0YWxpY1wiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgTm8gc2UgcmVnaXN0cmFuIG1vdmltaWVudG9zIGVuIGVsIHBlcsOtb2RvIHNlbGVjY2lvbmFkby5cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgICA8L3Rib2R5PlxyXG4gICAgICAgICAgICA8L3RhYmxlPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9FU1RFQi9PbmVEcml2ZS9Eb2N1bWVudHMvUE9SVEFGT1JaQS9XZWIgQXBwL0FkbWluU29mdFBGLldlYi9BZG1pblNvZnRQRi5XZWJVSS9zcmMvdmlld3MvRGFzaGJvYXJkVmlldy50c3gifQ==

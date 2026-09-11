@@ -1,0 +1,184 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/DuplicateTabModal.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3ea76504"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { AlertOctagon, AppWindow, ArrowRight, LogOut } from "/node_modules/.vite/deps/lucide-react.js?v=3ea76504";
+export const DuplicateTabModal = ({
+  isOpen,
+  onClaimTab,
+  onLogout,
+  userName = "Usuario"
+}) => {
+  if (!isOpen) return null;
+  return /* @__PURE__ */ jsxDEV("div", { className: "fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300", children: /* @__PURE__ */ jsxDEV("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-6 md:p-8 shadow-2xl text-center space-y-5 animate-in zoom-in-95 duration-200", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "mx-auto w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-inner", children: /* @__PURE__ */ jsxDEV(AlertOctagon, { className: "w-8 h-8 animate-pulse" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+      lineNumber: 44,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+      lineNumber: 43,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { children: [
+      /* @__PURE__ */ jsxDEV("span", { className: "inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 mb-2", children: "Control de Sesión Única" }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+        lineNumber: 49,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("h2", { className: "text-xl font-black text-slate-900 dark:text-white", children: "Sesión activa en otra ventana" }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+        lineNumber: 52,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed", children: [
+        "Hola ",
+        /* @__PURE__ */ jsxDEV("span", { className: "font-bold text-slate-700 dark:text-slate-200", children: userName }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+          lineNumber: 56,
+          columnNumber: 18
+        }, this),
+        ", por motivos de seguridad e integridad de transacciones, solo puedes tener ",
+        /* @__PURE__ */ jsxDEV("strong", { className: "text-slate-800 dark:text-slate-100", children: "una sola ventana activa" }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+          lineNumber: 56,
+          columnNumber: 174
+        }, this),
+        " a la vez."
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+        lineNumber: 55,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+      lineNumber: 48,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200/80 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 flex items-center space-x-3 text-left", children: [
+      /* @__PURE__ */ jsxDEV(AppWindow, { className: "w-5 h-5 text-indigo-600 shrink-0" }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+        lineNumber: 61,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { children: [
+        "Para reanudar tu trabajo aquí, haz clic en ",
+        /* @__PURE__ */ jsxDEV("strong", { children: '"Usar en esta ventana"' }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+          lineNumber: 62,
+          columnNumber: 60
+        }, this),
+        " o cierra esta pestaña."
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+        lineNumber: 62,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+      lineNumber: 60,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "pt-2 flex flex-col sm:flex-row gap-3", children: [
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          onClick: onClaimTab,
+          className: "flex-1 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-600/20 transition-all flex items-center justify-center space-x-2 cursor-pointer",
+          children: [
+            /* @__PURE__ */ jsxDEV("span", { children: "Usar en esta ventana" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+              lineNumber: 72,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ jsxDEV(ArrowRight, { className: "w-4 h-4" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+              lineNumber: 73,
+              columnNumber: 13
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+          lineNumber: 67,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          onClick: onLogout,
+          className: "px-4 py-3 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer",
+          children: [
+            /* @__PURE__ */ jsxDEV(LogOut, { className: "w-4 h-4" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+              lineNumber: 80,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Cerrar Sesión" }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+              lineNumber: 81,
+              columnNumber: 13
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+          lineNumber: 75,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+      lineNumber: 66,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+    lineNumber: 40,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx",
+    lineNumber: 39,
+    columnNumber: 5
+  }, this);
+};
+_c = DuplicateTabModal;
+var _c;
+$RefreshReg$(_c, "DuplicateTabModal");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/DuplicateTabModal.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBd0JVOzs7Ozs7Ozs7Ozs7Ozs7O0FBdkJWLFNBQVNBLGNBQWNDLFdBQVdDLFlBQVlDLGNBQWM7QUFTckQsYUFBTUMsb0JBQXNEQSxDQUFDO0FBQUEsRUFDbEVDO0FBQUFBLEVBQ0FDO0FBQUFBLEVBQ0FDO0FBQUFBLEVBQ0FDLFdBQVc7QUFDYixNQUFNO0FBQ0osTUFBSSxDQUFDSCxPQUFRLFFBQU87QUFFcEIsU0FDRSx1QkFBQyxTQUFJLFdBQVUsNEhBQ2IsaUNBQUMsU0FBSSxXQUFVLHVMQUdiO0FBQUEsMkJBQUMsU0FBSSxXQUFVLGtNQUNiLGlDQUFDLGdCQUFhLFdBQVUsMkJBQXhCO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FBK0MsS0FEakQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUVBO0FBQUEsSUFHQSx1QkFBQyxTQUNDO0FBQUEsNkJBQUMsVUFBSyxXQUFVLCtMQUE4TCx1Q0FBOU07QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUVBO0FBQUEsTUFDQSx1QkFBQyxRQUFHLFdBQVUscURBQW9ELDZDQUFsRTtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBRUE7QUFBQSxNQUNBLHVCQUFDLE9BQUUsV0FBVSxtRUFBa0U7QUFBQTtBQUFBLFFBQ3hFLHVCQUFDLFVBQUssV0FBVSxnREFBZ0RHLHNCQUFoRTtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQXlFO0FBQUEsUUFBTztBQUFBLFFBQTRFLHVCQUFDLFlBQU8sV0FBVSxzQ0FBcUMsdUNBQXZEO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBOEU7QUFBQSxRQUFTO0FBQUEsV0FEMVA7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUVBO0FBQUEsU0FURjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBVUE7QUFBQSxJQUVBLHVCQUFDLFNBQUksV0FBVSxzTEFDYjtBQUFBLDZCQUFDLGFBQVUsV0FBVSxzQ0FBckI7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUF1RDtBQUFBLE1BQ3ZELHVCQUFDLFVBQUs7QUFBQTtBQUFBLFFBQTJDLHVCQUFDLFlBQU8sc0NBQVI7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUE4QjtBQUFBLFFBQVM7QUFBQSxXQUF4RjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQStHO0FBQUEsU0FGakg7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUdBO0FBQUEsSUFHQSx1QkFBQyxTQUFJLFdBQVUsd0NBQ2I7QUFBQTtBQUFBLFFBQUM7QUFBQTtBQUFBLFVBQ0MsTUFBSztBQUFBLFVBQ0wsU0FBU0Y7QUFBQUEsVUFDVCxXQUFVO0FBQUEsVUFFVjtBQUFBLG1DQUFDLFVBQUssb0NBQU47QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBMEI7QUFBQSxZQUMxQix1QkFBQyxjQUFXLFdBQVUsYUFBdEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBK0I7QUFBQTtBQUFBO0FBQUEsUUFOakM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE1BT0E7QUFBQSxNQUNBO0FBQUEsUUFBQztBQUFBO0FBQUEsVUFDQyxNQUFLO0FBQUEsVUFDTCxTQUFTQztBQUFBQSxVQUNULFdBQVU7QUFBQSxVQUVWO0FBQUEsbUNBQUMsVUFBTyxXQUFVLGFBQWxCO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQTJCO0FBQUEsWUFDM0IsdUJBQUMsVUFBSyw2QkFBTjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUFtQjtBQUFBO0FBQUE7QUFBQSxRQU5yQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFPQTtBQUFBLFNBaEJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FpQkE7QUFBQSxPQTNDRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBNkNBLEtBOUNGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0ErQ0E7QUFFSjtBQUFFRSxLQTFEV0w7QUFBbUQsSUFBQUs7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiQWxlcnRPY3RhZ29uIiwiQXBwV2luZG93IiwiQXJyb3dSaWdodCIsIkxvZ091dCIsIkR1cGxpY2F0ZVRhYk1vZGFsIiwiaXNPcGVuIiwib25DbGFpbVRhYiIsIm9uTG9nb3V0IiwidXNlck5hbWUiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJEdXBsaWNhdGVUYWJNb2RhbC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgQWxlcnRPY3RhZ29uLCBBcHBXaW5kb3csIEFycm93UmlnaHQsIExvZ091dCB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcblxyXG5pbnRlcmZhY2UgRHVwbGljYXRlVGFiTW9kYWxQcm9wcyB7XHJcbiAgaXNPcGVuOiBib29sZWFuO1xyXG4gIG9uQ2xhaW1UYWI6ICgpID0+IHZvaWQ7XHJcbiAgb25Mb2dvdXQ6ICgpID0+IHZvaWQ7XHJcbiAgdXNlck5hbWU/OiBzdHJpbmc7XHJcbn1cclxuXHJcbmV4cG9ydCBjb25zdCBEdXBsaWNhdGVUYWJNb2RhbDogUmVhY3QuRkM8RHVwbGljYXRlVGFiTW9kYWxQcm9wcz4gPSAoe1xyXG4gIGlzT3BlbixcclxuICBvbkNsYWltVGFiLFxyXG4gIG9uTG9nb3V0LFxyXG4gIHVzZXJOYW1lID0gJ1VzdWFyaW8nXHJcbn0pID0+IHtcclxuICBpZiAoIWlzT3BlbikgcmV0dXJuIG51bGw7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImZpeGVkIGluc2V0LTAgei01MCBiZy1zbGF0ZS05MDAvODAgYmFja2Ryb3AtYmx1ci1tZCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBwLTQgYW5pbWF0ZS1pbiBmYWRlLWluIGR1cmF0aW9uLTMwMFwiPlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGRhcms6Ymctc2xhdGUtOTAwIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIGRhcms6Ym9yZGVyLXNsYXRlLTgwMCByb3VuZGVkLTN4bCBtYXgtdy1tZCB3LWZ1bGwgcC02IG1kOnAtOCBzaGFkb3ctMnhsIHRleHQtY2VudGVyIHNwYWNlLXktNSBhbmltYXRlLWluIHpvb20taW4tOTUgZHVyYXRpb24tMjAwXCI+XHJcbiAgICAgICAgXHJcbiAgICAgICAgey8qIEljb24gJiBCYWRnZSAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm14LWF1dG8gdy0xNiBoLTE2IHJvdW5kZWQtMnhsIGJnLWFtYmVyLTEwMCBkYXJrOmJnLWFtYmVyLTk1MC82MCBib3JkZXIgYm9yZGVyLWFtYmVyLTIwMCBkYXJrOmJvcmRlci1hbWJlci04MDAgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgdGV4dC1hbWJlci02MDAgZGFyazp0ZXh0LWFtYmVyLTQwMCBzaGFkb3ctaW5uZXJcIj5cclxuICAgICAgICAgIDxBbGVydE9jdGFnb24gY2xhc3NOYW1lPVwidy04IGgtOCBhbmltYXRlLXB1bHNlXCIgLz5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIFRpdGxlIGFuZCBtZXNzYWdlICovfVxyXG4gICAgICAgIDxkaXY+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJpbmxpbmUtZmxleCBpdGVtcy1jZW50ZXIgcHgtMyBweS0xIHJvdW5kZWQtZnVsbCB0ZXh0LXhzIGZvbnQtYm9sZCBiZy1hbWJlci01MCBkYXJrOmJnLWFtYmVyLTk1MC80MCB0ZXh0LWFtYmVyLTcwMCBkYXJrOnRleHQtYW1iZXItMzAwIGJvcmRlciBib3JkZXItYW1iZXItMjAwIGRhcms6Ym9yZGVyLWFtYmVyLTgwMC82MCBtYi0yXCI+XHJcbiAgICAgICAgICAgIENvbnRyb2wgZGUgU2VzacOzbiDDmm5pY2FcclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0ZXh0LXhsIGZvbnQtYmxhY2sgdGV4dC1zbGF0ZS05MDAgZGFyazp0ZXh0LXdoaXRlXCI+XHJcbiAgICAgICAgICAgIFNlc2nDs24gYWN0aXZhIGVuIG90cmEgdmVudGFuYVxyXG4gICAgICAgICAgPC9oMj5cclxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1zbGF0ZS01MDAgZGFyazp0ZXh0LXNsYXRlLTQwMCBtdC0yIGxlYWRpbmctcmVsYXhlZFwiPlxyXG4gICAgICAgICAgICBIb2xhIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LXNsYXRlLTcwMCBkYXJrOnRleHQtc2xhdGUtMjAwXCI+e3VzZXJOYW1lfTwvc3Bhbj4sIHBvciBtb3Rpdm9zIGRlIHNlZ3VyaWRhZCBlIGludGVncmlkYWQgZGUgdHJhbnNhY2Npb25lcywgc29sbyBwdWVkZXMgdGVuZXIgPHN0cm9uZyBjbGFzc05hbWU9XCJ0ZXh0LXNsYXRlLTgwMCBkYXJrOnRleHQtc2xhdGUtMTAwXCI+dW5hIHNvbGEgdmVudGFuYSBhY3RpdmE8L3N0cm9uZz4gYSBsYSB2ZXouXHJcbiAgICAgICAgICA8L3A+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IGJnLXNsYXRlLTUwIGRhcms6Ymctc2xhdGUtODAwLzUwIHJvdW5kZWQtMnhsIGJvcmRlciBib3JkZXItc2xhdGUtMjAwLzgwIGRhcms6Ym9yZGVyLXNsYXRlLTgwMCB0ZXh0LXhzIHRleHQtc2xhdGUtNjAwIGRhcms6dGV4dC1zbGF0ZS0zMDAgZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0zIHRleHQtbGVmdFwiPlxyXG4gICAgICAgICAgPEFwcFdpbmRvdyBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtaW5kaWdvLTYwMCBzaHJpbmstMFwiIC8+XHJcbiAgICAgICAgICA8c3Bhbj5QYXJhIHJlYW51ZGFyIHR1IHRyYWJham8gYXF1w60sIGhheiBjbGljIGVuIDxzdHJvbmc+XCJVc2FyIGVuIGVzdGEgdmVudGFuYVwiPC9zdHJvbmc+IG8gY2llcnJhIGVzdGEgcGVzdGHDsWEuPC9zcGFuPlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogQWN0aW9ucyAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInB0LTIgZmxleCBmbGV4LWNvbCBzbTpmbGV4LXJvdyBnYXAtM1wiPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgb25DbGljaz17b25DbGFpbVRhYn1cclxuICAgICAgICAgICAgY2xhc3NOYW1lPVwiZmxleC0xIHB4LTQgcHktMyBiZy1pbmRpZ28tNjAwIGhvdmVyOmJnLWluZGlnby03MDAgYWN0aXZlOnNjYWxlLTk1IHRleHQtd2hpdGUgZm9udC1ib2xkIHRleHQteHMgcm91bmRlZC14bCBzaGFkb3ctbGcgc2hhZG93LWluZGlnby02MDAvMjAgdHJhbnNpdGlvbi1hbGwgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgc3BhY2UteC0yIGN1cnNvci1wb2ludGVyXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgPHNwYW4+VXNhciBlbiBlc3RhIHZlbnRhbmE8L3NwYW4+XHJcbiAgICAgICAgICAgIDxBcnJvd1JpZ2h0IGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICBvbkNsaWNrPXtvbkxvZ291dH1cclxuICAgICAgICAgICAgY2xhc3NOYW1lPVwicHgtNCBweS0zIGJvcmRlciBib3JkZXItc2xhdGUtMjAwIGRhcms6Ym9yZGVyLXNsYXRlLTcwMCBob3ZlcjpiZy1zbGF0ZS0xMDAgZGFyazpob3ZlcjpiZy1zbGF0ZS04MDAgdGV4dC1zbGF0ZS02MDAgZGFyazp0ZXh0LXNsYXRlLTMwMCBmb250LWJvbGQgdGV4dC14cyByb3VuZGVkLXhsIHRyYW5zaXRpb24tYWxsIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHNwYWNlLXgtMS41IGN1cnNvci1wb2ludGVyXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgPExvZ091dCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cclxuICAgICAgICAgICAgPHNwYW4+Q2VycmFyIFNlc2nDs248L3NwYW4+XHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9FU1RFQi9PbmVEcml2ZS9Eb2N1bWVudHMvUE9SVEFGT1JaQS9XZWIgQXBwL0FkbWluU29mdFBGLldlYi9BZG1pblNvZnRQRi5XZWJVSS9zcmMvY29tcG9uZW50cy9EdXBsaWNhdGVUYWJNb2RhbC50c3gifQ==

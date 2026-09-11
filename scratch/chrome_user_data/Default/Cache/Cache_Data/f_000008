@@ -1,0 +1,251 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/Sidebar.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3ea76504"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import {
+  LayoutDashboard,
+  Users,
+  CreditCard,
+  FileText,
+  DollarSign,
+  BarChart3,
+  Sliders,
+  ShieldCheck
+} from "/node_modules/.vite/deps/lucide-react.js?v=3ea76504";
+import { APP_CONFIG } from "/src/config/appConfig.ts";
+export const Sidebar = ({ currentTab, onSelectTab, userRole = "" }) => {
+  const roleStr = String(userRole || "").toLowerCase();
+  const isAdmin = roleStr.includes("admin") || roleStr.includes("s administrador");
+  const navItems = [
+    { id: "dashboard", label: "Dashboard", icon: /* @__PURE__ */ jsxDEV(LayoutDashboard, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 46,
+      columnNumber: 48
+    }, this) },
+    { id: "clientes", label: "Unidades y Clientes", icon: /* @__PURE__ */ jsxDEV(Users, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 47,
+      columnNumber: 57
+    }, this) },
+    { id: "caja", label: "Caja y Cobranzas", icon: /* @__PURE__ */ jsxDEV(CreditCard, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 48,
+      columnNumber: 50
+    }, this) },
+    { id: "facturacion", label: "Facturación", icon: /* @__PURE__ */ jsxDEV(FileText, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 49,
+      columnNumber: 52
+    }, this) },
+    { id: "egresos", label: "Egresos y Pagos", icon: /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 50,
+      columnNumber: 52
+    }, this) },
+    { id: "reportes", label: "Reportes y Balances", icon: /* @__PURE__ */ jsxDEV(BarChart3, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 51,
+      columnNumber: 57
+    }, this) },
+    { id: "catalogos", label: "Catálogos / Proyectos", icon: /* @__PURE__ */ jsxDEV(Sliders, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 52,
+      columnNumber: 60
+    }, this), adminOnly: true },
+    { id: "usuarios", label: "Usuarios y Roles", icon: /* @__PURE__ */ jsxDEV(ShieldCheck, { className: "w-4 h-4" }, void 0, false, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 53,
+      columnNumber: 54
+    }, this), adminOnly: true }
+  ];
+  return /* @__PURE__ */ jsxDEV("aside", { className: "w-60 bg-[#161617] text-slate-100 flex flex-col justify-between py-4 px-3 shrink-0 shadow-xl border-r border-white/[0.08] z-20 font-sans select-none", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "space-y-3", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "px-2 pt-1 pb-3.5 border-b border-white/[0.08] flex items-center space-x-3", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "w-9 h-9 rounded-xl bg-gradient-to-b from-[#2c2c2e] to-[#1c1c1e] border border-white/[0.14] flex items-center justify-center shadow-md text-white font-bold text-xs tracking-wider shrink-0", children: APP_CONFIG.shortName }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+          lineNumber: 61,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "min-w-0", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-1.5", children: [
+            /* @__PURE__ */ jsxDEV("h1", { className: "font-semibold text-xs text-white tracking-tight leading-none truncate", children: [
+              APP_CONFIG.prefix,
+              /* @__PURE__ */ jsxDEV("span", { className: "text-[#2997ff]", children: APP_CONFIG.suffix }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+                lineNumber: 67,
+                columnNumber: 36
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+              lineNumber: 66,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "bg-white/[0.08] text-neutral-300 text-[9px] font-medium px-1.5 py-0.5 rounded-full border border-white/[0.1] leading-none shrink-0", children: APP_CONFIG.versionBadge }, void 0, false, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+              lineNumber: 69,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+            lineNumber: 65,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-[9px] text-neutral-400 font-normal mt-0.5 truncate", children: APP_CONFIG.tagline }, void 0, false, {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+            lineNumber: 73,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+          lineNumber: 64,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+        lineNumber: 60,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "space-y-1", children: navItems.filter((item) => !item.adminOnly || isAdmin).map((item) => {
+        const isActive = currentTab === item.id;
+        return /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            onClick: (e) => {
+              e.currentTarget.blur();
+              onSelectTab(item.id);
+            },
+            className: `w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium cursor-pointer outline-none focus:outline-none focus:ring-0 focus-visible:outline-none transition-colors duration-150 ${isActive ? "bg-[#2c2c2e] text-white font-semibold shadow-xs" : "text-neutral-400 hover:bg-white/[0.06] hover:text-white"}`,
+            children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-2.5", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: isActive ? "text-[#2997ff]" : "text-neutral-400", children: item.icon }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+                lineNumber: 98,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: item.label }, void 0, false, {
+                fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+                lineNumber: 99,
+                columnNumber: 21
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+              lineNumber: 97,
+              columnNumber: 19
+            }, this)
+          },
+          item.id,
+          false,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+            lineNumber: 84,
+            columnNumber: 15
+          },
+          this
+        );
+      }) }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+        lineNumber: 78,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 58,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-[#1c1c1e] rounded-2xl border border-white/[0.08] text-xs text-neutral-300 shadow-xs", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "w-2 h-2 rounded-full bg-[#34c759]" }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+          lineNumber: 109,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "font-semibold text-white text-[11px]", children: [
+          APP_CONFIG.name,
+          " ",
+          APP_CONFIG.versionBadge
+        ] }, void 0, true, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+          lineNumber: 110,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+        lineNumber: 108,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] text-neutral-400 mt-0.5", children: APP_CONFIG.dbLabel }, void 0, false, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+        lineNumber: 112,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "text-[10px] text-neutral-400 mt-1 flex items-center gap-1", children: [
+        /* @__PURE__ */ jsxDEV("span", { children: "powered by" }, void 0, false, {
+          fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+          lineNumber: 114,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "a",
+          {
+            href: APP_CONFIG.poweredByUrl,
+            target: "_blank",
+            rel: "noopener noreferrer",
+            className: "text-[#2997ff] hover:text-[#52a9ff] hover:underline font-semibold transition-colors inline-flex items-center",
+            children: APP_CONFIG.poweredByLabel
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+            lineNumber: 115,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+        lineNumber: 113,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+      lineNumber: 107,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx",
+    lineNumber: 57,
+    columnNumber: 5
+  }, this);
+};
+_c = Sidebar;
+var _c;
+$RefreshReg$(_c, "Sidebar");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/ESTEB/OneDrive/Documents/PORTAFORZA/Web App/AdminSoftPF.Web/AdminSoftPF.WebUI/src/components/Sidebar.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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RjtBQUFBLFdBRmpHO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFHQTtBQUFBLE1BQ0EsdUJBQUMsT0FBRSxXQUFVLHVDQUF1Q2xCLHFCQUFXNEIsV0FBL0Q7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUF1RTtBQUFBLE1BQ3ZFLHVCQUFDLE9BQUUsV0FBVSw2REFDWDtBQUFBLCtCQUFDLFVBQUssMEJBQU47QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUFnQjtBQUFBLFFBQ2hCO0FBQUEsVUFBQztBQUFBO0FBQUEsWUFDQyxNQUFNNUIsV0FBVzZCO0FBQUFBLFlBQ2pCLFFBQU87QUFBQSxZQUNQLEtBQUk7QUFBQSxZQUNKLFdBQVU7QUFBQSxZQUVUN0IscUJBQVc4QjtBQUFBQTtBQUFBQSxVQU5kO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxRQU9BO0FBQUEsV0FURjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBVUE7QUFBQSxTQWhCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBaUJBO0FBQUEsT0FuRUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQW9FQTtBQUVKO0FBQUVDLEtBdEZXOUI7QUFBK0IsSUFBQThCO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIkxheW91dERhc2hib2FyZCIsIlVzZXJzIiwiQ3JlZGl0Q2FyZCIsIkZpbGVUZXh0IiwiRG9sbGFyU2lnbiIsIkJhckNoYXJ0MyIsIlNsaWRlcnMiLCJTaGllbGRDaGVjayIsIkFQUF9DT05GSUciLCJTaWRlYmFyIiwiY3VycmVudFRhYiIsIm9uU2VsZWN0VGFiIiwidXNlclJvbGUiLCJyb2xlU3RyIiwiU3RyaW5nIiwidG9Mb3dlckNhc2UiLCJpc0FkbWluIiwiaW5jbHVkZXMiLCJuYXZJdGVtcyIsImlkIiwibGFiZWwiLCJpY29uIiwiYWRtaW5Pbmx5Iiwic2hvcnROYW1lIiwicHJlZml4Iiwic3VmZml4IiwidmVyc2lvbkJhZGdlIiwidGFnbGluZSIsImZpbHRlciIsIml0ZW0iLCJtYXAiLCJpc0FjdGl2ZSIsImUiLCJjdXJyZW50VGFyZ2V0IiwiYmx1ciIsIm5hbWUiLCJkYkxhYmVsIiwicG93ZXJlZEJ5VXJsIiwicG93ZXJlZEJ5TGFiZWwiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJTaWRlYmFyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHtcbiAgTGF5b3V0RGFzaGJvYXJkLFxuICBVc2VycyxcbiAgQ3JlZGl0Q2FyZCxcbiAgRmlsZVRleHQsXG4gIERvbGxhclNpZ24sXG4gIEJhckNoYXJ0MyxcbiAgU2xpZGVycyxcbiAgU2hpZWxkQ2hlY2ssXG59IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XG5pbXBvcnQgeyBBUFBfQ09ORklHIH0gZnJvbSAnLi4vY29uZmlnL2FwcENvbmZpZyc7XG5cbmV4cG9ydCB0eXBlIE5hdlRhYiA9ICdkYXNoYm9hcmQnIHwgJ2NsaWVudGVzJyB8ICdjYWphJyB8ICdmYWN0dXJhY2lvbicgfCAnZWdyZXNvcycgfCAncmVwb3J0ZXMnIHwgJ2NhdGFsb2dvcycgfCAndXN1YXJpb3MnO1xuXG5pbnRlcmZhY2UgU2lkZWJhclByb3BzIHtcbiAgY3VycmVudFRhYjogTmF2VGFiO1xuICBvblNlbGVjdFRhYjogKHRhYjogTmF2VGFiKSA9PiB2b2lkO1xuICB1c2VyUm9sZT86IHN0cmluZztcbn1cblxuZXhwb3J0IGNvbnN0IFNpZGViYXI6IFJlYWN0LkZDPFNpZGViYXJQcm9wcz4gPSAoeyBjdXJyZW50VGFiLCBvblNlbGVjdFRhYiwgdXNlclJvbGUgPSAnJyB9KSA9PiB7XG4gIGNvbnN0IHJvbGVTdHIgPSBTdHJpbmcodXNlclJvbGUgfHwgJycpLnRvTG93ZXJDYXNlKCk7XG4gIGNvbnN0IGlzQWRtaW4gPSByb2xlU3RyLmluY2x1ZGVzKCdhZG1pbicpIHx8IHJvbGVTdHIuaW5jbHVkZXMoJ3MgYWRtaW5pc3RyYWRvcicpO1xuXG4gIGNvbnN0IG5hdkl0ZW1zOiB7IGlkOiBOYXZUYWI7IGxhYmVsOiBzdHJpbmc7IGljb246IFJlYWN0LlJlYWN0Tm9kZTsgYWRtaW5Pbmx5PzogYm9vbGVhbiB9W10gPSBbXG4gICAgeyBpZDogJ2Rhc2hib2FyZCcsIGxhYmVsOiAnRGFzaGJvYXJkJywgaWNvbjogPExheW91dERhc2hib2FyZCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz4gfSxcbiAgICB7IGlkOiAnY2xpZW50ZXMnLCBsYWJlbDogJ1VuaWRhZGVzIHkgQ2xpZW50ZXMnLCBpY29uOiA8VXNlcnMgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+IH0sXG4gICAgeyBpZDogJ2NhamEnLCBsYWJlbDogJ0NhamEgeSBDb2JyYW56YXMnLCBpY29uOiA8Q3JlZGl0Q2FyZCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz4gfSxcbiAgICB7IGlkOiAnZmFjdHVyYWNpb24nLCBsYWJlbDogJ0ZhY3R1cmFjacOzbicsIGljb246IDxGaWxlVGV4dCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz4gfSxcbiAgICB7IGlkOiAnZWdyZXNvcycsIGxhYmVsOiAnRWdyZXNvcyB5IFBhZ29zJywgaWNvbjogPERvbGxhclNpZ24gY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+IH0sXG4gICAgeyBpZDogJ3JlcG9ydGVzJywgbGFiZWw6ICdSZXBvcnRlcyB5IEJhbGFuY2VzJywgaWNvbjogPEJhckNoYXJ0MyBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz4gfSxcbiAgICB7IGlkOiAnY2F0YWxvZ29zJywgbGFiZWw6ICdDYXTDoWxvZ29zIC8gUHJveWVjdG9zJywgaWNvbjogPFNsaWRlcnMgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+LCBhZG1pbk9ubHk6IHRydWUgfSxcbiAgICB7IGlkOiAndXN1YXJpb3MnLCBsYWJlbDogJ1VzdWFyaW9zIHkgUm9sZXMnLCBpY29uOiA8U2hpZWxkQ2hlY2sgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+LCBhZG1pbk9ubHk6IHRydWUgfSxcbiAgXTtcblxuICByZXR1cm4gKFxuICAgIDxhc2lkZSBjbGFzc05hbWU9XCJ3LTYwIGJnLVsjMTYxNjE3XSB0ZXh0LXNsYXRlLTEwMCBmbGV4IGZsZXgtY29sIGp1c3RpZnktYmV0d2VlbiBweS00IHB4LTMgc2hyaW5rLTAgc2hhZG93LXhsIGJvcmRlci1yIGJvcmRlci13aGl0ZS9bMC4wOF0gei0yMCBmb250LXNhbnMgc2VsZWN0LW5vbmVcIj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0zXCI+XG4gICAgICAgIHsvKiBCcmFuZCBIZWFkZXIgaW4gVG9wLUxlZnQgQ29ybmVyICovfVxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInB4LTIgcHQtMSBwYi0zLjUgYm9yZGVyLWIgYm9yZGVyLXdoaXRlL1swLjA4XSBmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTNcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInctOSBoLTkgcm91bmRlZC14bCBiZy1ncmFkaWVudC10by1iIGZyb20tWyMyYzJjMmVdIHRvLVsjMWMxYzFlXSBib3JkZXIgYm9yZGVyLXdoaXRlL1swLjE0XSBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBzaGFkb3ctbWQgdGV4dC13aGl0ZSBmb250LWJvbGQgdGV4dC14cyB0cmFja2luZy13aWRlciBzaHJpbmstMFwiPlxuICAgICAgICAgICAge0FQUF9DT05GSUcuc2hvcnROYW1lfVxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibWluLXctMFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTEuNVwiPlxuICAgICAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LXhzIHRleHQtd2hpdGUgdHJhY2tpbmctdGlnaHQgbGVhZGluZy1ub25lIHRydW5jYXRlXCI+XG4gICAgICAgICAgICAgICAge0FQUF9DT05GSUcucHJlZml4fTxzcGFuIGNsYXNzTmFtZT1cInRleHQtWyMyOTk3ZmZdXCI+e0FQUF9DT05GSUcuc3VmZml4fTwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9oMT5cbiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiYmctd2hpdGUvWzAuMDhdIHRleHQtbmV1dHJhbC0zMDAgdGV4dC1bOXB4XSBmb250LW1lZGl1bSBweC0xLjUgcHktMC41IHJvdW5kZWQtZnVsbCBib3JkZXIgYm9yZGVyLXdoaXRlL1swLjFdIGxlYWRpbmctbm9uZSBzaHJpbmstMFwiPlxuICAgICAgICAgICAgICAgIHtBUFBfQ09ORklHLnZlcnNpb25CYWRnZX1cbiAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LVs5cHhdIHRleHQtbmV1dHJhbC00MDAgZm9udC1ub3JtYWwgbXQtMC41IHRydW5jYXRlXCI+e0FQUF9DT05GSUcudGFnbGluZX08L3A+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBOYXZpZ2F0aW9uIEl0ZW1zIHdpdGhvdXQgcGVyc2lzdGVudCBvdXRsaW5lIG9yIGZvY3VzIGxvY2tzICovfVxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktMVwiPlxuICAgICAgICAgIHtuYXZJdGVtc1xuICAgICAgICAgICAgLmZpbHRlcigoaXRlbSkgPT4gIWl0ZW0uYWRtaW5Pbmx5IHx8IGlzQWRtaW4pXG4gICAgICAgICAgICAubWFwKChpdGVtKSA9PiB7XG4gICAgICAgICAgICAgIGNvbnN0IGlzQWN0aXZlID0gY3VycmVudFRhYiA9PT0gaXRlbS5pZDtcbiAgICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgICAgICBrZXk9e2l0ZW0uaWR9XG4gICAgICAgICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcbiAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eyhlKSA9PiB7XG4gICAgICAgICAgICAgICAgICAgIGUuY3VycmVudFRhcmdldC5ibHVyKCk7XG4gICAgICAgICAgICAgICAgICAgIG9uU2VsZWN0VGFiKGl0ZW0uaWQpO1xuICAgICAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17YHctZnVsbCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gcHgtMy41IHB5LTIuNSByb3VuZGVkLXhsIHRleHQteHMgZm9udC1tZWRpdW0gY3Vyc29yLXBvaW50ZXIgb3V0bGluZS1ub25lIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTAgZm9jdXMtdmlzaWJsZTpvdXRsaW5lLW5vbmUgdHJhbnNpdGlvbi1jb2xvcnMgZHVyYXRpb24tMTUwICR7XG4gICAgICAgICAgICAgICAgICAgIGlzQWN0aXZlXG4gICAgICAgICAgICAgICAgICAgICAgPyAnYmctWyMyYzJjMmVdIHRleHQtd2hpdGUgZm9udC1zZW1pYm9sZCBzaGFkb3cteHMnXG4gICAgICAgICAgICAgICAgICAgICAgOiAndGV4dC1uZXV0cmFsLTQwMCBob3ZlcjpiZy13aGl0ZS9bMC4wNl0gaG92ZXI6dGV4dC13aGl0ZSdcbiAgICAgICAgICAgICAgICAgIH1gfVxuICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yLjVcIj5cbiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPXtpc0FjdGl2ZSA/ICd0ZXh0LVsjMjk5N2ZmXScgOiAndGV4dC1uZXV0cmFsLTQwMCd9PntpdGVtLmljb259PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj57aXRlbS5sYWJlbH08L3NwYW4+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgICAgKTtcbiAgICAgICAgICAgIH0pfVxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy1bIzFjMWMxZV0gcm91bmRlZC0yeGwgYm9yZGVyIGJvcmRlci13aGl0ZS9bMC4wOF0gdGV4dC14cyB0ZXh0LW5ldXRyYWwtMzAwIHNoYWRvdy14c1wiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIHNwYWNlLXgtMlwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidy0yIGgtMiByb3VuZGVkLWZ1bGwgYmctWyMzNGM3NTldXCIgLz5cbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtd2hpdGUgdGV4dC1bMTFweF1cIj57QVBQX0NPTkZJRy5uYW1lfSB7QVBQX0NPTkZJRy52ZXJzaW9uQmFkZ2V9PC9wPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1bMTBweF0gdGV4dC1uZXV0cmFsLTQwMCBtdC0wLjVcIj57QVBQX0NPTkZJRy5kYkxhYmVsfTwvcD5cbiAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1bMTBweF0gdGV4dC1uZXV0cmFsLTQwMCBtdC0xIGZsZXggaXRlbXMtY2VudGVyIGdhcC0xXCI+XG4gICAgICAgICAgPHNwYW4+cG93ZXJlZCBieTwvc3Bhbj5cbiAgICAgICAgICA8YVxuICAgICAgICAgICAgaHJlZj17QVBQX0NPTkZJRy5wb3dlcmVkQnlVcmx9XG4gICAgICAgICAgICB0YXJnZXQ9XCJfYmxhbmtcIlxuICAgICAgICAgICAgcmVsPVwibm9vcGVuZXIgbm9yZWZlcnJlclwiXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJ0ZXh0LVsjMjk5N2ZmXSBob3Zlcjp0ZXh0LVsjNTJhOWZmXSBob3Zlcjp1bmRlcmxpbmUgZm9udC1zZW1pYm9sZCB0cmFuc2l0aW9uLWNvbG9ycyBpbmxpbmUtZmxleCBpdGVtcy1jZW50ZXJcIlxuICAgICAgICAgID5cbiAgICAgICAgICAgIHtBUFBfQ09ORklHLnBvd2VyZWRCeUxhYmVsfVxuICAgICAgICAgIDwvYT5cbiAgICAgICAgPC9wPlxuICAgICAgPC9kaXY+XG4gICAgPC9hc2lkZT5cbiAgKTtcbn07XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0VTVEVCL09uZURyaXZlL0RvY3VtZW50cy9QT1JUQUZPUlpBL1dlYiBBcHAvQWRtaW5Tb2Z0UEYuV2ViL0FkbWluU29mdFBGLldlYlVJL3NyYy9jb21wb25lbnRzL1NpZGViYXIudHN4In0=
