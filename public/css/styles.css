@@ -724,10 +724,31 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* RESPONSIVE */
-@media (max-width: 991px) {
+/* RESPONSIVE & MULTI-DEVICE OPTIMIZATIONS */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1199px) {
   .hero-headline {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-apple {
+    padding: 60px 0 40px;
+  }
+  .hero-headline {
+    font-size: 2.6rem;
   }
   .bento-col-8, .bento-col-4, .bento-col-6 {
     grid-column: span 12;
@@ -740,8 +761,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
     border-radius: var(--apple-radius-md);
     border: 1px solid var(--apple-border);
-    margin-top: 10px;
-    box-shadow: var(--apple-shadow-hover);
+    margin-top: 12px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.09);
+  }
+  .navbar-nav .nav-link-custom {
+    padding: 10px 12px;
+    display: block;
   }
 }
 
@@ -749,16 +774,80 @@ h1, h2, h3, h4, h5, h6 {
   .top-utility-bar {
     display: none;
   }
+  .hero-apple {
+    padding: 48px 0 32px;
+  }
   .hero-headline {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
+    line-height: 1.18;
   }
   .hero-subhead {
-    font-size: 1.1rem;
+    font-size: 1.02rem;
+    margin-bottom: 24px;
+  }
+  .bento-card {
+    padding: 24px 20px;
   }
   .bento-metrics-row {
     grid-template-columns: 1fr;
   }
   .configurator-box {
-    padding: 24px;
+    padding: 24px 18px;
+  }
+  .filter-pills-apple {
+    gap: 8px;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+  .filter-pill-apple,
+  .filter-pill-btn {
+    padding: 7px 15px;
+    font-size: 0.82rem;
+  }
+  .floating-whatsapp-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 20px;
+  }
+  .floating-whatsapp-btn .tooltip-text {
+    display: none !important;
+  }
+  .footer-apple {
+    padding: 45px 0 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-headline {
+    font-size: 1.75rem;
+  }
+  .hero-subhead {
+    font-size: 0.92rem;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-cta-group .btn-apple-primary,
+  .hero-cta-group .btn-apple-secondary,
+  .hero-cta-group .btn-apple-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .catalog-card-apple {
+    padding: 20px 16px;
+  }
+  .bento-card {
+    padding: 20px 16px;
+    border-radius: var(--apple-radius-md);
+  }
+  .footer-bottom-apple {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
 }

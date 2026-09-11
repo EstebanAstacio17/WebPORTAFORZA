@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Página Principal -->
+    <url>
+        <loc>https://portaforza.com/</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+    </url>
+
+    <!-- Plataforma AdminSoftGPF v3 -->
+    <url>
+        <loc>https://portaforza.com/Software/AdminSoftPF.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+
+    <!-- Servicios Especializados -->
+    <url>
+        <loc>https://portaforza.com/pags/servicios.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <!-- Clientes & Casos de Éxito -->
+    <url>
+        <loc>https://portaforza.com/pags/clientes.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <!-- Sobre Nosotros -->
+    <url>
+        <loc>https://portaforza.com/pags/nosotros.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- Contacto & Cotizaciones -->
+    <url>
+        <loc>https://portaforza.com/pags/contacto.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+</urlset>
