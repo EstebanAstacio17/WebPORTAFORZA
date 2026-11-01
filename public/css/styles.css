@@ -851,3 +851,60 @@ img, svg, video, canvas {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   BOTÓN INICIAR SESIÓN (ACCESO AL PORTAL SAAS ADMINSOFTGPF)
+   ========================================================================== */
+.btn-apple-login {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 9px 22px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #1d1d1f !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.18) !important;
+    border-radius: 980px !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+}
+
+.btn-apple-login:hover {
+    color: #ffffff !important;
+    background: #0071e3 !important;
+    border-color: #0071e3 !important;
+    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35) !important;
+    transform: translateY(-1px) !important;
+    text-decoration: none !important;
+}
+
+.btn-apple-login i {
+    font-size: 0.85rem !important;
+    color: #0071e3 !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.btn-apple-login:hover i {
+    color: #ffffff !important;
+    transform: translateX(2px) !important;
+}
+
+/* Ajuste responsive para menú móvil */
+@media (max-width: 991.98px) {
+    .navbar-actions-mobile {
+        width: 100% !important;
+        margin-top: 15px !important;
+    }
+    .navbar-actions-mobile .btn-apple-login {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}
