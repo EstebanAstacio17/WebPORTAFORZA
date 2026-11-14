@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Certificado de seguridad SSL incluido'
             ],
             timeLabel: '1 a 2 semanas (o ~5 días si es urgente)',
-            paymentTerms: '50% para iniciar y 50% al entregar'
+            paymentTerms: '70% de avance y 30% al entregar'
           },
           2: {
             title: 'Opción Completa (Web Corporativa Pro)',
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Hosting de alta velocidad + Dominio .com (1er año)'
             ],
             timeLabel: '2 a 4 semanas (tiempo normal óptimo)',
-            paymentTerms: '50% inicial y 50% al finalizar a conformidad'
+            paymentTerms: '70% de avance y 30% al finalizar a conformidad'
           },
           3: {
             title: 'Proyecto Avanzado (Portal B2B / Pagos)',
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Base de datos en la nube con respaldos diarios'
             ],
             timeLabel: '4 a 7 semanas según complejidad técnica',
-            paymentTerms: 'Cronograma por hitos (40% / 30% / 30%)'
+            paymentTerms: '70% de avance y 30% contra entrega final'
           }
         }
       },
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Exportación de datos a formato Excel'
             ],
             timeLabel: '3 a 4 semanas (tiempo normal)',
-            paymentTerms: '40% inicio / 30% avance / 30% entrega'
+            paymentTerms: '70% de avance y 30% al entregar'
           },
           2: {
             title: 'Sistema Integral Pyme (ERP / CRM)',
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Migración inicial de productos/clientes desde Excel'
             ],
             timeLabel: '5 a 8 semanas con entregas parciales',
-            paymentTerms: '40% inicial / 30% hito de pruebas / 30% entrega'
+            paymentTerms: '70% de avance y 30% al finalizar a conformidad'
           },
           3: {
             title: 'Plataforma Enterprise Multi-Sede',
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'SLA de soporte técnico prioritario incluido'
             ],
             timeLabel: '2 a 4 meses según alcance y pruebas',
-            paymentTerms: 'Cronograma por entregables mensuales'
+            paymentTerms: '70% de avance y 30% contra entrega por fases'
           }
         }
       },
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Documentación técnica de accesos y contraseñas'
             ],
             timeLabel: '1 a 3 días hábiles',
-            paymentTerms: '50% inicio y 50% al verificar conectividad'
+            paymentTerms: '70% de avance y 30% al verificar conectividad'
           },
           2: {
             title: 'Servidor Corporativo + Firewall UTM',
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Estrategia de Copias de Seguridad Automatizada 3-2-1'
             ],
             timeLabel: '1 a 2 semanas con pruebas de contingencia',
-            paymentTerms: '50% al iniciar y 50% tras entrega y pruebas'
+            paymentTerms: '70% de avance y 30% tras entrega y pruebas'
           },
           3: {
             title: 'Data Center & Cableado Llave en Mano',
@@ -700,7 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
               'Certificación física de puntos de red y garantía de 3 años'
             ],
             timeLabel: '2 a 5 semanas según cronograma de obra',
-            paymentTerms: 'Anticipo 40%, 30% contra tendido, 30% a certificación'
+            paymentTerms: '70% de avance y 30% contra certificación final'
           }
         }
       }
@@ -1149,6 +1149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       text += `• *Nivel de personalización:* ${customLabelMap[wizardState.selectedCustom] || 'Adaptado'}\n`;
       text += `• *Presupuesto estimado:* ${currentRange}\n`;
       text += `• *Opción elegida:* ${tier.title}\n`;
+      text += `• *Forma de pago:* ${tier.paymentTerms}\n`;
       text += `• *Dimensión aproximada:* ${wizardState.selectedScale}\n`;
       text += `• *Facturación requerida:* ${wizardState.selectedBilling}\n\n`;
 
