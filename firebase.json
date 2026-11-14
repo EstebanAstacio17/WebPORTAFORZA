@@ -1,12 +1,46 @@
 {
   "hosting": {
     "public": "public",
+    "cleanUrls": true,
+    "trailingSlash": false,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
+    "headers": [
+      {
+        "source": "**/*.@(html|htm)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ],
     "rewrites": [
+      {
+        "source": "/contacto",
+        "destination": "/pags/contacto.html"
+      },
+      {
+        "source": "/cotizador",
+        "destination": "/pags/contacto.html"
+      },
+      {
+        "source": "/clientes",
+        "destination": "/pags/clientes.html"
+      },
       {
         "source": "**",
         "destination": "/index.html"
