@@ -1276,7 +1276,53 @@ img, svg, video, canvas {
   color: var(--apple-text-primary);
 }
 
-/* Columna Lateral de Confianza y Garantías */
+/* Columna Lateral de Contacto y Confianza (Apple Clean) */
+.sidebar-contact-box {
+  background: #ffffff;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--apple-shadow-hero);
+  height: auto;
+}
+
+.contact-channel-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: var(--apple-radius-sm);
+  background: var(--apple-bg);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.contact-channel-item:hover {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+  transform: translateX(3px);
+  box-shadow: var(--apple-shadow-card);
+}
+
+.channel-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.sidebar-guarantees-list li {
+  line-height: 1.45;
+  font-size: 0.84rem;
+}
+
 .guarantee-badge-card {
   background: #ffffff;
   border: 1px solid var(--apple-border);
@@ -1300,28 +1346,6 @@ img, svg, video, canvas {
   color: var(--apple-text-secondary);
   line-height: 1.45;
   margin-bottom: 0;
-}
-
-.trust-clients-mini-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-top: 14px;
-  margin-top: 14px;
-  border-top: 1px solid var(--apple-border);
-}
-
-.trust-clients-mini-strip img {
-  max-height: 28px;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: all 0.2s ease;
-}
-
-.trust-clients-mini-strip img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
 }
 
 @media (max-width: 767px) {

@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles.css?v=2.6">
+    <link rel="stylesheet" href="../css/styles.css?v=2.7">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -144,7 +144,7 @@
     <!-- CONTENIDO DE CONTACTO -->
     <main class="py-5">
         <div class="container">
-            <div class="row g-5">
+            <div class="row g-5 align-items-start">
                 
                 <!-- Columna Izquierda: Asistente Interactivo de Cotización y Valor -->
                 <div class="col-lg-8 order-1">
@@ -454,62 +454,78 @@
 
                 <!-- Columna Derecha: Canales Directos, Confianza y Garantías B2B -->
                 <div class="col-lg-4 order-2">
-                    <span class="tag text-primary fw-bold small text-uppercase mb-2 d-block">Respaldo Profesional</span>
-                    <h2 class="fw-bold mb-3" style="font-size: 2rem; letter-spacing: -0.025em;">¿Por qué cotizar con PortaForza?</h2>
-                    <p class="text-muted mb-4 small leading-relaxed">
-                        Entregamos soluciones tecnológicas con soporte directo, cumplimiento legal e ingeniería de alto rendimiento para proteger la continuidad de tu negocio.
-                    </p>
+                    <div class="sidebar-contact-box">
+                        <span class="tag text-primary fw-bold small text-uppercase mb-2 d-block">Respaldo Profesional</span>
+                        <h3 class="fw-bold mb-3" style="font-size: 1.55rem; letter-spacing: -0.025em;">¿Por qué PortaForza?</h3>
+                        <p class="text-muted mb-4 small leading-relaxed">
+                            Entregamos soluciones tecnológicas con soporte directo, cumplimiento fiscal B01 e ingeniería de alto rendimiento para tu negocio.
+                        </p>
 
-                    <!-- Tarjetas de Garantía & Valor -->
-                    <div class="guarantee-badge-card">
-                        <h6><i class="fas fa-shield-alt text-primary"></i> 100% Legalidad & NCF</h6>
-                        <p>Facturación fiscal con Comprobante B01 y licencias con vinculación oficial al tenant de tu empresa. Cero riesgos de auditoría.</p>
-                    </div>
-
-                    <div class="guarantee-badge-card">
-                        <h6><i class="fas fa-user-shield text-success"></i> SLA de Respuesta &lt; 15 min</h6>
-                        <p>Mesa de ayuda técnica disponible y contratos de soporte con respuesta prioritaria ante cualquier contingencia operativa.</p>
-                    </div>
-
-                    <div class="guarantee-badge-card">
-                        <h6><i class="fas fa-handshake text-primary"></i> Asesoría Consultiva Honesta</h6>
-                        <p>Diseñamos propuestas escalonadas para que inviertas exactamente en lo que genera retorno, sin sobrecostos innecesarios.</p>
-                    </div>
-
-                    <!-- Canales Rápidos de Contacto Directo -->
-                    <div class="catalog-card-apple p-3 mb-4">
-                        <div class="fw-bold text-dark small mb-3 text-uppercase" style="letter-spacing: 0.04em;">Contacto Inmediato:</div>
-                        <div class="d-flex flex-column gap-2 small">
-                            <a href="tel:+18494622228" class="text-decoration-none text-dark d-flex align-items-center gap-2">
-                                <i class="fas fa-phone-alt text-primary"></i> +1 (849) 462-2228
+                        <!-- Canales de Contacto Directo -->
+                        <div class="d-flex flex-column gap-2 mb-4">
+                            <a href="tel:+18494622228" class="contact-channel-item">
+                                <div class="channel-icon text-primary"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <div class="text-muted" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 600;">Llamada Telefónica</div>
+                                    <div class="fw-bold text-dark small">+1 (849) 462-2228</div>
+                                </div>
                             </a>
-                            <a href="mailto:contacto@portaforza.com" class="text-decoration-none text-dark d-flex align-items-center gap-2">
-                                <i class="fas fa-envelope text-primary"></i> contacto@portaforza.com
+                            <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+                                <div class="channel-icon text-success"><i class="fab fa-whatsapp"></i></div>
+                                <div>
+                                    <div class="text-muted" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 600;">WhatsApp Business</div>
+                                    <div class="fw-bold text-dark small">+1 (849) 462-2228</div>
+                                </div>
                             </a>
-                            <div class="text-muted d-flex align-items-center gap-2">
-                                <i class="fas fa-map-marker-alt text-primary"></i> Av. Monumental, Santo Domingo, RD
+                            <a href="mailto:contacto@portaforza.com" class="contact-channel-item">
+                                <div class="channel-icon text-primary"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <div class="text-muted" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 600;">Correo Electrónico</div>
+                                    <div class="fw-bold text-dark small">contacto@portaforza.com</div>
+                                </div>
+                            </a>
+                            <div class="contact-channel-item">
+                                <div class="channel-icon text-primary"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <div class="text-muted" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 600;">Oficina Principal</div>
+                                    <div class="fw-bold text-dark small">Av. Monumental, Santo Domingo, RD</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Empresas que Confían en PortaForza -->
-                    <div class="catalog-card-apple p-3">
-                        <div class="text-muted small fw-semibold text-uppercase mb-2" style="font-size: 0.72rem; letter-spacing: 0.05em;">
-                            Empresas que Respaldan sus Operaciones con Nosotros
-                        </div>
-                        <div class="trust-clients-mini-strip">
-                            <img src="../img/1-removebg-preview.png" alt="ABVS Auditores" title="ABVS Auditores">
-                            <img src="../img/2-removebg-preview.png" alt="CONDAY" title="CONDAY Condominios">
-                            <img src="../img/4-removebg-preview.png" alt="AS Teje" title="AS Teje">
-                            <img src="../img/6-removebg-preview.png" alt="Colegio Los Olivos" title="Colegio Los Olivos">
+                        <!-- Garantías Corporativas -->
+                        <div class="sidebar-guarantees-list pt-3 border-top">
+                            <div class="fw-bold text-dark small mb-2 text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.04em;">
+                                <i class="fas fa-shield-alt text-primary me-1"></i> Garantías Corporativas
+                            </div>
+                            <ul class="list-unstyled text-muted mb-0 d-flex flex-column gap-2">
+                                <li><i class="fas fa-check-circle text-success me-2"></i>Facturación formal con NCF B01 Fiscal</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>Licenciamiento 100% legal y original oficial</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>SLA garantizado de respuesta &lt; 15 min</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>Propuestas escalonadas sin compromiso</li>
+                            </ul>
                         </div>
                     </div>
-
                 </div>
 
             </div>
         </div>
     </main>
+
+    <!-- STRIP DE CLIENTES EMPRESARIALES (Igual que en index.html) -->
+    <section class="partners-apple-strip">
+        <div class="container text-center">
+            <span class="hero-eyebrow text-uppercase" style="font-size: 0.8rem; letter-spacing: 0.1em; color: var(--apple-text-secondary);">
+                Empresas que Confían en Nuestra Tecnología
+            </span>
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 mt-4">
+                <img src="../img/1-removebg-preview.png" alt="ABVS Auditores & Consultores" class="partner-logo-clean" style="max-height: 48px;">
+                <img src="../img/2-removebg-preview.png" alt="CONDAY - Condominio al Día" class="partner-logo-clean" style="max-height: 48px;">
+                <img src="../img/4-removebg-preview.png" alt="AS Teje Servicios" class="partner-logo-clean" style="max-height: 48px;">
+                <img src="../img/6-removebg-preview.png" alt="Colegio Evangélico Los Olivos" class="partner-logo-clean" style="max-height: 48px;">
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER APPLE STYLE -->
     <footer class="footer-apple">
@@ -577,6 +593,6 @@
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js?v=2.6"></script>
+    <script src="../js/script.js?v=2.7"></script>
 </body>
 </html>
