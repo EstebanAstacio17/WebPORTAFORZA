@@ -127,11 +127,17 @@
     <!-- HEADER DE PÁGINA (Apple Style) -->
     <header class="hero-apple" style="padding: 60px 0 65px;">
         <div class="container text-center">
-            <span class="hero-eyebrow">Atención Personalizada</span>
-            <h1 class="hero-headline" style="font-size: 3rem;">Contacto & Cotizaciones Corporativas</h1>
+            <span class="hero-eyebrow"><i class="fas fa-sliders-h me-1"></i> Asesoría & Diagnóstico de Valor</span>
+            <h1 class="hero-headline" style="font-size: 3rem;">Diseña la Solución Tecnológica para tu Empresa</h1>
             <p class="hero-subhead mx-auto" style="font-size: 1.15rem;">
-                Comunícate con nuestro equipo de ingeniería informática para cotizaciones formales y asesoría especializada.
+                Define el alcance y requerimientos de tu proyecto en 4 pasos guiados. Recibe una propuesta técnica escalonada con el nivel de servicio y garantías exactas para tu negocio.
             </p>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                <span class="apple-pill-tag bg-white text-muted"><i class="fas fa-clock text-success me-1"></i> Respuesta en &lt; 15 min</span>
+                <span class="apple-pill-tag bg-white text-muted"><i class="fas fa-file-invoice text-primary me-1"></i> Facturación con Comprobante Fiscal (NCF)</span>
+                <span class="apple-pill-tag bg-white text-muted"><i class="fas fa-shield-alt text-primary me-1"></i> Licencias 100% Originales</span>
+                <span class="apple-pill-tag bg-white text-muted"><i class="fas fa-check-circle text-success me-1"></i> Sin Compromiso de Compra</span>
+            </div>
         </div>
     </header>
 
@@ -140,99 +146,365 @@
         <div class="container">
             <div class="row g-5">
                 
-                <!-- Columna de Datos de Contacto -->
-                <div class="col-lg-5">
-                    <span class="tag text-primary fw-bold small text-uppercase mb-2 d-block">Canales Oficiales</span>
-                    <h2 class="fw-bold mb-4" style="font-size: 2.3rem; letter-spacing: -0.025em;">Estamos para Atenderte</h2>
-                    <p class="text-muted mb-4 leading-relaxed">
-                        Atendemos requerimientos de software, licenciamiento y servidores en todo el país, con facturación fiscal y tiempos de respuesta ágiles.
-                    </p>
-
-                    <div class="d-flex flex-column gap-3 mb-4">
-                        <div class="catalog-card-apple p-3 d-flex align-items-center gap-3">
-                            <i class="fas fa-phone-alt text-primary fa-lg"></i>
-                            <div>
-                                <div class="text-muted small">Teléfono / WhatsApp</div>
-                                <div class="fw-bold text-dark">+1 (849) 462-2228</div>
-                            </div>
-                        </div>
-
-                        <div class="catalog-card-apple p-3 d-flex align-items-center gap-3">
-                            <i class="fas fa-envelope text-primary fa-lg"></i>
-                            <div>
-                                <div class="text-muted small">Correo Electrónico</div>
-                                <div class="fw-bold text-dark">contacto@portaforza.com</div>
-                            </div>
-                        </div>
-
-                        <div class="catalog-card-apple p-3 d-flex align-items-center gap-3">
-                            <i class="fas fa-map-marker-alt text-primary fa-lg"></i>
-                            <div>
-                                <div class="text-muted small">Oficina Principal</div>
-                                <div class="fw-bold text-dark">Av. Monumental, Santo Domingo, RD</div>
-                            </div>
-                        </div>
-
-                        <div class="catalog-card-apple p-3 d-flex align-items-center gap-3">
-                            <i class="fas fa-clock text-success fa-lg"></i>
-                            <div>
-                                <div class="text-muted small">Horario de Atención</div>
-                                <div class="fw-bold text-dark">Lun - Vie: 8:00 AM - 6:00 PM (Soporte 24/7)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/18494622228?text=Hola%20Portaforza,%20deseo%20comunicarme%20con%20un%20asesor." target="_blank" rel="noopener noreferrer" class="btn-apple-primary w-100 justify-content-center py-3 fs-6">
-                        <i class="fab fa-whatsapp fs-5"></i> Iniciar Chat de WhatsApp
-                    </a>
-                </div>
-
-                <!-- Columna de Formulario -->
-                <div class="col-lg-7">
-                    <div class="configurator-box">
-                        <h4 class="fw-bold mb-4" style="letter-spacing: -0.02em;">Envíanos tu Requerimiento</h4>
+                <!-- Columna Izquierda: Asistente Interactivo de Cotización y Valor -->
+                <div class="col-lg-8 order-2 order-lg-1">
+                    <div class="configurator-box" id="consultiveConfigurator">
                         
-                        <form id="quickQuoteForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label-apple" for="quoteService">Servicio Requerido *</label>
-                                    <select class="form-select-apple" id="quoteService" required>
-                                        <option value="licencias">Suministro de Licencias Originales</option>
-                                        <option value="software">Desarrollo de Software a Medida</option>
-                                        <option value="soporte">Soporte Técnico y Mantenimiento</option>
-                                        <option value="servidores">Instalación de Servidores & Redes</option>
-                                        <option value="web">Desarrollo Web & Portales</option>
-                                    </select>
+                        <!-- Barra de Progreso Superior -->
+                        <div class="wizard-progress-wrapper">
+                            <div class="wizard-progress-header">
+                                <span class="wizard-step-label" id="wizardStepLabel">Paso 1 de 4: Selecciona la Solución</span>
+                                <span class="wizard-step-percent" id="wizardStepPercent">25% Completado</span>
+                            </div>
+                            <div class="wizard-progress-bar-bg">
+                                <div class="wizard-progress-bar-fill" id="wizardProgressBar" style="width: 25%;"></div>
+                            </div>
+                        </div>
+
+                        <form id="consultiveForm">
+                            <!-- ================= PASO 1: LÍNEA DE SOLUCIÓN ================= -->
+                            <div class="wizard-step-pane active" id="step1">
+                                <h4 class="fw-bold mb-2">¿Qué área tecnológica deseas potenciar o resolver?</h4>
+                                <p class="text-muted small mb-4">Selecciona la solución principal para adaptar las preguntas técnicas a tu caso específico:</p>
+                                
+                                <div class="option-cards-grid">
+                                    <div class="solution-option-card selected" data-service="software" tabindex="0">
+                                        <div class="card-check-icon"><i class="fas fa-check"></i></div>
+                                        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                                        <h5>Software a Medida & ERP</h5>
+                                        <p>Automatización de procesos, sistemas de inventario, CRM y facturación a tu medida.</p>
+                                    </div>
+
+                                    <div class="solution-option-card" data-service="adminsoft" tabindex="0">
+                                        <div class="card-check-icon"><i class="fas fa-check"></i></div>
+                                        <div class="card-icon"><i class="fas fa-building"></i></div>
+                                        <h5>AdminSoftGPF</h5>
+                                        <p>Plataforma para administración, cobros y facturación de condominios y plazas comerciales.</p>
+                                    </div>
+
+                                    <div class="solution-option-card" data-service="licencias" tabindex="0">
+                                        <div class="card-check-icon"><i class="fas fa-check"></i></div>
+                                        <div class="card-icon"><i class="fas fa-certificate"></i></div>
+                                        <h5>Licenciamiento Original</h5>
+                                        <p>Microsoft 365 CSP, Windows Server, RDS CALs y Antivirus EDR legal con factura.</p>
+                                    </div>
+
+                                    <div class="solution-option-card" data-service="soporte" tabindex="0">
+                                        <div class="card-check-icon"><i class="fas fa-check"></i></div>
+                                        <div class="card-icon"><i class="fas fa-headset"></i></div>
+                                        <h5>Soporte Técnico & Pólizas</h5>
+                                        <p>Mesa de ayuda helpdesk, mantenimiento preventivo y contratos con SLA garantizado.</p>
+                                    </div>
+
+                                    <div class="solution-option-card" data-service="servidores" tabindex="0">
+                                        <div class="card-check-icon"><i class="fas fa-check"></i></div>
+                                        <div class="card-icon"><i class="fas fa-server"></i></div>
+                                        <h5>Servidores & Redes</h5>
+                                        <p>Instalación de servidores, virtualización Proxmox, firewalls UTM y cableado estructurado.</p>
+                                    </div>
+
+                                    <div class="solution-option-card" data-service="web" tabindex="0">
+                                        <div class="card-check-icon"><i class="fas fa-check"></i></div>
+                                        <div class="card-icon"><i class="fas fa-globe"></i></div>
+                                        <h5>Desarrollo Web & Portales</h5>
+                                        <p>Sitios web corporativos de alta velocidad, portales B2B e interfaces interactivas.</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label-apple" for="quoteScale">Volumen Estimado</label>
-                                    <select class="form-select-apple" id="quoteScale">
-                                        <option value="1-5">1 a 5 Equipos / Licencias</option>
-                                        <option value="6-20">6 a 20 Equipos / Licencias</option>
-                                        <option value="21-50">21 a 50 Equipos / Licencias</option>
-                                        <option value="50+">Más de 50 Equipos / Corporativo</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label-apple" for="quoteName">Nombre Completo *</label>
-                                    <input type="text" class="form-control-apple" id="quoteName" placeholder="Tu nombre" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label-apple" for="quoteCompany">Empresa</label>
-                                    <input type="text" class="form-control-apple" id="quoteCompany" placeholder="Nombre de tu empresa">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label-apple" for="quoteNotes">Especificaciones *</label>
-                                    <textarea class="form-control-apple" id="quoteNotes" rows="4" placeholder="Detalles de lo que necesitas (ej. 15 licencias Microsoft 365, mantenimiento de servidores...)" required></textarea>
-                                </div>
-                                <div class="col-12 mt-4">
-                                    <button type="submit" class="btn-apple-primary w-100 py-3 justify-content-center fs-6">
-                                        <i class="fab fa-whatsapp fs-5"></i> Enviar Mensaje a Nuestro Equipo
+
+                                <div class="wizard-nav-buttons justify-content-end">
+                                    <button type="button" class="btn-apple-primary px-4 py-2" id="btnNextStep1">
+                                        Continuar al Paso 2 <i class="fas fa-arrow-right ms-1"></i>
                                     </button>
                                 </div>
                             </div>
+
+                            <!-- ================= PASO 2: TIEMPO DE ENTREGA & NIVEL DE PERSONALIZACIÓN ================= -->
+                            <div class="wizard-step-pane" id="step2">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="apple-pill-tag bg-primary-subtle text-primary fw-semibold" id="currentServiceBadge">Desarrollo Web & Portales</span>
+                                </div>
+                                <h4 class="fw-bold mb-2">¿Para cuándo lo necesitas y qué nivel de desarrollo buscas?</h4>
+                                <p class="text-muted small mb-3">En proyectos tecnológicos, el tiempo y la personalización determinan el esfuerzo del equipo. Ajusta estos dos puntos para ver el presupuesto real:</p>
+
+                                <!-- Pregunta 1: Tiempo de Entrega -->
+                                <label class="form-label-apple mb-2">1. ¿Para cuándo necesitas tenerlo funcionando? *</label>
+                                <div class="time-custom-cards-grid" id="timeCardsGrid">
+                                    <div class="time-custom-card" data-time="urgente" tabindex="0">
+                                        <span class="card-head-badge bg-danger-subtle text-danger">Prioridad Alta</span>
+                                        <h6>Lo antes posible (~1 semana)</h6>
+                                        <p>Para resolver una urgencia o lanzamiento inmediato. Requiere priorizar recursos o concentrarse en una entrega base rápida.</p>
+                                    </div>
+                                    <div class="time-custom-card selected" data-time="normal" tabindex="0">
+                                        <span class="card-head-badge bg-primary-subtle text-primary">Recomendado ⭐</span>
+                                        <h6>Tiempo normal del proyecto</h6>
+                                        <p>Sin prisa innecesaria. El proyecto se desarrolla al ritmo óptimo con el precio estándar del mercado.</p>
+                                    </div>
+                                    <div class="time-custom-card" data-time="calma" tabindex="0">
+                                        <span class="card-head-badge bg-light text-muted border">Planificado</span>
+                                        <h6>Con calma / Por etapas (1 a 2 meses)</h6>
+                                        <p>Para proyectos en estructuración o que prefieren avanzar por fases de entrega mensuales.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 2: Nivel de Personalización -->
+                                <label class="form-label-apple mb-2 mt-2">2. ¿Qué nivel de personalización requiere tu empresa? *</label>
+                                <div class="time-custom-cards-grid" id="customLevelCardsGrid">
+                                    <div class="time-custom-card" data-custom="base" tabindex="0">
+                                        <span class="card-head-badge bg-light text-muted border">Práctico</span>
+                                        <h6>Solución base / Estándar</h6>
+                                        <p>Funcionalidades probadas y directas. Es la opción más rápida de entregar y de menor inversión.</p>
+                                    </div>
+                                    <div class="time-custom-card selected" data-custom="adaptado" tabindex="0">
+                                        <span class="card-head-badge bg-primary-subtle text-primary">Equilibrado ⭐</span>
+                                        <h6>Adaptado a mis flujos</h6>
+                                        <p>Diseño y módulos ajustados a la identidad y operación real de tu negocio.</p>
+                                    </div>
+                                    <div class="time-custom-card" data-custom="medida" tabindex="0">
+                                        <span class="card-head-badge bg-warning-subtle text-dark">Exclusivo</span>
+                                        <h6>100% a la medida desde cero</h6>
+                                        <p>Reglas de negocio, diseño o integraciones únicas. Mayor tiempo de ingeniería y dedicación.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 3: Dimensión -->
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-12">
+                                        <label class="form-label-apple" for="projectScaleSelect">3. Dimensión estimada de tu requerimiento</label>
+                                        <select class="form-select-apple" id="projectScaleSelect">
+                                            <option value="Pequeño / 1 a 5 usuarios o módulos base">Pequeño / 1 a 5 puestos, equipos o módulos base</option>
+                                            <option value="Mediano / 6 a 20 puestos o escala Pyme" selected>Mediano / 6 a 20 puestos o escala Pyme en crecimiento</option>
+                                            <option value="Corporativo / 21 a 50+ puestos o multi-sucursal">Corporativo / 21 a 50+ puestos o multi-sucursal</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="wizard-nav-buttons">
+                                    <button type="button" class="btn-wizard-back" id="btnBackStep2">
+                                        <i class="fas fa-arrow-left"></i> Cambiar Servicio
+                                    </button>
+                                    <button type="button" class="btn-apple-primary px-4 py-2" id="btnNextStep2">
+                                        Ver Presupuestos y Opciones (Paso 3) <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ================= PASO 3: RANGO DE PRESUPUESTO & OPCIONES REALES ================= -->
+                            <div class="wizard-step-pane" id="step3">
+                                <h4 class="fw-bold mb-2">Presupuesto en USD y Opciones que Cubre tu Tiempo</h4>
+                                <p class="text-muted small mb-3">Calculado según el tiempo de entrega y el nivel de personalización que elegiste en el paso anterior:</p>
+
+                                <!-- Aviso dinámico de fabricante (Microsoft, etc.) cuando aplique -->
+                                <div id="vendorNoticeBox" class="vendor-official-notice d-none">
+                                    <i class="fas fa-info-circle me-1"></i> <strong>Aviso sobre Licenciamiento Oficial:</strong> El costo final de las licencias de Microsoft y seguridad depende del tarifario oficial vigente del fabricante según la cantidad exacta de usuarios.
+                                </div>
+
+                                <!-- Alerta amigable cuando pide Urgencia + Presupuesto Bajo -->
+                                <div id="urgencyAlertBox" class="urgency-low-budget-alert d-none">
+                                    <h6><i class="fas fa-clock"></i> Nota sobre entrega urgente con presupuesto inicial</h6>
+                                    <p id="urgencyAlertText">Para entregar en aproximadamente 1 semana con este presupuesto, nos concentraremos en una primera fase funcional rápida. Módulos más extensos o a la medida requieren el tiempo normal del proyecto.</p>
+                                    <button type="button" class="btn-switch-normal-time" id="btnSwitchToNormalTime">
+                                        <i class="fas fa-calendar-check"></i> Cambiar al tiempo normal del proyecto (para incluir más opciones sin subir presupuesto)
+                                    </button>
+                                </div>
+
+                                <!-- Contenedor dinámico de las 3 opciones de presupuesto en USD -->
+                                <div class="budget-decoy-grid" id="budgetDecoyGrid">
+                                    <!-- Inyectado dinámicamente por JS según tiempo y personalización -->
+                                </div>
+
+                                <!-- Opción Flexible / Cotización Abierta -->
+                                <div class="flexible-budget-bar" id="flexibleBudgetBar" tabindex="0">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="fas fa-handshake text-primary fs-5"></i>
+                                        <div>
+                                            <div class="fw-bold text-dark small" id="flexibleOptionTitle">¿Prefieres que conversemos primero sobre tus números y definir la propuesta juntos?</div>
+                                            <div class="text-muted small" style="font-size: 0.78rem;">Evaluaremos los detalles contigo sin compromiso para ajustar la mejor opción a lo que puedes invertir.</div>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-light text-muted border">Conversar Primero</span>
+                                </div>
+
+                                <!-- Entregables específicos que caben en esta combinación de tiempo y presupuesto -->
+                                <label class="form-label-apple mb-2">¿Qué puntos te gustaría incluir en tu propuesta? *</label>
+                                <div class="pill-options-group" id="deliverablesPillGroup">
+                                    <!-- Inyectado dinámicamente según tiempo y presupuesto -->
+                                </div>
+
+                                <!-- Pregunta de facturación -->
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label-apple" for="fiscalBillingSelect">Tipo de Comprobante Fiscal Requerido</label>
+                                        <select class="form-select-apple" id="fiscalBillingSelect">
+                                            <option value="Comprobante con Crédito Fiscal (NCF B01)" selected>Crédito Fiscal Corporativo (NCF B01)</option>
+                                            <option value="Factura para Consumo Final (B02)">Consumo Final (B02)</option>
+                                            <option value="Régimen Gubernamental / Especial (B14/B15)">Gubernamental / Especial (B14/B15)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label-apple" for="projectDecisionStage">¿En qué etapa de decisión te encuentras?</label>
+                                        <select class="form-select-apple" id="projectDecisionStage">
+                                            <option value="Listo para arrancar si la propuesta cuadra" selected>Listo para arrancar si la propuesta cuadra</option>
+                                            <option value="Comparando opciones para decidir este mes">Comparando opciones para decidir este mes</option>
+                                            <option value="Reuniendo presupuestos para presentar a socios/junta">Reuniendo cotizaciones para socios o junta</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="wizard-nav-buttons">
+                                    <button type="button" class="btn-wizard-back" id="btnBackStep3">
+                                        <i class="fas fa-arrow-left"></i> Cambiar Tiempo o Personalización
+                                    </button>
+                                    <button type="button" class="btn-apple-primary px-4 py-2" id="btnNextStep3">
+                                        Revisar Propuesta (Paso 4) <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ================= PASO 4: RESUMEN CLARO Y ENVÍO ================= -->
+                            <div class="wizard-step-pane" id="step4">
+                                <h4 class="fw-bold mb-2">Resumen de tu Propuesta Preliminar</h4>
+                                <p class="text-muted small mb-4">Revisa los puntos acordados. Uno de nuestros ingenieros validará los detalles contigo:</p>
+
+                                <!-- Tabla con lenguaje humano y directo -->
+                                <table class="proposal-table-apple">
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Tu Selección</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="highlight-row">
+                                            <td><strong>Presupuesto Estimado (USD)</strong></td>
+                                            <td class="amount-cell" id="tableBudgetAmount">$420 – $850 USD</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Servicio & Nivel</strong></td>
+                                            <td id="tableServiceTier">Desarrollo Web &bull; Opción Completa</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Plazo de Entrega Elegido</strong></td>
+                                            <td id="tableDeliveryTime">Tiempo normal del proyecto (2 a 4 semanas)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Puntos Incluidos</strong></td>
+                                            <td id="tableDeliverablesList">Sitio Corporativo, Catálogo con filtros, SEO y Correos</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Forma de Pago Habitual</strong></td>
+                                            <td id="tablePaymentTerms">50% para iniciar y 50% al entregar a conformidad</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Facturación & Garantía</strong></td>
+                                            <td id="tableGuaranteeTerms"><span class="badge bg-success-subtle text-success me-1">NCF B01</span> Soporte de puesta en marcha incluido sin costo adicional</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- Datos del Contacto -->
+                                <h5 class="fw-bold mb-3" style="font-size: 1.05rem;">¿A nombre de quién emitimos la propuesta formal?</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label-apple" for="clientName">Nombre Completo *</label>
+                                        <input type="text" class="form-control-apple" id="clientName" placeholder="Ej. Juan Pérez" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label-apple" for="clientCompany">Empresa u Organización *</label>
+                                        <input type="text" class="form-control-apple" id="clientCompany" placeholder="Ej. Torres Bella Vista / Importadora SRL" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label-apple" for="clientPhone">Teléfono o WhatsApp *</label>
+                                        <input type="tel" class="form-control-apple" id="clientPhone" placeholder="Ej. +1 (809) 000-0000" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label-apple" for="clientEmail">Correo Electrónico Corporativo</label>
+                                        <input type="email" class="form-control-apple" id="clientEmail" placeholder="gerencia@tuempresa.com">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label-apple" for="clientNotes">Notas o Especificaciones Adicionales (Opcional)</label>
+                                        <textarea class="form-control-apple" id="clientNotes" rows="2" placeholder="Detalles de lo que necesitas o requerimientos específicos..."></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Botones de Envío Estratégicos -->
+                                <div class="row g-3 mt-4">
+                                    <div class="col-md-8">
+                                        <button type="button" class="btn-apple-primary w-100 py-3 justify-content-center fs-6" id="btnSubmitWhatsApp">
+                                            <i class="fab fa-whatsapp fs-5"></i> Recibir Propuesta en WhatsApp Business
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn-apple-secondary w-100 py-3 justify-content-center fs-6" id="btnSubmitEmail">
+                                            <i class="fas fa-envelope"></i> Vía Correo
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="wizard-nav-buttons mt-3 pt-2">
+                                    <button type="button" class="btn-wizard-back" id="btnBackStep4">
+                                        <i class="fas fa-arrow-left"></i> Modificar Alcance / Entregables
+                                    </button>
+                                    <span class="text-muted small"><i class="fas fa-lock text-success me-1"></i> Cotización formal sin compromiso</span>
+                                </div>
+                            </div>
                         </form>
+
                     </div>
+                </div>
+
+                <!-- Columna Derecha: Canales Directos, Confianza y Garantías B2B -->
+                <div class="col-lg-4 order-1 order-lg-2">
+                    <span class="tag text-primary fw-bold small text-uppercase mb-2 d-block">Respaldo Profesional</span>
+                    <h2 class="fw-bold mb-3" style="font-size: 2rem; letter-spacing: -0.025em;">¿Por qué cotizar con PortaForza?</h2>
+                    <p class="text-muted mb-4 small leading-relaxed">
+                        Entregamos soluciones tecnológicas con soporte directo, cumplimiento legal e ingeniería de alto rendimiento para proteger la continuidad de tu negocio.
+                    </p>
+
+                    <!-- Tarjetas de Garantía & Valor -->
+                    <div class="guarantee-badge-card">
+                        <h6><i class="fas fa-shield-alt text-primary"></i> 100% Legalidad & NCF</h6>
+                        <p>Facturación fiscal con Comprobante B01 y licencias con vinculación oficial al tenant de tu empresa. Cero riesgos de auditoría.</p>
+                    </div>
+
+                    <div class="guarantee-badge-card">
+                        <h6><i class="fas fa-user-shield text-success"></i> SLA de Respuesta &lt; 15 min</h6>
+                        <p>Mesa de ayuda técnica disponible y contratos de soporte con respuesta prioritaria ante cualquier contingencia operativa.</p>
+                    </div>
+
+                    <div class="guarantee-badge-card">
+                        <h6><i class="fas fa-handshake text-primary"></i> Asesoría Consultiva Honesta</h6>
+                        <p>Diseñamos propuestas escalonadas para que inviertas exactamente en lo que genera retorno, sin sobrecostos innecesarios.</p>
+                    </div>
+
+                    <!-- Canales Rápidos de Contacto Directo -->
+                    <div class="catalog-card-apple p-3 mb-4">
+                        <div class="fw-bold text-dark small mb-3 text-uppercase" style="letter-spacing: 0.04em;">Contacto Inmediato:</div>
+                        <div class="d-flex flex-column gap-2 small">
+                            <a href="tel:+18494622228" class="text-decoration-none text-dark d-flex align-items-center gap-2">
+                                <i class="fas fa-phone-alt text-primary"></i> +1 (849) 462-2228
+                            </a>
+                            <a href="mailto:contacto@portaforza.com" class="text-decoration-none text-dark d-flex align-items-center gap-2">
+                                <i class="fas fa-envelope text-primary"></i> contacto@portaforza.com
+                            </a>
+                            <div class="text-muted d-flex align-items-center gap-2">
+                                <i class="fas fa-map-marker-alt text-primary"></i> Av. Monumental, Santo Domingo, RD
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empresas que Confían en PortaForza -->
+                    <div class="catalog-card-apple p-3">
+                        <div class="text-muted small fw-semibold text-uppercase mb-2" style="font-size: 0.72rem; letter-spacing: 0.05em;">
+                            Empresas que Respaldan sus Operaciones con Nosotros
+                        </div>
+                        <div class="trust-clients-mini-strip">
+                            <img src="../img/1-removebg-preview.png" alt="ABVS Auditores" title="ABVS Auditores">
+                            <img src="../img/2-removebg-preview.png" alt="CONDAY" title="CONDAY Condominios">
+                            <img src="../img/4-removebg-preview.png" alt="AS Teje" title="AS Teje">
+                            <img src="../img/6-removebg-preview.png" alt="Colegio Los Olivos" title="Colegio Los Olivos">
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

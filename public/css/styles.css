@@ -908,3 +908,826 @@ img, svg, video, canvas {
         justify-content: center !important;
     }
 }
+
+/* ==========================================================================
+   CONFIGURADOR CONSULTIVO DE VALOR (CONTACTO & ASESORÍA B2B)
+   ========================================================================== */
+
+/* Barra de Progreso del Asistente */
+.wizard-progress-wrapper {
+  margin-bottom: 28px;
+}
+
+.wizard-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.wizard-step-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--apple-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wizard-step-percent {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--apple-text-secondary);
+}
+
+.wizard-progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(0, 0, 0, 0.06);
+  border-radius: var(--apple-radius-pill);
+  overflow: hidden;
+}
+
+.wizard-progress-bar-fill {
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, #0071e3 0%, #34c759 100%);
+  border-radius: var(--apple-radius-pill);
+  transition: width 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Pasos del Wizard */
+.wizard-step-pane {
+  display: none;
+  animation: appleFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.wizard-step-pane.active {
+  display: block;
+}
+
+/* Tarjetas Seleccionables del Paso 1 (Líneas de Solución) */
+.option-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.solution-option-card {
+  background: var(--apple-bg);
+  border: 1.5px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 18px 16px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.solution-option-card:hover {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.solution-option-card.selected {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 2px var(--apple-blue-light), 0 8px 24px rgba(0, 113, 227, 0.12);
+}
+
+.solution-option-card .card-check-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+.solution-option-card.selected .card-check-icon {
+  background-color: var(--apple-blue);
+  border-color: var(--apple-blue);
+  color: #ffffff;
+}
+
+.solution-option-card .card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--apple-radius-sm);
+  background: #ffffff;
+  color: var(--apple-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  border: 1px solid var(--apple-border);
+  transition: all 0.2s ease;
+}
+
+.solution-option-card.selected .card-icon {
+  background: var(--apple-blue-light);
+  color: var(--apple-blue);
+}
+
+.solution-option-card h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.solution-option-card p {
+  font-size: 0.8rem;
+  color: var(--apple-text-secondary);
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* Píldoras de Selección Rápida (Paso 2 y Paso 3) */
+.pill-options-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.select-pill-apple {
+  background: var(--apple-bg);
+  border: 1px solid var(--apple-border);
+  color: var(--apple-text-primary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: var(--apple-radius-pill);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select-pill-apple:hover {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.4);
+  transform: translateY(-1px);
+}
+
+.select-pill-apple.selected {
+  background: var(--apple-blue) !important;
+  border-color: var(--apple-blue) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+}
+
+.select-pill-apple.selected i {
+  color: #ffffff !important;
+}
+
+/* Tarjetas de Nivel de Solución (Paso 3 - Value Tiers) */
+.tier-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.tier-card-apple {
+  background: var(--apple-bg);
+  border: 1.5px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.tier-card-apple:hover {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.3);
+  transform: translateY(-2px);
+}
+
+.tier-card-apple.selected {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 2px var(--apple-blue-light), 0 8px 20px rgba(0, 113, 227, 0.1);
+}
+
+.tier-card-apple .tier-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--apple-radius-pill);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.tier-badge.badge-essential {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.tier-badge.badge-corporate {
+  background: #e8f2fc;
+  color: #0071e3;
+}
+
+.tier-badge.badge-enterprise {
+  background: #fdf0db;
+  color: #b25e02;
+}
+
+.tier-card-apple h6 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tier-card-apple p {
+  font-size: 0.78rem;
+  color: var(--apple-text-secondary);
+  margin-bottom: 0;
+  line-height: 1.35;
+}
+
+/* Tarjeta de Resumen Preliminar (Paso 4 - Executive Brief) */
+.diagnostic-preview-box {
+  background: #ffffff;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: var(--apple-shadow-card);
+  position: relative;
+  border-left: 4px solid var(--apple-blue);
+}
+
+.diagnostic-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--apple-border);
+}
+
+.diagnostic-item-row {
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.diagnostic-item-label {
+  width: 145px;
+  flex-shrink: 0;
+  color: var(--apple-text-muted);
+  font-weight: 500;
+}
+
+.diagnostic-item-value {
+  color: var(--apple-text-primary);
+  font-weight: 600;
+}
+
+.diagnostic-bonuses {
+  background: #f8fafc;
+  border-radius: var(--apple-radius-sm);
+  padding: 12px 14px;
+  margin-top: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.diagnostic-bonuses-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--apple-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.diagnostic-bonuses-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  color: var(--apple-text-secondary);
+}
+
+.diagnostic-bonuses-list li {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.diagnostic-bonuses-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Botones de Navegación del Wizard */
+.wizard-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--apple-border);
+}
+
+.btn-wizard-back {
+  background: transparent;
+  border: none;
+  color: var(--apple-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: var(--apple-radius-pill);
+  transition: all 0.2s ease;
+}
+
+.btn-wizard-back:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--apple-text-primary);
+}
+
+/* Columna Lateral de Confianza y Garantías */
+.guarantee-badge-card {
+  background: #ffffff;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--apple-shadow-card);
+}
+
+.guarantee-badge-card h6 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guarantee-badge-card p {
+  font-size: 0.85rem;
+  color: var(--apple-text-secondary);
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+.trust-clients-mini-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid var(--apple-border);
+}
+
+.trust-clients-mini-strip img {
+  max-height: 28px;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.trust-clients-mini-strip img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .option-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .tier-cards-row {
+    grid-template-columns: 1fr;
+  }
+  .diagnostic-item-row {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .diagnostic-item-label {
+    width: 100%;
+    font-size: 0.78rem;
+    margin-bottom: 2px;
+  }
+}
+
+/* ==========================================================================
+   DECOY PRICING & CONFIGURADOR REACTIVO POR PRESUPUESTO (USD)
+   ========================================================================== */
+
+/* Grid de Tarjetas de Presupuesto con Efecto Señuelo */
+.budget-decoy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.budget-decoy-card {
+  background: var(--apple-bg);
+  border: 1.5px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 22px 18px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.budget-decoy-card:hover {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.budget-decoy-card.selected {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 2px var(--apple-blue-light), 0 12px 28px rgba(0, 113, 227, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Tarjeta Central Destacada (Decoy Sweet Spot) */
+.budget-decoy-card.decoy-highlight {
+  border-color: rgba(0, 113, 227, 0.35);
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.08);
+}
+
+.budget-decoy-card .decoy-top-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--apple-blue);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 12px;
+  border-radius: var(--apple-radius-pill);
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+  white-space: nowrap;
+}
+
+.budget-decoy-card .budget-tier-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--apple-text-primary);
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.budget-decoy-card .budget-amount-tag {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--apple-blue);
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.budget-decoy-card .budget-period-label {
+  font-size: 0.75rem;
+  color: var(--apple-text-secondary);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.budget-decoy-card .budget-summary-desc {
+  font-size: 0.8rem;
+  color: var(--apple-text-secondary);
+  line-height: 1.4;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.budget-decoy-card .budget-features-preview {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-top: 1px dashed var(--apple-border);
+  padding-top: 10px;
+  font-size: 0.76rem;
+  color: var(--apple-text-muted);
+}
+
+.budget-decoy-card .budget-features-preview li {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.budget-decoy-card .budget-features-preview li i {
+  color: var(--apple-blue);
+  margin-top: 2px;
+  font-size: 0.7rem;
+}
+
+/* Opción Flexible / Cotización Abierta */
+.flexible-budget-bar {
+  background: var(--apple-bg);
+  border: 1px dashed var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  margin-bottom: 24px;
+}
+
+.flexible-budget-bar:hover {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+}
+
+.flexible-budget-bar.selected {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+  border-style: solid;
+  box-shadow: 0 0 0 2px var(--apple-blue-light);
+}
+
+/* Caja de Alcance Garantizado por el Presupuesto (Paso 3) */
+.budget-scope-box {
+  background: #f0f7ff;
+  border: 1px solid rgba(0, 113, 227, 0.2);
+  border-radius: var(--apple-radius-md);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.budget-scope-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.budget-scope-badge {
+  background: var(--apple-blue);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--apple-radius-pill);
+}
+
+.budget-scope-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--apple-text-primary);
+  margin-bottom: 0;
+}
+
+.budget-scope-summary-text {
+  font-size: 0.85rem;
+  color: var(--apple-text-secondary);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.upgrade-tier-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--apple-blue);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 4px 12px;
+  border-radius: var(--apple-radius-pill);
+  border: 1px solid rgba(0, 113, 227, 0.2);
+  transition: all 0.2s ease;
+}
+
+.upgrade-tier-hint:hover {
+  background: var(--apple-blue);
+  color: #ffffff;
+}
+
+/* Tabla Ejecutiva de Propuesta Ajustada en USD (Paso 4) */
+.proposal-table-apple {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+}
+
+.proposal-table-apple th {
+  background: #f8fafc;
+  padding: 12px 16px;
+  color: var(--apple-text-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--apple-border);
+  text-align: left;
+}
+
+.proposal-table-apple td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--apple-text-primary);
+  vertical-align: middle;
+}
+
+.proposal-table-apple tr:last-child td {
+  border-bottom: none;
+}
+
+.proposal-table-apple .highlight-row {
+  background: #fafcfe;
+}
+
+.proposal-table-apple .amount-cell {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--apple-blue);
+  letter-spacing: -0.02em;
+}
+
+/* Aviso de Licenciamiento Oficial Sujeto a Fabricante */
+.vendor-official-notice {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: var(--apple-radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  color: #92400e;
+  line-height: 1.45;
+}
+
+@media (max-width: 991px) {
+  .budget-decoy-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tarjetas de Selección de Tiempo y Personalización (Paso 2) */
+.time-custom-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.time-custom-card {
+  background: var(--apple-bg);
+  border: 1.5px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  padding: 16px 14px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-custom-card:hover {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.35);
+  transform: translateY(-2px);
+}
+
+.time-custom-card.selected {
+  background: #ffffff;
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 2px var(--apple-blue-light), 0 8px 20px rgba(0, 113, 227, 0.1);
+}
+
+.time-custom-card .card-head-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--apple-radius-pill);
+  display: inline-block;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+.time-custom-card h6 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.time-custom-card p {
+  font-size: 0.78rem;
+  color: var(--apple-text-secondary);
+  margin-bottom: 0;
+  line-height: 1.35;
+}
+
+/* Alerta amigable cuando pide Urgencia + Presupuesto Bajo */
+.urgency-low-budget-alert {
+  background: #fff8eb;
+  border: 1px solid #fed7aa;
+  border-left: 4px solid #ea580c;
+  border-radius: var(--apple-radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  animation: appleFadeIn 0.3s ease;
+}
+
+.urgency-low-budget-alert h6 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #9a3412;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.urgency-low-budget-alert p {
+  font-size: 0.82rem;
+  color: #7c2d12;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.btn-switch-normal-time {
+  background: #ffffff;
+  color: #c2410c;
+  border: 1px solid #fdba74;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--apple-radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-switch-normal-time:hover {
+  background: #ea580c;
+  color: #ffffff;
+  border-color: #ea580c;
+}
+
+@media (max-width: 767px) {
+  .time-custom-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
