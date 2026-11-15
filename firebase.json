@@ -30,6 +30,14 @@
     ],
     "rewrites": [
       {
+        "source": "/adminsoft",
+        "destination": "/Software/AdminSoftPF.html"
+      },
+      {
+        "source": "/software/adminsoft",
+        "destination": "/Software/AdminSoftPF.html"
+      },
+      {
         "source": "/contacto",
         "destination": "/pags/contacto.html"
       },
@@ -40,6 +48,14 @@
       {
         "source": "/clientes",
         "destination": "/pags/clientes.html"
+      },
+      {
+        "source": "/servicios",
+        "destination": "/pags/servicios.html"
+      },
+      {
+        "source": "/nosotros",
+        "destination": "/pags/nosotros.html"
       },
       {
         "source": "**",

@@ -1,7 +1,71 @@
 /**
  * Portaforza Enterprise Script
- * Manejo de cotizador dinámico, filtros de catálogo interactivos, transiciones suaves y navegación fluida
+ * Manejo de cotizador dinámico, filtros de catálogo interactivos, analíticas GA4/Clarity y transiciones
  */
+
+// =========================================================================
+// 0. CONFIGURACIÓN CENTRALIZADA DE ANALÍTICAS (Google Analytics 4 & Clarity)
+// =========================================================================
+const PORTAFORZA_ANALYTICS_CONFIG = {
+  // Reemplaza con tu ID de medición de Google Analytics 4 (ej. 'G-ABC123XYZ')
+  ga4Id: 'G-XXXXXXXXXX',
+  // Reemplaza con tu ID de proyecto de Microsoft Clarity (opcional)
+  clarityId: '',
+  // Modo depuración: imprime cada evento de conversión en la consola del navegador
+  debug: false
+};
+
+// Inicializador seguro de Google Analytics 4 y Microsoft Clarity
+function initPortaForzaAnalytics() {
+  // 1. Google Analytics 4 (GTAG)
+  if (PORTAFORZA_ANALYTICS_CONFIG.ga4Id && PORTAFORZA_ANALYTICS_CONFIG.ga4Id !== 'G-XXXXXXXXXX') {
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+      const gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${PORTAFORZA_ANALYTICS_CONFIG.ga4Id}`;
+      document.head.appendChild(gaScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', PORTAFORZA_ANALYTICS_CONFIG.ga4Id, {
+        send_page_view: true,
+        currency: 'USD'
+      });
+      if (PORTAFORZA_ANALYTICS_CONFIG.debug) {
+        console.log('[PortaForza Analytics] GA4 conectado con ID:', PORTAFORZA_ANALYTICS_CONFIG.ga4Id);
+      }
+    }
+  }
+
+  // 2. Microsoft Clarity (Mapas de calor y grabaciones)
+  if (PORTAFORZA_ANALYTICS_CONFIG.clarityId && PORTAFORZA_ANALYTICS_CONFIG.clarityId.trim() !== '') {
+    if (!window.clarity) {
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", PORTAFORZA_ANALYTICS_CONFIG.clarityId);
+      if (PORTAFORZA_ANALYTICS_CONFIG.debug) {
+        console.log('[PortaForza Analytics] Microsoft Clarity conectado.');
+      }
+    }
+  }
+}
+
+// Emisor unificado de eventos de conversión y comportamiento
+function trackPFEvent(eventName, params = {}) {
+  if (PORTAFORZA_ANALYTICS_CONFIG.debug) {
+    console.log(`[PF Event] 🎯 ${eventName}:`, params);
+  }
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
+  }
+}
+
+// Ejecutar inicialización de analíticas
+initPortaForzaAnalytics();
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Manejo del Navbar al hacer scroll
@@ -83,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('active');
 
         const filterValue = btn.getAttribute('data-filter');
+        trackPFEvent('pf_catalog_filter', { category: filterValue || 'all' });
 
         catalogCards.forEach(card => {
           const category = card.getAttribute('data-category');
@@ -127,6 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
+      trackPFEvent('pf_quick_quote_lead', {
+        service: serviceName,
+        scale: scaleText
+      });
+      trackPFEvent('generate_lead', {
+        method: 'quick_quote_whatsapp',
+        service: serviceName
+      });
+
       window.open(whatsappUrl, '_blank');
     });
   }
@@ -141,6 +215,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const phoneNumber = '18494622228';
         const message = `Hola Portaforza, deseo solicitar cotización y disponibilidad para: *${itemName}*.`;
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        trackPFEvent('pf_catalog_quote_click', {
+          item: itemName
+        });
+        trackPFEvent('generate_lead', {
+          method: 'catalog_item_whatsapp',
+          item: itemName
+        });
+
         window.open(url, '_blank');
       });
     });
@@ -173,7 +256,46 @@ document.addEventListener('DOMContentLoaded', () => {
           if (desc && showcaseDesc) showcaseDesc.innerText = desc;
           if (showcaseUrl) showcaseUrl.innerHTML = `<i class="fas fa-lock text-success me-1"></i> adminsoft.portaforza.com/app/${path}`;
           showcaseImage.style.opacity = '1';
+
+          trackPFEvent('adminsoft_showcase_click', {
+            module_key: path,
+            module_title: title || path
+          });
         }, 120);
+      });
+    });
+
+    // Tracking de planes y botones de AdminSoftGPF
+    const adminsoftPlanButtons = document.querySelectorAll('#planes a');
+    adminsoftPlanButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.bento-card');
+        const planName = card && card.querySelector('h4') ? card.querySelector('h4').innerText.trim() : 'Plan AdminSoft';
+        trackPFEvent('adminsoft_plan_cta', {
+          plan: planName
+        });
+        trackPFEvent('generate_lead', {
+          method: 'adminsoft_plan_whatsapp',
+          plan: planName
+        });
+      });
+    });
+
+    const adminsoftDemoButtons = document.querySelectorAll('a[href*="demostraci%C3%B3n"], a[href*="demo"], a[href*="Demo"]');
+    adminsoftDemoButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        trackPFEvent('adminsoft_demo_click', {
+          button_text: btn.innerText.trim()
+        });
+      });
+    });
+
+    const adminsoftLoginButtons = document.querySelectorAll('a[href*="adminsoftgpf.portaforza.com"]');
+    adminsoftLoginButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        trackPFEvent('adminsoft_portal_login', {
+          button_text: btn.innerText.trim()
+        });
       });
     });
   }
@@ -756,6 +878,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function goToStep(stepNumber) {
       wizardState.currentStep = stepNumber;
 
+      trackPFEvent('pf_wizard_step', {
+        step: stepNumber,
+        service: wizardState.selectedServiceKey,
+        time: wizardState.selectedTime,
+        custom: wizardState.selectedCustom
+      });
+
       Object.keys(panes).forEach(k => {
         if (panes[k]) panes[k].classList.remove('active');
       });
@@ -870,6 +999,11 @@ document.addEventListener('DOMContentLoaded', () => {
             cards.forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
             wizardState.selectedTierIndex = parseInt(card.getAttribute('data-tier') || '2', 10);
+            trackPFEvent('pf_budget_select', {
+              tier_index: wizardState.selectedTierIndex,
+              service: wizardState.selectedServiceKey,
+              time: wizardState.selectedTime
+            });
             renderStep3BudgetsAndDeliverables();
           });
 
@@ -944,6 +1078,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSwitchToNormalTime) {
       btnSwitchToNormalTime.addEventListener('click', () => {
         wizardState.selectedTime = 'normal';
+        trackPFEvent('pf_switch_normal_time', { service: wizardState.selectedServiceKey });
 
         // Actualizar visualmente la tarjeta de tiempo en el Paso 2
         const timeCards = document.querySelectorAll('#timeCardsGrid .time-custom-card');
@@ -1006,6 +1141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wizardState.selectedServiceKey = card.getAttribute('data-service') || 'web';
         wizardState.selectedTierIndex = 2;
         wizardState.isFlexibleBudget = false;
+        trackPFEvent('pf_service_select', { service: wizardState.selectedServiceKey });
       });
 
       card.addEventListener('keydown', (e) => {
@@ -1023,6 +1159,10 @@ document.addEventListener('DOMContentLoaded', () => {
         timeCards.forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         wizardState.selectedTime = card.getAttribute('data-time') || 'normal';
+        trackPFEvent('pf_time_select', {
+          time: wizardState.selectedTime,
+          service: wizardState.selectedServiceKey
+        });
       });
 
       card.addEventListener('keydown', (e) => {
@@ -1040,6 +1180,10 @@ document.addEventListener('DOMContentLoaded', () => {
         customCards.forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         wizardState.selectedCustom = card.getAttribute('data-custom') || 'adaptado';
+        trackPFEvent('pf_custom_select', {
+          custom: wizardState.selectedCustom,
+          service: wizardState.selectedServiceKey
+        });
       });
 
       card.addEventListener('keydown', (e) => {
@@ -1176,6 +1320,19 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSubmitWhatsApp.addEventListener('click', () => {
         if (!validateContactInputs()) return;
 
+        trackPFEvent('pf_lead_whatsapp', {
+          service: wizardState.selectedServiceKey,
+          time: wizardState.selectedTime,
+          custom: wizardState.selectedCustom,
+          tier_index: wizardState.selectedTierIndex,
+          billing: wizardState.selectedBilling
+        });
+        trackPFEvent('generate_lead', {
+          event_category: 'contact_form',
+          event_label: wizardState.selectedServiceKey,
+          method: 'whatsapp'
+        });
+
         const message = buildHumanExecutiveMessage();
         const phoneNumber = '18494622228';
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -1187,6 +1344,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSubmitEmail) {
       btnSubmitEmail.addEventListener('click', () => {
         if (!validateContactInputs()) return;
+
+        trackPFEvent('pf_lead_email', {
+          service: wizardState.selectedServiceKey,
+          time: wizardState.selectedTime,
+          custom: wizardState.selectedCustom,
+          tier_index: wizardState.selectedTierIndex,
+          billing: wizardState.selectedBilling
+        });
+        trackPFEvent('generate_lead', {
+          event_category: 'contact_form',
+          event_label: wizardState.selectedServiceKey,
+          method: 'email'
+        });
 
         const company = document.getElementById('clientCompany') ? document.getElementById('clientCompany').value.trim() : 'Empresa';
         const config = NATURAL_SERVICES_MATRIX[wizardState.selectedServiceKey] || NATURAL_SERVICES_MATRIX.web;

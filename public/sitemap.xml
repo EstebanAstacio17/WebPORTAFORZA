@@ -7,49 +7,49 @@
     <!-- Página Principal -->
     <url>
         <loc>https://portaforza.com/</loc>
-        <lastmod>2026-09-11</lastmod>
+        <lastmod>2026-11-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.00</priority>
     </url>
 
-    <!-- Plataforma AdminSoftGPF v3 -->
+    <!-- Plataforma AdminSoftGPF v3 (Landing Comercial) -->
     <url>
-        <loc>https://portaforza.com/Software/AdminSoftPF.html</loc>
-        <lastmod>2026-09-11</lastmod>
+        <loc>https://portaforza.com/Software/AdminSoftPF</loc>
+        <lastmod>2026-11-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
     </url>
 
-    <!-- Servicios Especializados -->
+    <!-- Contacto & Asistente de Cotizaciones -->
     <url>
-        <loc>https://portaforza.com/pags/servicios.html</loc>
-        <lastmod>2026-09-11</lastmod>
+        <loc>https://portaforza.com/pags/contacto</loc>
+        <lastmod>2026-11-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <!-- Servicios Especializados TI -->
+    <url>
+        <loc>https://portaforza.com/pags/servicios</loc>
+        <lastmod>2026-11-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.90</priority>
     </url>
 
     <!-- Clientes & Casos de Éxito -->
     <url>
-        <loc>https://portaforza.com/pags/clientes.html</loc>
-        <lastmod>2026-09-11</lastmod>
+        <loc>https://portaforza.com/pags/clientes</loc>
+        <lastmod>2026-11-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
 
     <!-- Sobre Nosotros -->
     <url>
-        <loc>https://portaforza.com/pags/nosotros.html</loc>
-        <lastmod>2026-09-11</lastmod>
+        <loc>https://portaforza.com/pags/nosotros</loc>
+        <lastmod>2026-11-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.80</priority>
-    </url>
-
-    <!-- Contacto & Cotizaciones -->
-    <url>
-        <loc>https://portaforza.com/pags/contacto.html</loc>
-        <lastmod>2026-09-11</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
     </url>
 
 </urlset>
